@@ -432,6 +432,12 @@ MonoBehaviour:
   mouseSensitivity: 4
   pitchMin: -80
   pitchMax: 80
+<<<<<<< Updated upstream
+=======
+  pitch: 0
+  playerRb: {fileID: 0}
+  yawDelta: 0
+>>>>>>> Stashed changes
 --- !u!1 &1360811836
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,6 +472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
+<<<<<<< Updated upstream
+=======
+  rb: {fileID: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
 --- !u!136 &1360811838
 CapsuleCollider:
   m_ObjectHideFlags: 0
