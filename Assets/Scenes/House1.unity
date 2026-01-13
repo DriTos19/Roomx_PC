@@ -1264,6 +1264,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   ghostMaterial: {fileID: 2100000, guid: c719e38f25a9480abd2480ab621a2949, type: 2}
+  inventoryManager: {fileID: 1646813313}
+  rotationSpeed: 120
+  rotateLeftKey: 273
+  rotateRightKey: 274
 --- !u!4 &2050204395
 Transform:
   m_ObjectHideFlags: 0

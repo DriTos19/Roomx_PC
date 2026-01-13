@@ -7,36 +7,31 @@ using TMPro;
 public class InventoryManager : MonoBehaviour
 {
     [Header("UI References")]
-    public CanvasGroup inventoryCanvasGroup; // CanvasGroup on InventoryMenu
-    public Transform slotParent;             // InventorySlots (Grid parent)
-    public GameObject slotPrefab;            // ItemSlot prefab
+    public CanvasGroup inventoryCanvasGroup;
+    public Transform slotParent;
+    public GameObject slotPrefab;
 
     [Header("Description UI")]
     public CanvasGroup descriptionCanvasGroup;
     public Image descriptionImage;
     public TMP_Text descriptionText;
 
-    [Header("Items (data)")]
+    [Header("Items")]
     public List<InventoryItemData> items = new List<InventoryItemData>();
 
-    private bool menuActive = false;
+    private bool menuActive;
     private Coroutine fadeCoroutine;
 
     void Start()
     {
-        // Inventory menu starts hidden & non-interactable
         SetMenuState(false);
 
-        // Description starts invisible & empty
-        if (descriptionCanvasGroup != null)
-        {
-            descriptionCanvasGroup.alpha = 0f;
-            descriptionCanvasGroup.interactable = false;
-           descriptionCanvasGroup.blocksRaycasts = false;
-        }
+        descriptionCanvasGroup.alpha = 0f;
+        descriptionCanvasGroup.interactable = false;
+        descriptionCanvasGroup.blocksRaycasts = false;
 
-        if (descriptionImage != null) descriptionImage.sprite = null;
-        if (descriptionText != null) descriptionText.text = "";
+        descriptionImage.sprite = null;
+        descriptionText.text = "";
 
         PopulateSlots();
     }
@@ -48,60 +43,48 @@ public class InventoryManager : MonoBehaviour
             menuActive = !menuActive;
             SetMenuState(menuActive);
 
-            if (!menuActive && descriptionCanvasGroup != null)
-            {
-                descriptionCanvasGroup.alpha = 0f;
-                descriptionCanvasGroup.interactable = false;
-                descriptionCanvasGroup.blocksRaycasts = false;
-            }
+            if (!menuActive)
+                HideDescription();
         }
-    }
-
-    void SetMenuState(bool active)
-    {
-        if (inventoryCanvasGroup == null) return;
-
-        inventoryCanvasGroup.alpha = active ? 1f : 0f;
-        inventoryCanvasGroup.interactable = active;
-        inventoryCanvasGroup.blocksRaycasts = active;
     }
 
     void PopulateSlots()
     {
-        if (slotParent == null || slotPrefab == null) return;
-
-        for (int i = slotParent.childCount - 1; i >= 0; i--)
-            Destroy(slotParent.GetChild(i).gameObject);
+        foreach (Transform child in slotParent)
+            Destroy(child.gameObject);
 
         foreach (var item in items)
         {
-            GameObject slotObj = Instantiate(slotPrefab, slotParent);
-            ItemSlotUI slotUI = slotObj.GetComponent<ItemSlotUI>();
-            if (slotUI != null)
-                slotUI.Setup(item, this);
+            GameObject slot = Instantiate(slotPrefab, slotParent);
+            slot.GetComponent<ItemSlotUI>().Setup(item, this);
         }
     }
 
-    // Called by ItemSlotUI
     public void ShowItemDetails(InventoryItemData item)
     {
-        if (item == null) return;
-
         descriptionImage.sprite = item.icon;
         descriptionText.text = $"<b>{item.itemName}</b>\n\n{item.description}";
 
         if (fadeCoroutine != null)
             StopCoroutine(fadeCoroutine);
 
-        fadeCoroutine = StartCoroutine(FadeCanvasGroup(descriptionCanvasGroup, 0f, 1f, 0.25f));
+        fadeCoroutine = StartCoroutine(FadeCanvasGroup(descriptionCanvasGroup, 0f, 1f, 0.2f));
     }
 
-    private IEnumerator FadeCanvasGroup(CanvasGroup cg, float from, float to, float duration)
+    public void HideDescription()
+    {
+        if (fadeCoroutine != null)
+            StopCoroutine(fadeCoroutine);
+
+        descriptionCanvasGroup.alpha = 0f;
+        descriptionCanvasGroup.interactable = false;
+        descriptionCanvasGroup.blocksRaycasts = false;
+    }
+
+    IEnumerator FadeCanvasGroup(CanvasGroup cg, float from, float to, float duration)
     {
         float t = 0f;
         cg.alpha = from;
-        cg.interactable = false;
-        cg.blocksRaycasts = false;
 
         while (t < duration)
         {
@@ -113,5 +96,25 @@ public class InventoryManager : MonoBehaviour
         cg.alpha = to;
         cg.interactable = true;
         cg.blocksRaycasts = true;
+    }
+
+    void SetMenuState(bool active)
+    {
+        inventoryCanvasGroup.alpha = active ? 1f : 0f;
+        inventoryCanvasGroup.interactable = active;
+        inventoryCanvasGroup.blocksRaycasts = active;
+    }
+
+    public void HideMenu()
+    {
+        menuActive = false;
+        SetMenuState(false);
+        HideDescription();
+    }
+
+    public void ShowMenu()
+    {
+        menuActive = true;
+        SetMenuState(true);
     }
 }
