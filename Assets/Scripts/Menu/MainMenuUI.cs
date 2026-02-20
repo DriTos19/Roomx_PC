@@ -47,7 +47,7 @@ public class MainMenuUI : MonoBehaviour
     // --- BUTTON FUNCTIONS ---
     public void StartGame()
     {
-        StartCoroutine(LoadGameSceneAsync("GameScene"));
+        StartCoroutine(LoadGameSceneAsync("House1"));
     }
 
     private IEnumerator LoadGameSceneAsync(string sceneName)
@@ -132,3 +132,4 @@ public class MainMenuUI : MonoBehaviour
         cg.blocksRaycasts = active;
     }
 }
+ 

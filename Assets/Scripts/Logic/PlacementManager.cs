@@ -4,20 +4,15 @@ public class PlacementManager : MonoBehaviour
 {
     public static PlacementManager Instance;
 
-    [Header("Placement")]
     public LayerMask groundLayer;
     public Material ghostMaterial;
     public InventoryManager inventoryManager;
 
-    [Header("Rotation")]
-    public float rotationSpeed = 120f; // degrees per second
-    public KeyCode rotateLeftKey = KeyCode.Q;
-    public KeyCode rotateRightKey = KeyCode.E;
+    public float rotationSpeed = 120f;
 
     private GameObject ghostObject;
     private InventoryItemData currentItem;
-    private float yOffset = 0.5f;
-    private float currentRotationY = 0f;
+    private float currentRotationY;
 
     void Awake()
     {
@@ -35,75 +30,57 @@ public class PlacementManager : MonoBehaviour
             PlaceObject();
 
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
-            CancelPlacement(true);
+            CancelPlacement();
     }
 
     public void StartPlacement(InventoryItemData item)
     {
-        CancelPlacement(false);
+        CancelPlacement();
 
         currentItem = item;
         ghostObject = Instantiate(item.prefab3D);
 
-        currentRotationY = 0f;
-        ghostObject.transform.rotation = Quaternion.identity;
-
+        currentRotationY = 0;
         SetGhostMaterial(ghostObject);
     }
 
     void FollowMouse()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
         {
-            ghostObject.transform.position = hit.point + Vector3.up * yOffset;
+            ghostObject.transform.position = hit.point + Vector3.up * 0.5f;
         }
     }
 
     void HandleRotation()
     {
-        if (Input.GetKey(rotateLeftKey))
+        if (Input.GetKey(KeyCode.Q))
             currentRotationY -= rotationSpeed * Time.deltaTime;
 
-        if (Input.GetKey(rotateRightKey))
+        if (Input.GetKey(KeyCode.E))
             currentRotationY += rotationSpeed * Time.deltaTime;
 
-        ghostObject.transform.rotation = Quaternion.Euler(0f, currentRotationY, 0f);
+        ghostObject.transform.rotation = Quaternion.Euler(0, currentRotationY, 0);
     }
 
     void PlaceObject()
     {
-        // 1. Capture the newly spawned furniture into a variable named 'realObject'
-        GameObject realObject = Instantiate(
-            currentItem.prefab3D,
+        Instantiate(currentItem.prefab3D,
             ghostObject.transform.position,
-            ghostObject.transform.rotation
-        );
+            ghostObject.transform.rotation);
 
-        // 2. Send this 'realObject' to your Save Manager
-        FurnitureSaveManager saveManager = Object.FindObjectOfType<FurnitureSaveManager>();
-        if (saveManager != null)
-        {
-            saveManager.activeFurniture.Add(realObject);
-        }
-        else
-        {
-            Debug.LogError("SaveSystem object not found in scene! Furniture won't be saved.");
-        }
-
-        CancelPlacement(false);
+        CancelPlacement();
     }
 
-    void CancelPlacement(bool reopenMenu)
+    void CancelPlacement()
     {
         if (ghostObject != null)
             Destroy(ghostObject);
 
         ghostObject = null;
         currentItem = null;
-
-        if (reopenMenu)
-            inventoryManager.ShowMenu();
     }
 
     void SetGhostMaterial(GameObject obj)
