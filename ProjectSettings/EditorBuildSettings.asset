@@ -10,11 +10,23 @@ EditorBuildSettings:
     guid: 9bf9cc6d5d3ef8d4b86dd9297f87976d
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: 21d7e4baf02566c4f884ffc8b045b4f7
   - enabled: 1
     path: Assets/Scenes/House1.unity
     guid: c16541d35447cd240ac0f24c1bcbdbfb
   - enabled: 1
-    path: Assets/Scenes/House1 1.unity
+    path: Assets/Scenes/House2.unity
     guid: 9bd7833eaba57fb4bba8fe4644e02381
+  - enabled: 1
+    path: Assets/Scenes/Movement.unity
+    guid: 801699ec22cd6d546aeaf7157135f38f
+  - enabled: 1
+    path: Assets/Scenes/House3.unity
+    guid: f197da15b419d9b42b66148ae14b8235
+  - enabled: 1
+    path: Assets/Scenes/House5.unity
+    guid: caf4529b458b47e44a735d41e6e7b07d
+  - enabled: 1
+    path: Assets/Scenes/House4.unity
+    guid: f639cf54caf882d42818bdeb749bdd21
   m_configObjects: {}
