@@ -279,6 +279,7 @@ MonoBehaviour:
   moveSpeed: 3
   mouseSensitivity: 4
   cameraHolder: {fileID: 978763313}
+  materialWheelController: {fileID: 1246495718}
 --- !u!1 &579666497
 GameObject:
   m_ObjectHideFlags: 0

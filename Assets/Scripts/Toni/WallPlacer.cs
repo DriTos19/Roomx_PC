@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WallPlacer_PC : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class WallPlacer_PC : MonoBehaviour
     public float mouseSensitivity = 6f;
     public Transform cameraHolder;
 
+    [Header("Material Wheel")]
+    public MaterialWheelController materialWheelController; // ADDED
+
     private GameObject previewInstance;
     private GameObject placedObject;
     private bool isPlacing = false;
@@ -34,33 +38,48 @@ public class WallPlacer_PC : MonoBehaviour
 
     void Update()
     {
+        // Freeze camera and movement if the Material Wheel is open
+        if (materialWheelController != null && materialWheelController.IsOpen())
+        {
+            // Don't handle movement or mouse look
+            return;
+        }
+
+        // Normal camera and movement
         HandleMovement();
         HandleMouseLook();
 
-        // Move the preview if we're placing
         if (isPlacing && previewInstance)
         {
             HandlePreviewMovement();
 
-            // Place prefab with LEFT click
+            // Ignore clicks on UI
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+
             if (Input.GetMouseButtonDown(0))
             {
                 PlaceObject();
             }
 
-            // Cancel placement with ESC
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 CancelPlacement();
             }
         }
-        else if (!isPlacing && Input.GetMouseButtonDown(0)) // CHANGED: left click instead of right click
+        else if (!isPlacing)
         {
-            TryEditPlacedObject();
+            // Ignore clicks on UI
+            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                TryEditPlacedObject();
+            }
         }
     }
 
-    // Movement
     void HandleMovement()
     {
         float x = Input.GetAxis("Horizontal");
@@ -70,7 +89,6 @@ public class WallPlacer_PC : MonoBehaviour
         transform.position += move * moveSpeed * Time.deltaTime;
     }
 
-    // Mouse look
     void HandleMouseLook()
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * 100f * Time.deltaTime;
@@ -83,7 +101,6 @@ public class WallPlacer_PC : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    // Start initial placement
     void StartPlacement()
     {
         if (!previewPrefab || !realPrefab)
@@ -101,13 +118,11 @@ public class WallPlacer_PC : MonoBehaviour
         isPlacing = true;
     }
 
-    // Move preview in front of camera
     void HandlePreviewMovement()
     {
         float distance = 4f;
         Vector3 pos = playerCamera.transform.position + playerCamera.transform.forward * distance;
 
-        // Keep on ground
         float height = previewInstance.GetComponentInChildren<Renderer>().bounds.size.y;
         pos.y = height / 2f;
 
@@ -117,7 +132,6 @@ public class WallPlacer_PC : MonoBehaviour
         previewInstance.transform.rotation = Quaternion.identity;
     }
 
-    // Place the prefab
     void PlaceObject()
     {
         if (!previewInstance)
@@ -126,13 +140,11 @@ public class WallPlacer_PC : MonoBehaviour
         placedObject = Instantiate(realPrefab, previewInstance.transform.position, previewInstance.transform.rotation);
         placedObject.tag = "Placeable";
 
-        // Destroy preview
         Destroy(previewInstance);
         previewInstance = null;
         isPlacing = false;
     }
 
-    // Click on placed prefab → replace with preview
     void TryEditPlacedObject()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
@@ -154,7 +166,6 @@ public class WallPlacer_PC : MonoBehaviour
         }
     }
 
-    // Cancel placement
     void CancelPlacement()
     {
         if (previewInstance)
@@ -164,7 +175,6 @@ public class WallPlacer_PC : MonoBehaviour
         previewInstance = null;
     }
 
-    // Make preview transparent
     void MakePreviewTransparent(GameObject obj)
     {
         Renderer[] rends = obj.GetComponentsInChildren<Renderer>();
@@ -180,7 +190,6 @@ public class WallPlacer_PC : MonoBehaviour
         }
     }
 
-    // Snap position to grid
     Vector3 SnapToGrid(Vector3 pos, float size)
     {
         pos.x = Mathf.Round(pos.x / size) * size;

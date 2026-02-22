@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class CrosshairSelector : MonoBehaviour
 {
@@ -8,14 +9,15 @@ public class CrosshairSelector : MonoBehaviour
 
     void Update()
     {
-        if (materialWheelController == null)
+        if (materialWheelController == null) return;
+
+        // Ignore clicks over UI
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 
-        // Ray from camera forward (crosshair direction)
         Ray ray = new Ray(transform.position, transform.forward);
         Debug.DrawRay(transform.position, transform.forward * maxDistance, Color.red);
 
-        // Right click (new Input System)
         if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))

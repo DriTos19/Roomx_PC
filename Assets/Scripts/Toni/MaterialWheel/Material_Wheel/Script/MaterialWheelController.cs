@@ -61,7 +61,7 @@ public class MaterialWheelController : MonoBehaviour
                     tmpText.text = mat.name;
             }
 
-            // CHANGED PART: Button preview uses material albedo or color
+            // Preview Image uses material texture/color
             RawImage previewImage = slice.transform.Find("PreviewImage")?.GetComponent<RawImage>();
             if (previewImage != null)
             {
@@ -73,13 +73,13 @@ public class MaterialWheelController : MonoBehaviour
 
                 if (mat.mainTexture != null)
                 {
-                    previewImage.texture = mat.mainTexture;   // CHANGED
-                    previewImage.color = Color.white;         // ADDED
+                    previewImage.texture = mat.mainTexture;
+                    previewImage.color = Color.white;
                 }
                 else
                 {
-                    previewImage.texture = null;              // ADDED
-                    previewImage.color = mat.color;           // CHANGED
+                    previewImage.texture = null;
+                    previewImage.color = mat.color;
                 }
             }
             else

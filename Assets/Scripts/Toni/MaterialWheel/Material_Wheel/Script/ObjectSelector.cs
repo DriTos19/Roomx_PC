@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ObjectSelector : MonoBehaviour
 {
@@ -7,7 +8,11 @@ public class ObjectSelector : MonoBehaviour
 
     void Update()
     {
-        if (materialWheelController == null) return; // prevents NullReferenceException
+        if (materialWheelController == null) return;
+
+        // Ignore clicks over UI
+        if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            return;
 
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
