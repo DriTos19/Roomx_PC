@@ -54,7 +54,7 @@ public class WallPlacer_PC : MonoBehaviour
                 CancelPlacement();
             }
         }
-        else if (!isPlacing && Input.GetMouseButtonDown(1)) // 1 = right click
+        else if (!isPlacing && Input.GetMouseButtonDown(0)) // CHANGED: left click instead of right click
         {
             TryEditPlacedObject();
         }
@@ -140,17 +140,16 @@ public class WallPlacer_PC : MonoBehaviour
         {
             if (hit.collider != null && hit.collider.CompareTag("Placeable"))
             {
-                // Remove the real prefab
                 Destroy(hit.collider.gameObject);
 
-                // Spawn preview at camera front
-                previewInstance = Instantiate(previewPrefab,
+                previewInstance = Instantiate(
+                    previewPrefab,
                     playerCamera.transform.position + playerCamera.transform.forward * 4f,
-                    Quaternion.identity);
+                    Quaternion.identity
+                );
 
                 MakePreviewTransparent(previewInstance);
-
-                isPlacing = true; // now we can move and place it again
+                isPlacing = true;
             }
         }
     }
