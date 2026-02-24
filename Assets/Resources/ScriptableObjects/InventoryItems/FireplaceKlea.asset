@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b67e15aeec206458735abb17af76e6, type: 3}
   m_Name: FireplaceKlea
   m_EditorClassIdentifier: 
-  itemName: 
-  description: 
-  icon: {fileID: 0}
-  prefab3D: {fileID: 0}
-  category: 0
+  itemName: Fireplace
+  description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
+    Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
+    Lorem Ipsum
+  icon: {fileID: 21300000, guid: 6c457c2fcc6ef964b8e8c31942c18dae, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: a7268f3144ea736418d7c030aebcf7e0, type: 3}
+  category: 5
