@@ -303,7 +303,7 @@ CanvasGroup:
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
+  m_IgnoreParentGroups: 1
 --- !u!114 &160856097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
     m_Top: -200
     m_Bottom: 0
   m_ChildAlignment: 3
-  m_Spacing: 76.37
+  m_Spacing: 100
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 0
@@ -4960,7 +4960,7 @@ RectTransform:
   m_GameObject: {fileID: 2073762801}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7979957, y: 1.29, z: 1.0417498}
+  m_LocalScale: {x: 0.5919168, y: 0.95686316, z: 0.7727225}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 160856093}
@@ -5022,14 +5022,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 0.80784315}
+  m_Color: {r: 0.9245283, g: 0.9245283, b: 0.9245283, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 9ed22d43765f4e04ca36f62ff6447cb3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ce0e1183a1ffb554ca6ffef9e37efe3c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
