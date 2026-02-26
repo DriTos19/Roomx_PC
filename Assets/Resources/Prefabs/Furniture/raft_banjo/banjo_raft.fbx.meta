@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: e7912363a8e7c5f488672b03e292f219
+guid: afe92fd58ec9353469484e01d97b13f2
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: banjo_raft
-    second: {fileID: 2100000, guid: 0fb76de65f3db9044ad74d967f803e54, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

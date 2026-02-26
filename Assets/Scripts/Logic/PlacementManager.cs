@@ -67,9 +67,22 @@ public class PlacementManager : MonoBehaviour
 
     void PlaceObject()
     {
-        Instantiate(currentItem.prefab3D,
+        GameObject newObj = Instantiate(currentItem.prefab3D,
             ghostObject.transform.position,
             ghostObject.transform.rotation);
+
+        // Add a component to store the prefab name for save/load
+        FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
+        prefabRef.prefabPath = currentItem.name; // Use the ScriptableObject name as the identifier
+
+        // Register the placed object with the FurnitureSaveManager
+        FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
+        if (saveManager != null) {
+            saveManager.activeFurniture.Add(newObj);
+            Debug.Log("Added " + newObj.name + " to activeFurniture list");
+        } else {
+            Debug.LogWarning("FurnitureSaveManager not found in scene!");
+        }
 
         CancelPlacement();
     }
