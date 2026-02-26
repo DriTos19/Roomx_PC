@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 782a21a4df16db146bba4a1b55e19d07
+guid: c4fefbb362e9b754d9e90eaa7c4d8f42
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: raft
-    second: {fileID: 2100000, guid: 112b2c4bcdd44a14fa61faa0cbd9d773, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

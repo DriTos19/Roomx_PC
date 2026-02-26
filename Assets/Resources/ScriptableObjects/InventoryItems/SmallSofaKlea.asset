@@ -16,6 +16,6 @@ MonoBehaviour:
   description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
     Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
     Lorem Ipsum
-  icon: {fileID: 21300000, guid: ef309b3bda5849f409d6dcdb68a3e380, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 2b0c94b11eb0f79499e9eed42b70c663, type: 3}
+  icon: {fileID: 21300000, guid: eb379ab4cd426794291042b568ed4264, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 4af6a510625e121418793eb926d79d20, type: 3}
   category: 4
