@@ -6,15 +6,20 @@ using TMPro;
 
 public class MainMenuUI : MonoBehaviour
 {
-    [Header("Panels (with CanvasGroup)")]
+    [Header("Panels (CanvasGroups)")]
     public CanvasGroup mainMenuPanel;
+    public CanvasGroup secondMenuPanel;   // NEW
     public CanvasGroup settingsPanel;
     public CanvasGroup helpPanel;
-    public CanvasGroup loadingScreen;
+    public CanvasGroup houseSelectionPanel; // NEW (your loading/house panel)
 
-    [Header("Loading UI")]
-    public Slider progressBar;
-    public TMP_Text loadingText;
+    [Header("House Selection")]
+    public Button[] houseButtons;     // 5 stacked house buttons
+    public string[] houseSceneNames;  // Scene names for each house
+    public Button nextButton;
+    public Button previousButton;
+
+    private int currentHouseIndex = 0;
 
     [Header("Audio")]
     public AudioSource backgroundMusic;
@@ -23,8 +28,8 @@ public class MainMenuUI : MonoBehaviour
     public Sprite unmuteSprite;
     public Slider volumeSlider;
 
-    [Header("Transition Settings")]
-    public float fadeDuration = 0.5f;
+    [Header("Transition")]
+    public float fadeDuration = 0.4f;
 
     private bool isMuted = false;
     private CanvasGroup currentPanel;
@@ -32,64 +37,126 @@ public class MainMenuUI : MonoBehaviour
     void Start()
     {
         currentPanel = mainMenuPanel;
+
         SetActivePanel(mainMenuPanel, true);
+        SetActivePanel(secondMenuPanel, false);
         SetActivePanel(settingsPanel, false);
         SetActivePanel(helpPanel, false);
-        SetActivePanel(loadingScreen, false);
+        SetActivePanel(houseSelectionPanel, false);
 
         if (volumeSlider != null)
         {
             volumeSlider.value = backgroundMusic.volume;
             volumeSlider.onValueChanged.AddListener(SetVolume);
         }
+
+        SetupHouseSelection();
     }
 
-    // --- BUTTON FUNCTIONS ---
-    public void StartGame()
+    // =========================
+    // PANEL SWITCHING
+    // =========================
+
+    public void OpenSecondMenu()
     {
-        StartCoroutine(LoadGameSceneAsync("GameScene"));
+        StartCoroutine(SwitchPanel(secondMenuPanel));
     }
 
-    private IEnumerator LoadGameSceneAsync(string sceneName)
+    public void OpenHouseSelection()
     {
-        // Show loading screen
-        SetActivePanel(mainMenuPanel, false);
-        SetActivePanel(loadingScreen, true);
-        yield return StartCoroutine(FadeCanvasGroup(loadingScreen, 0f, 1f));
+        StartCoroutine(SwitchPanel(houseSelectionPanel));
+    }
 
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
-        asyncLoad.allowSceneActivation = false;
+    public void OpenSettings()
+    {
+        StartCoroutine(SwitchPanel(settingsPanel));
+    }
 
-        while (!asyncLoad.isDone)
+    public void OpenHelp()
+    {
+        StartCoroutine(SwitchPanel(helpPanel));
+    }
+
+    public void BackToMainMenu()
+    {
+        StartCoroutine(SwitchPanel(mainMenuPanel));
+    }
+
+    private IEnumerator SwitchPanel(CanvasGroup newPanel)
+    {
+        if (currentPanel == newPanel)
+            yield break;
+
+        yield return StartCoroutine(FadeCanvasGroup(currentPanel, 1f, 0f));
+        SetActivePanel(currentPanel, false);
+
+        SetActivePanel(newPanel, true);
+        yield return StartCoroutine(FadeCanvasGroup(newPanel, 0f, 1f));
+
+        currentPanel = newPanel;
+    }
+
+    // =========================
+    // HOUSE SELECTION SYSTEM
+    // =========================
+
+    void SetupHouseSelection()
+    {
+        UpdateHouseButtons();
+
+        nextButton.onClick.AddListener(NextHouse);
+        previousButton.onClick.AddListener(PreviousHouse);
+
+        for (int i = 0; i < houseButtons.Length; i++)
         {
-            float progress = Mathf.Clamp01(asyncLoad.progress / 0.9f);
-            progressBar.value = progress;
-            loadingText.text = "Loading... " + Mathf.RoundToInt(progress * 100f) + "%";
-
-            // When loading reaches 90%, finish fade and activate
-            if (asyncLoad.progress >= 0.9f)
-            {
-                loadingText.text = "Press any key to continue";
-                if (Input.anyKeyDown)
-                {
-                    asyncLoad.allowSceneActivation = true;
-                }
-            }
-
-            yield return null;
+            int index = i;
+            houseButtons[i].onClick.AddListener(() => LoadHouse(index));
         }
     }
 
-    public void ExitGame() => Application.Quit();
+     public void NextHouse()
+    {
+        currentHouseIndex++;
+        if (currentHouseIndex >= houseButtons.Length)
+            currentHouseIndex = 0;
 
-    public void OpenSettings() => StartCoroutine(SwitchPanel(settingsPanel));
-    public void OpenHelp() => StartCoroutine(SwitchPanel(helpPanel));
-    public void BackToMainMenu() => StartCoroutine(SwitchPanel(mainMenuPanel));
+        UpdateHouseButtons();
+    }
+
+    public void PreviousHouse()
+    {
+        currentHouseIndex--;
+        if (currentHouseIndex < 0)
+            currentHouseIndex = houseButtons.Length - 1;
+
+        UpdateHouseButtons();
+    }
+
+    void UpdateHouseButtons()
+    {
+        for (int i = 0; i < houseButtons.Length; i++)
+        {
+            houseButtons[i].gameObject.SetActive(i == currentHouseIndex);
+        }
+    }
+
+   public void LoadHouse(int index)
+    {
+        if (index >= 0 && index < houseSceneNames.Length)
+        {
+            SceneManager.LoadScene(houseSceneNames[index]);
+        }
+    }
+
+    // =========================
+    // AUDIO
+    // =========================
 
     public void ToggleMute()
     {
         isMuted = !isMuted;
         backgroundMusic.mute = isMuted;
+
         if (muteIcon != null)
             muteIcon.sprite = isMuted ? muteSprite : unmuteSprite;
     }
@@ -99,27 +166,23 @@ public class MainMenuUI : MonoBehaviour
         backgroundMusic.volume = value;
     }
 
-    private IEnumerator SwitchPanel(CanvasGroup newPanel)
-    {
-        if (currentPanel == newPanel) yield break;
-        yield return StartCoroutine(FadeCanvasGroup(currentPanel, 1f, 0f));
-        SetActivePanel(currentPanel, false);
-        SetActivePanel(newPanel, true);
-        yield return StartCoroutine(FadeCanvasGroup(newPanel, 0f, 1f));
-        currentPanel = newPanel;
-    }
+    // =========================
+    // FADE SYSTEM
+    // =========================
 
     private IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end)
     {
         float elapsed = 0f;
         cg.interactable = false;
         cg.blocksRaycasts = false;
+
         while (elapsed < fadeDuration)
         {
             cg.alpha = Mathf.Lerp(start, end, elapsed / fadeDuration);
             elapsed += Time.deltaTime;
             yield return null;
         }
+
         cg.alpha = end;
         cg.interactable = end > 0.9f;
         cg.blocksRaycasts = end > 0.9f;
