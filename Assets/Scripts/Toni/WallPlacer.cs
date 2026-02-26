@@ -40,11 +40,7 @@ public class WallPlacer_PC : MonoBehaviour
     {
         // Freeze camera and movement if the Material Wheel is open
         if (materialWheelController != null && materialWheelController.IsOpen())
-        {
-            // Don't handle movement or mouse look
-            return;
-        }
-
+        { return; }
         // Normal camera and movement
         HandleMovement();
         HandleMouseLook();
@@ -58,14 +54,10 @@ public class WallPlacer_PC : MonoBehaviour
                 return;
 
             if (Input.GetMouseButtonDown(0))
-            {
-                PlaceObject();
-            }
+            { PlaceObject(); }
 
             if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                CancelPlacement();
-            }
+            { CancelPlacement(); }
         }
         else if (!isPlacing)
         {
@@ -74,9 +66,7 @@ public class WallPlacer_PC : MonoBehaviour
                 return;
 
             if (Input.GetMouseButtonDown(0))
-            {
-                TryEditPlacedObject();
-            }
+            { TryEditPlacedObject(); }
         }
     }
 
@@ -186,9 +176,7 @@ public class WallPlacer_PC : MonoBehaviour
                 Color c = m.color;
                 c.a = 0.5f;
                 m.color = c;
-            }
-        }
-    }
+            }}}
 
     Vector3 SnapToGrid(Vector3 pos, float size)
     {
