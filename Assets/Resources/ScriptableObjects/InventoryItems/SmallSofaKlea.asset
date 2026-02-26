@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: SmallSofaKlea
   m_EditorClassIdentifier: 
   itemName: Small Sofa
-  description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-    Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-    Lorem Ipsum
-  icon: {fileID: 21300000, guid: eb379ab4cd426794291042b568ed4264, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 4af6a510625e121418793eb926d79d20, type: 3}
+  description: This small sofa features a sleek, minimalist design that fits perfectly
+    into modern living spaces while adding a gentle cozy touch. Crafted from durable,
+    high-quality materials, it provides comfortable seating without occupying too
+    much space. Its clean lines and compact proportions maintain a tidy, uncluttered
+    look, while soft cushions and subtle textures create warmth and relaxation.
+  icon: {fileID: 21300000, guid: ee913fabdbdeb104182280050cce71fc, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: cdcf368ad1e86ec4fb3b86fbdc7d203c, type: 3}
   category: 4

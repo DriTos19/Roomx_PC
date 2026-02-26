@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: ShelfBedroomKlea
   m_EditorClassIdentifier: 
   itemName: Bedroom Shelf
-  description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-    Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-    Lorem Ipsum
-  icon: {fileID: 21300000, guid: 4c4478bfc9f03b144b3024271a2afccc, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 782a21a4df16db146bba4a1b55e19d07, type: 3}
+  description: This bedroom shelf features a sleek, minimalist design that blends
+    effortlessly into modern interiors while maintaining a warm, cozy presence. Constructed
+    from durable, high-quality materials, it provides practical storage for books,
+    decorative pieces, and personal essentials. Its clean lines and open structure
+    create a light, organized appearance, enhancing the sense of space.
+  icon: {fileID: 21300000, guid: 2299f952f9fc70f45b4b734de2081083, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: c4fefbb362e9b754d9e90eaa7c4d8f42, type: 3}
   category: 5

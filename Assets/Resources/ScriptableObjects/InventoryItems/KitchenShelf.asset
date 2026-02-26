@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: KitchenShelf
   m_EditorClassIdentifier: 
   itemName: Kitchen Shelf
-  description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-    Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-    Lorem Ipsum
-  icon: {fileID: 21300000, guid: b891dc8c990361d4b9949afe99e38f9b, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: a470ae07ec3657a469750787a2cf300b, type: 3}
+  description: This kitchen shelf features a sleek, minimalist design that fits seamlessly
+    into contemporary interiors. Constructed from durable, high-quality materials,
+    it offers reliable support for dishes, glassware, spices, and everyday kitchen
+    essentials. Its clean lines and open structure create an organized, airy feel
+    while keeping frequently used items within easy reach.
+  icon: {fileID: 21300000, guid: 482b9d51ddd69cb4d8a229cfe9da0ed6, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: c01369c7d5fca5f4194c922fee72a255, type: 3}
   category: 5
