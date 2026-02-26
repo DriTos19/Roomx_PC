@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b67e15aeec206458735abb17af76e6, type: 3}
   m_Name: StuhlKlea
   m_EditorClassIdentifier: 
-  itemName: Fancy Chair
+  itemName: ' Chair'
   description: This fancy chair showcases a sleek, modern silhouette enhanced by
     refined detailing and elegant proportions. Crafted from premium materials with
     a smooth, polished finish, it offers both durability and elevated comfort. Its
     clean lines maintain a contemporary aesthetic, while the plush seating and subtle
     design accents introduce a warm, cozy sophistication.
-  icon: {fileID: 21300000, guid: 3e3ed79bcf74be34392de07e5df77955, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: b66eca0010c796147aae2fd3900d1fb3, type: 3}
+  icon: {fileID: 21300000, guid: e959882bdad676940be6e8cca74b7530, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 533e989f17aacd740a59bbba9cc3f911, type: 3}
   category: 3
