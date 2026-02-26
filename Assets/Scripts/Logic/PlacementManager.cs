@@ -50,7 +50,7 @@ public class PlacementManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
         {
-            ghostObject.transform.position = hit.point + Vector3.up * 0.5f;
+            ghostObject.transform.position = hit.point + Vector3.up * 0.0f;
         }
     }
 

@@ -5,69 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Foto/Drini.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Foto/Drini.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Foto/Klea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Foto/Klea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Foto/Klea2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Foto/Klea2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Foto/Sidrit.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Foto/Sidrit.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Foto/Toni.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Foto/Toni.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Gemini_Generated_Image_a28cdra28cdra28c.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Gemini_Generated_Image_a28cdra28cdra28c.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Icons/Gemini_Generated_Image_3i32lc3i32lc3i32-Photoroom (1).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Gemini_Generated_Image_3i32lc3i32lc3i32-Photoroom (1).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Icons/Gemini_Generated_Image_o17pvxo17pvxo17p-removebg-preview (1).png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Gemini_Generated_Image_o17pvxo17pvxo17p-removebg-preview (1).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/BathroomShelfKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/BathroomShelfKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/Des.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/Des.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/FireplaceKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/FireplaceKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/KuzhinKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/KuzhinKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/LluksKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/LluksKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/Menu.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/Menu.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/RaftKleaKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/RaftKleaKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/SmallSofaKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/SmallSofaKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/SofaKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/SofaKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Images/StuhlKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/StuhlKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/Fireplace.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/Fireplace.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/FireplaceKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/FireplaceKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/fireplace.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/fireplace.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/fireplace_n.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/fireplace_n.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/fireplace_r.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/fireplace/fireplace_r.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/KuzhinKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/KuzhinKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/kuzhin.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/kuzhin.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/kuzhin.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/kuzhin.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/kuzhin_n.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/kuzhin_n.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/kuzhin_r.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/kuzhin/kuzhin_r.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/LluksKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/LluksKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/lluks.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/lluks.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/lluks.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/lluks.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/lluks_n.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/lluks_n.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/lluks_r.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/lluks/lluks_r.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/RaftKleaKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/RaftKleaKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/raft.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/raft.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/raft.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/raft.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/raft_n.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/raft_n.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/raft_r.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft/raft_r.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/BathroomShelfKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/BathroomShelfKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/banjo_raft.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/banjo_raft.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/banjo_raft.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/banjo_raft.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/banjo_raft_n.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/banjo_raft_n.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/banjo_raft_r.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/raft_banjo/banjo_raft_r.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/SmallSofaKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/SmallSofaKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/small_sofa.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/small_sofa.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/small_sofa.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/small_sofa.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/small_sofa_n.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/small_sofa_n.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/small_sofa_r.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/small_sofa/small_sofa_r.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/SofaKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/SofaKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/sofa.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/sofa.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/sofa.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/sofa.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/sofa_n.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/sofa_n.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/sofa_r.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/sofa/sofa_r.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/StuhlKlea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/StuhlKlea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/stuhl.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/stuhl.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/stuhl.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/stuhl.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/stuhl_n.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/stuhl_n.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/stuhl_r.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/stuhl/stuhl_r.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.5.4/Starter Assets/DemoSceneAssets/Audio/Button Pop.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.5.4/Starter Assets/DemoSceneAssets/Audio/Button Pop.wav.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.5.4/Starter Assets/DemoSceneAssets/Models/Primitive_Pyramid.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.5.4/Starter Assets/DemoSceneAssets/Models/Primitive_Pyramid.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Logic/PlacementManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/PlacementManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
