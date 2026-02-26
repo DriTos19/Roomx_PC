@@ -15,9 +15,7 @@ MonoBehaviour:
   itemName: ' Chair'
   description: This fancy chair showcases a sleek, modern silhouette enhanced by
     refined detailing and elegant proportions. Crafted from premium materials with
-    a smooth, polished finish, it offers both durability and elevated comfort. Its
-    clean lines maintain a contemporary aesthetic, while the plush seating and subtle
-    design accents introduce a warm, cozy sophistication.
+    a smooth, polished finish, it offers both durability and elevated comfort.
   icon: {fileID: 21300000, guid: e959882bdad676940be6e8cca74b7530, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 533e989f17aacd740a59bbba9cc3f911, type: 3}
   category: 3

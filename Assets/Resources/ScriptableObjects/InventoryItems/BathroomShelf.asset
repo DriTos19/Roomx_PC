@@ -16,8 +16,7 @@ MonoBehaviour:
   description: This bathroom shelf features a sleek, minimalist design that blends
     seamlessly into contemporary interiors. Crafted from durable, moisture-resistant
     materials, it provides practical storage space for toiletries, towels, and everyday
-    essentials. Its compact yet functional structure makes it ideal for maximizing
-    vertical space while maintaining a clean and organized look.
+    essentials.
   icon: {fileID: 21300000, guid: a5264bc6bbb565747ad9c430487dacd8, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: e5360bc8a5fa8f748ab9abd77ba61902, type: 3}
   category: 5

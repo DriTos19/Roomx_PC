@@ -16,8 +16,7 @@ MonoBehaviour:
   description: This wooden chair features a sleek, minimalist design that complements
     contemporary interiors while preserving a natural, inviting character. Crafted
     from solid wood with a smooth, refined finish, it offers durability and stable
-    support for everyday use. Its clean lines and balanced proportions create a modern
-    silhouette, while the warm wood texture adds a subtle cozy touch.
+    support for everyday use.
   icon: {fileID: 21300000, guid: 0ed5cba8ec5807b4c892e8f68c7cd55b, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: efbf3abdacd974348be1192f1caf45c1, type: 3}
   category: 3
