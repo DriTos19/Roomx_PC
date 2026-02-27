@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b67e15aeec206458735abb17af76e6, type: 3}
   m_Name: BedKlea
   m_EditorClassIdentifier: 
-  itemName: BedKlea
-  description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-    Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-    Lorem Ipsum
-  icon: {fileID: 21300000, guid: 7c952f95f4c9eb147bb37b4a37e17630, type: 3}
+  itemName: Cozy Bed
+  description: This bathroom shelf presents a refined, minimalist aesthetic that
+    integrates effortlessly into modern living spaces. Constructed from high-quality,
+    moisture-resistant materials, it ensures long-lasting durability in humid environments.
+  icon: {fileID: 21300000, guid: d5329a31f241620488b1f8c220a444a8, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 4af6a510625e121418793eb926d79d20, type: 3}
   category: 1

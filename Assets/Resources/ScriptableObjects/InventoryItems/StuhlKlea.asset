@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50b67e15aeec206458735abb17af76e6, type: 3}
   m_Name: StuhlKlea
   m_EditorClassIdentifier: 
-  itemName: Stuhl
-  description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-    Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-    Lorem Ipsum
-  icon: {fileID: 21300000, guid: 4df0ce780ef910d489eabafdb52efd0e, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 22cf996deaf34834389a23eb441a4a93, type: 3}
+  itemName: ' Chair'
+  description: This fancy chair showcases a sleek, modern silhouette enhanced by
+    refined detailing and elegant proportions. Crafted from premium materials with
+    a smooth, polished finish, it offers both durability and elevated comfort.
+  icon: {fileID: 21300000, guid: e959882bdad676940be6e8cca74b7530, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 533e989f17aacd740a59bbba9cc3f911, type: 3}
   category: 3

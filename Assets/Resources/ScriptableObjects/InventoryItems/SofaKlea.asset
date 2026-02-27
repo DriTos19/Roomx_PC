@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: SofaKlea
   m_EditorClassIdentifier: 
   itemName: Sofa
-  description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-    Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-    Lorem Ipsum
-  icon: {fileID: 21300000, guid: 432f1ec4cc3d4924da588b102d6c5791, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 2f2de0e76a1f45b4baf7e4acaa5dbd83, type: 3}
+  description: This sofa features a sleek, modern design that blends effortlessly
+    into contemporary living spaces while adding a subtle cozy touch. Crafted from
+    high-quality, durable materials, it offers comfortable seating for everyday use.
+  icon: {fileID: 21300000, guid: 1a88b1d3f03c21547b0b8e7602c6ec36, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: ce038687a9894b84fac933600289a591, type: 3}
   category: 4

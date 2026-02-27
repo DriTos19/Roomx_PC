@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: FireplaceKlea
   m_EditorClassIdentifier: 
   itemName: Fireplace
-  description: Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem
-    Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-    Lorem Ipsum
-  icon: {fileID: 21300000, guid: 6c457c2fcc6ef964b8e8c31942c18dae, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: a7268f3144ea736418d7c030aebcf7e0, type: 3}
+  description: 'This fireplace showcases a sleek, minimalist design that integrates
+    effortlessly into modern interiors. Crafted from high-quality, heat-resistant
+    materials, it delivers both durability and refined elegance. '
+  icon: {fileID: 21300000, guid: 923e3f912302a9f4e84db4327770f3d7, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 6bf654bc7fc1e0c43ad01d72dd53fad7, type: 3}
   category: 5
