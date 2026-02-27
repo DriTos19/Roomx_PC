@@ -36,6 +36,10 @@ public class CamMove : MonoBehaviour
 
     void HandleMouseRotation()
     {
+        // Only rotate camera when cursor is locked (menu is closed)
+        if (Cursor.lockState != CursorLockMode.Locked)
+            return;
+
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
 

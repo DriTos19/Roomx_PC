@@ -51,6 +51,9 @@ public class InventoryManager : MonoBehaviour
         inventoryCanvasGroup.interactable = state;
         inventoryCanvasGroup.blocksRaycasts = state;
 
+        // Unlock cursor when menu is open, lock it when closed
+        Cursor.lockState = state ? CursorLockMode.Confined : CursorLockMode.Locked;
+
         if (!state)
             HideDescription();
     }
