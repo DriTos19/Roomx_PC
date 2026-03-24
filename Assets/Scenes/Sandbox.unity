@@ -587,7 +587,7 @@ MonoBehaviour:
   wheelContainer: {fileID: 579666498}
   slicePrefab: {fileID: 2074260755705545769, guid: 43d6a466026aa294ab4e2febf28e918c, type: 3}
   materials:
-  - {fileID: -876546973899608171, guid: 56a137469ecf1bb4387af4562498604b, type: 3}
+  - {fileID: -876546973899608171, guid: 1cc694258da6f724e9ebf97b406db33d, type: 3}
   - {fileID: 2100000, guid: e94b18380de56e247bf26435729b7f7e, type: 2}
   - {fileID: 2100000, guid: 3592a384b774b3c48a03157aae4f7b9c, type: 2}
   - {fileID: 2100000, guid: e6b9b44320f4448d9d5e0ee634259966, type: 2}
