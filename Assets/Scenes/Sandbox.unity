@@ -255,8 +255,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 978763313}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &545813245
@@ -271,14 +270,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cc3525feb0315489a5717650da02ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewPrefab: {fileID: 3447704621802346092, guid: 3dce6d52eaf10b34dbbca15942cb2454, type: 3}
-  realPrefab: {fileID: 3747269475528769575, guid: d1dbbd5cf6844514c9ba046c042573ca, type: 3}
+  previewPrefab: {fileID: 5707863668577765516, guid: 42ca9e2cc09af3e41afc63f0c2393437, type: 3}
+  realPrefab: {fileID: 384281483411165593, guid: 9a569d48e56b92d4b9b1e7f6ee75fd51, type: 3}
   playerCamera: {fileID: 1512504782}
   maxDistance: 5
   gridSize: 0.5
-  moveSpeed: 3
+  moveSpeed: 10
   mouseSensitivity: 4
-  cameraHolder: {fileID: 978763313}
   materialWheelController: {fileID: 1246495718}
 --- !u!1 &579666497
 GameObject:
@@ -330,7 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -464,7 +462,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &978763313
 Transform:
   m_ObjectHideFlags: 0
@@ -477,9 +475,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1512504783}
-  m_Father: {fileID: 545813244}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995989671
 GameObject:
@@ -590,7 +587,7 @@ MonoBehaviour:
   wheelContainer: {fileID: 579666498}
   slicePrefab: {fileID: 2074260755705545769, guid: 43d6a466026aa294ab4e2febf28e918c, type: 3}
   materials:
-  - {fileID: -876546973899608171, guid: 56a137469ecf1bb4387af4562498604b, type: 3}
+  - {fileID: -876546973899608171, guid: 1cc694258da6f724e9ebf97b406db33d, type: 3}
   - {fileID: 2100000, guid: e94b18380de56e247bf26435729b7f7e, type: 2}
   - {fileID: 2100000, guid: 3592a384b774b3c48a03157aae4f7b9c, type: 2}
   - {fileID: 2100000, guid: e6b9b44320f4448d9d5e0ee634259966, type: 2}
@@ -735,7 +732,7 @@ GameObject:
   - component: {fileID: 1512504784}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -808,11 +805,11 @@ Transform:
   m_GameObject: {fileID: 1512504780}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 978763313}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1512504784
 MonoBehaviour:
@@ -848,13 +845,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512504780}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 332d503911878384dab30b1a004e1ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  lookSpeed: 2
+  moveSpeed: 10
+  lookSpeed: 10
   playerHeight: 2
   materialWheelController: {fileID: 1246495718}
 --- !u!1 &1706799802
@@ -1016,6 +1013,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 931758511}
   - {fileID: 1500445545}
+  - {fileID: 1512504783}
+  - {fileID: 978763313}
   - {fileID: 545813244}
   - {fileID: 1246495719}
   - {fileID: 1873304415}

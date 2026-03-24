@@ -16,8 +16,7 @@ MonoBehaviour:
   description: This kitchen shelf features a sleek, minimalist design that fits seamlessly
     into contemporary interiors. Constructed from durable, high-quality materials,
     it offers reliable support for dishes, glassware, spices, and everyday kitchen
-    essentials. Its clean lines and open structure create an organized, airy feel
-    while keeping frequently used items within easy reach.
-  icon: {fileID: 21300000, guid: 482b9d51ddd69cb4d8a229cfe9da0ed6, type: 3}
+    essentials.
+  icon: {fileID: 21300000, guid: 4244ee6bb4f110f43a8642e2ea81c445, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: c01369c7d5fca5f4194c922fee72a255, type: 3}
   category: 5
