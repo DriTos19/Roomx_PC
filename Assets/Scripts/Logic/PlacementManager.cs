@@ -36,7 +36,7 @@ public class PlacementManager : MonoBehaviour
         HandleRotation();
 
         if (Input.GetMouseButtonDown(0))
-            TryPlaceObject();
+            PlaceObject(); // ✅ UPDATED
 
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
             CancelPlacement();
@@ -51,7 +51,6 @@ public class PlacementManager : MonoBehaviour
 
         currentRotationY = 0f;
 
-        // IMPORTANT: disable colliders on ghost
         foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
         {
             col.enabled = false;
@@ -92,7 +91,6 @@ public class PlacementManager : MonoBehaviour
 
     bool CheckCollisionAtPosition(Vector3 position)
     {
-        // TEMP enable colliders to test
         foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
             col.enabled = true;
 
@@ -103,7 +101,6 @@ public class PlacementManager : MonoBehaviour
             furnitureLayer
         );
 
-        // disable again
         foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
             col.enabled = false;
 
@@ -124,7 +121,8 @@ public class PlacementManager : MonoBehaviour
         return bounds.size;
     }
 
-    void TryPlaceObject()
+    // ✅🔥 THIS IS YOUR FIXED METHOD
+    void PlaceObject()
     {
         if (!isValidPlacement) return;
 
@@ -134,12 +132,28 @@ public class PlacementManager : MonoBehaviour
             ghostObject.transform.rotation
         );
 
-        // ENABLE colliders on real object
+        // Enable colliders
         foreach (Collider col in newObj.GetComponentsInChildren<Collider>())
             col.enabled = true;
 
         // Set layer
         SetLayerRecursively(newObj, "Furniture");
+
+        // ✅ ADD PREFAB REFERENCE (CRUCIAL FOR SAVE/LOAD)
+        FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
+        prefabRef.prefabPath = currentItem.name;
+
+        // ✅ REGISTER IN SAVE SYSTEM (THIS WAS YOUR BUG)
+        FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
+        if (saveManager != null)
+        {
+            saveManager.activeFurniture.Add(newObj);
+            Debug.Log("Added " + newObj.name + " to activeFurniture list");
+        }
+        else
+        {
+            Debug.LogWarning("FurnitureSaveManager not found in scene!");
+        }
 
         CancelPlacement();
     }
