@@ -23,6 +23,7 @@ public class ItemSlotUI : MonoBehaviour,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        // Show description AND register this as the selected item for purchase
         inventoryManager.ShowItemDetails(itemData);
     }
 
@@ -31,9 +32,15 @@ public class ItemSlotUI : MonoBehaviour,
         inventoryManager.HideDescription();
     }
 
-    void OnClick()
+    private void OnClick()
     {
-        inventoryManager.HideMenu();
-        PlacementManager.Instance.StartPlacement(itemData);
+        // Clicking a slot selects it and triggers the purchase flow.
+        // The actual purchase is initiated by the dedicated Purchase button in InventoryManager.
+        // If you want a single-click-to-buy flow instead, uncomment the line below
+        // and remove the separate purchaseButton from InventoryManager.
+        // PurchaseManager.Instance.Purchase(itemData);
+
+        PurchaseManager.Instance.SelectItem(itemData);
+        inventoryManager.ShowItemDetails(itemData);
     }
 }

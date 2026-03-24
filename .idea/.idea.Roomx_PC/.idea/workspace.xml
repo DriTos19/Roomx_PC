@@ -4,145 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Art/Icons/Gemini_Generated_Image_kunn7ckunn7ckunn-removebg-preview (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Art/Icons/Gemini_Generated_Image_woz7ekwoz7ekwoz7-removebg-preview__1_-removebg-preview (1).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Art/Icons/Gemini_Generated_Image_woz7ekwoz7ekwoz7-removebg-preview__1_-removebg-preview (1).png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Art/Images/Bed.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Art/Images/FancyChair.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Art/Images/Sofa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Bed.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Bed.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 1.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 1.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 1.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 2.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 2.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 2.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 3.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 3.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 3.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 3.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 4.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 4.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 4.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 4.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 5.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 5.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 5.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 5.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 6.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 6.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 6.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 6.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 7.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 7.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 7.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 7.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 8.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1.prefab" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/New Material.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/New Material.mat.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/ItemSlot.prefab.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/bbed 1.fbx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/bbed 1.fbx.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/bed-nprmal 1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/bed-roughness 1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/bed2 1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/bed2 1.png.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House2.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House2.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House3.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House3.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House4.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House4.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House5.unity" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scenes/House5.unity.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/InventoryItems/BedKlea.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/InventoryItems/Item1.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/InventoryItems/Item1.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/InventoryItems/Item2.asset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/InventoryItems/Item2.asset.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemSlotUI.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/PlacementManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Save.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Save/FurnitureSaveManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Save/FurnitureSaveManager.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Materials/Ground - Logo Scene.mat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/VideoBackground/VideoLoop.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/VideoBackground/VideoLoop.mp4.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Icons/Item1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Icons/Item1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/bed-roughness 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Icons/Stema.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Icons/Stema.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Gemini_Generated_Image_kunn7ckunn7ckunn-removebg-preview (1).png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Button Diploma.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/ButtonDiplom.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Button Diploma.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/ButtonDiplom.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Cursor.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Cursor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Cursor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Cursor.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Hopstarter-Plastic-Mini-Cursor.32.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Cursor1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Hopstarter-Plastic-Mini-Cursor.32.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Cursor1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/MEnu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/MEnu.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/Bed.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Mute.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Mute.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Mute.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Mute.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/MuteImg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/MuteImg.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/bed-nprmal 1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/SettingsButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/SettingsButton.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/FancyChair.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/SettingsButton2.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/SettingsButton2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/SettingsButton2.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/SettingsButton2.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/StartButton.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/StartButton.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Images/Sofa.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Unmute.png" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Unmute.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/UI/Unmute.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Icons/Unmute.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/InventoryItemEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Editor/InventoryItemEditor.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Furniture.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Furniture/CubePreview.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/CubePreview.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Furniture/CubePreview.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/CubePreview.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Furniture/Item1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 8.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Furniture/Item1.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/InventoryButton.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Ui@/ItemSlot.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/InventoryButton.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/Furniture/Item1 2.prefab.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/InventoryItems.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/InventoryItems/Item.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/InventoryItems/Item.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/InventoryItems/BedKlea.asset.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sandbox.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryButton.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryButton.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemData.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryCategoryUi.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryCategoryUi.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemSlotUI.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryDatabase.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryDatabase.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/PlacementManager.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItem.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUI.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryUI.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/ToggleMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ToggleMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/ToggleMenu.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ToggleMenu.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenuUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenuUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Toni/WallPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/WallPlacer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Anton SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Electronic Highway Sign SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Roboto-Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-    </list>
+    <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -155,6 +17,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Toni/WallPlacerManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="SWEA" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
 }</component>
@@ -163,21 +28,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "Merging enton",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;sidrit&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\SidGjy19\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\SidGjy19\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\SidGjy19\\AppData\\Local\\Symbols\\src&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.19f1\Editor\Unity.exe" />
@@ -185,10 +58,6 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\drini\OneDrive\Documents\GitHub\Roomx_PC" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Unit Tests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
@@ -197,10 +66,6 @@
       <option name="WORKING_DIRECTORY" value="C:\Users\drini\OneDrive\Documents\GitHub\Roomx_PC" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
-      <option name="ENV_FILE_PATHS" value="" />
-      <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
-      <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -208,13 +73,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
@@ -222,13 +83,9 @@
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
       <option name="projectPathOnTarget" />
-      <option name="runtimes">
-        <list />
-      </option>
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to Device" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
@@ -266,6 +123,21 @@
       <workItem from="1771716675206" duration="1299000" />
       <workItem from="1771718881567" duration="7000" />
       <workItem from="1771719532877" duration="2387000" />
+      <workItem from="1774343004607" duration="392000" />
+      <workItem from="1774343424812" duration="21000" />
+      <workItem from="1774343458605" duration="560000" />
+      <workItem from="1774344040078" duration="277000" />
+      <workItem from="1774344334669" duration="17000" />
+      <workItem from="1774344386835" duration="60000" />
+      <workItem from="1774344458952" duration="119000" />
+      <workItem from="1774345782207" duration="179000" />
+      <workItem from="1774345975347" duration="162000" />
+      <workItem from="1774346158791" duration="36000" />
+      <workItem from="1774346260444" duration="308000" />
+      <workItem from="1774346588376" duration="143000" />
+      <workItem from="1774360783127" duration="206000" />
+      <workItem from="1774361002238" duration="48000" />
+      <workItem from="1774361100218" duration="5000" />
     </task>
     <servers />
   </component>
@@ -282,24 +154,6 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
-          <option name="timeStamp" value="2" />
-        </breakpoint>
-        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
-          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
-          <option name="timeStamp" value="3" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
