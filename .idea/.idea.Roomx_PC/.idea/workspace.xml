@@ -4,38 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="" />
-=======
     <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MiniMap/MiniMapCamera.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/MiniMap/MiniMapCamera.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/Packages/com.unity.testtools.codecoverage/Settings.json" afterDir="false" />
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/BathroomShelfKlea.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/BathroomShelfKlea.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/Assets/Art/Foto/Klea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Foto/Klea.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity" afterDir="false" />
+>>>>>>> origin/drini
     </list>
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CopilotPersistence">
+    <persistenceIdMap>
+      <entry key="_C:/Users/drini/OneDrive/Documents/GitHub/Roomx_PC" value="35bLMNzgGBStmGlcxrD6U1XMuUk" />
+    </persistenceIdMap>
+  </component>
+  <component name="CopilotUserSelectedModel">
+    <selectedModels>
+      <entry key="edit-panel" value="GPT-5 mini" />
+      <entry key="chat-panel" value="Claude Haiku 4.5" />
+      <entry key="agent-panel" value="Claude Haiku 4.5" />
+    </selectedModels>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-<<<<<<< Updated upstream
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Toni/WallPlacerManager.cs" root0="FORCE_HIGHLIGHTING" />
-  </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="SWEA" />
-=======
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryItemData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Inventory/ItemSlotUI.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MiniMap/MiniMapCamera.cs" root0="FORCE_HIGHLIGHTING" />
->>>>>>> Stashed changes
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -45,51 +48,54 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< Updated upstream
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;sidrit&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\SidGjy19\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\SidGjy19\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\SidGjy19\\AppData\\Local\\Symbols\\src&quot;
-=======
+<<<<<<< HEAD
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "sidrit",
+    "git-widget-placeholder": "roi__saved",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "rider.external.source.directories": [
-      "C:\\Users\\SidGjy19\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\SidGjy19\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\SidGjy19\\AppData\\Local\\Symbols\\src"
->>>>>>> Stashed changes
+      "C:\\Users\\Roibus19\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Roibus19\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Roibus19\\AppData\\Local\\Symbols\\src"
     ]
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;drini&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+>>>>>>> origin/drini
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/OneDrive - Shkolla Austriake Peter Mahringer/Dokumente/New Folder\My project (2).exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\User\Documents\diplom\RoomX" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.19f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\drini\OneDrive\Documents\GitHub\Roomx_PC -debugCodeOptimization" />
@@ -141,7 +147,7 @@
       <workItem from="1763373779507" duration="143000" />
       <workItem from="1763373945440" duration="259000" />
       <workItem from="1763415062839" duration="3068000" />
-<<<<<<< Updated upstream
+<<<<<<< HEAD
       <workItem from="1763714317785" duration="157000" />
       <workItem from="1763714521245" duration="120000" />
       <workItem from="1764346565258" duration="2801000" />
@@ -162,21 +168,9 @@
       <workItem from="1771716675206" duration="1299000" />
       <workItem from="1771718881567" duration="7000" />
       <workItem from="1771719532877" duration="2387000" />
-      <workItem from="1774343004607" duration="392000" />
-      <workItem from="1774343424812" duration="21000" />
-      <workItem from="1774343458605" duration="560000" />
-      <workItem from="1774344040078" duration="277000" />
-      <workItem from="1774344334669" duration="17000" />
-      <workItem from="1774344386835" duration="60000" />
-      <workItem from="1774344458952" duration="119000" />
-      <workItem from="1774345782207" duration="179000" />
-      <workItem from="1774345975347" duration="162000" />
-      <workItem from="1774346158791" duration="36000" />
-      <workItem from="1774346260444" duration="308000" />
-      <workItem from="1774346588376" duration="143000" />
-      <workItem from="1774360783127" duration="206000" />
-      <workItem from="1774361002238" duration="48000" />
-      <workItem from="1774361100218" duration="5000" />
+      <workItem from="1772123181023" duration="836000" />
+<<<<<<< Updated upstream
+      <workItem from="1774342764303" duration="3657000" />
 =======
       <workItem from="1769070894617" duration="908000" />
       <workItem from="1770019781617" duration="779000" />
@@ -184,7 +178,17 @@
       <workItem from="1771684539168" duration="32000" />
       <workItem from="1771689251669" duration="2759000" />
       <workItem from="1771926438827" duration="615000" />
-      <workItem from="1772092126717" duration="1013000" />
+      <workItem from="1772045950911" duration="1668000" />
+      <workItem from="1772097340430" duration="195000" />
+      <workItem from="1772130829205" duration="3148000" />
+      <workItem from="1772143301618" duration="83000" />
+      <workItem from="1772143400569" duration="307000" />
+      <workItem from="1772143725761" duration="257000" />
+      <workItem from="1772144004659" duration="87000" />
+      <workItem from="1772144104962" duration="920000" />
+>>>>>>> origin/drini
+=======
+      <workItem from="1774342764303" duration="3658000" />
 >>>>>>> Stashed changes
     </task>
     <servers />
@@ -192,7 +196,6 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
   <component name="UnityProjectDiscoverer">
     <option name="hasUnityReference" value="true" />
@@ -203,10 +206,13 @@
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
   </component>
+=======
+>>>>>>> origin/drini
   <component name="github-copilot-workspace">
     <instructionFileLocations>
       <option value=".github/instructions" />
