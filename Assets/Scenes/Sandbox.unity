@@ -271,8 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22cc3525feb0315489a5717650da02ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  previewPrefab: {fileID: 3447704621802346092, guid: 3dce6d52eaf10b34dbbca15942cb2454, type: 3}
-  realPrefab: {fileID: 3747269475528769575, guid: d1dbbd5cf6844514c9ba046c042573ca, type: 3}
+  previewPrefab: {fileID: 5707863668577765516, guid: 42ca9e2cc09af3e41afc63f0c2393437, type: 3}
+  realPrefab: {fileID: 384281483411165593, guid: 9a569d48e56b92d4b9b1e7f6ee75fd51, type: 3}
   playerCamera: {fileID: 1512504782}
   maxDistance: 5
   gridSize: 0.5
@@ -735,7 +735,7 @@ GameObject:
   - component: {fileID: 1512504784}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -848,7 +848,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512504780}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 332d503911878384dab30b1a004e1ed0, type: 3}
   m_Name: 
