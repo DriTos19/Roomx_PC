@@ -17,7 +17,7 @@ public class WallPlacer_PC : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float mouseSensitivity = 6f;
-    public Transform cameraHolder;
+   // public Transform cameraHolder;
 
     [Header("Material Wheel")]
     public MaterialWheelController materialWheelController; // ADDED
@@ -87,7 +87,7 @@ public class WallPlacer_PC : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
-        cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+     //   cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
 
