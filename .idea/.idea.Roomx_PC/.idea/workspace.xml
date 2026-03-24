@@ -169,6 +169,7 @@
       <workItem from="1771718881567" duration="7000" />
       <workItem from="1771719532877" duration="2387000" />
       <workItem from="1772123181023" duration="836000" />
+<<<<<<< Updated upstream
       <workItem from="1774342764303" duration="3657000" />
 =======
       <workItem from="1769070894617" duration="908000" />
@@ -186,6 +187,9 @@
       <workItem from="1772144004659" duration="87000" />
       <workItem from="1772144104962" duration="920000" />
 >>>>>>> origin/drini
+=======
+      <workItem from="1774342764303" duration="3658000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
