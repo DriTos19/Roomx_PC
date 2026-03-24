@@ -17,16 +17,18 @@ public class WallPlacer_PC : MonoBehaviour
     [Header("Movement Settings")]
     public float moveSpeed = 5f;
     public float mouseSensitivity = 6f;
-   // public Transform cameraHolder;
 
     [Header("Material Wheel")]
-    public MaterialWheelController materialWheelController; // ADDED
+    public MaterialWheelController materialWheelController;
 
     private GameObject previewInstance;
     private GameObject placedObject;
     private bool isPlacing = false;
 
     private float xRotation = 0f;
+
+    // ✅ Store last materials
+    private Material[] lastSavedMaterials;
 
     void Start()
     {
@@ -38,10 +40,9 @@ public class WallPlacer_PC : MonoBehaviour
 
     void Update()
     {
-        // Freeze camera and movement if the Material Wheel is open
         if (materialWheelController != null && materialWheelController.IsOpen())
         { return; }
-        // Normal camera and movement
+
         HandleMovement();
         HandleMouseLook();
 
@@ -49,7 +50,6 @@ public class WallPlacer_PC : MonoBehaviour
         {
             HandlePreviewMovement();
 
-            // Ignore clicks on UI
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return;
 
@@ -61,7 +61,6 @@ public class WallPlacer_PC : MonoBehaviour
         }
         else if (!isPlacing)
         {
-            // Ignore clicks on UI
             if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
                 return;
 
@@ -87,7 +86,6 @@ public class WallPlacer_PC : MonoBehaviour
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -80f, 80f);
 
-     //   cameraHolder.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
     }
 
@@ -130,6 +128,9 @@ public class WallPlacer_PC : MonoBehaviour
         placedObject = Instantiate(realPrefab, previewInstance.transform.position, previewInstance.transform.rotation);
         placedObject.tag = "Placeable";
 
+        // ✅ Apply saved materials (FULL opacity)
+        ApplySavedMaterials(placedObject, false);
+
         Destroy(previewInstance);
         previewInstance = null;
         isPlacing = false;
@@ -142,6 +143,13 @@ public class WallPlacer_PC : MonoBehaviour
         {
             if (hit.collider != null && hit.collider.CompareTag("Placeable"))
             {
+                // ✅ Save materials
+                Renderer rend = hit.collider.GetComponentInChildren<Renderer>();
+                if (rend != null)
+                {
+                    lastSavedMaterials = rend.materials;
+                }
+
                 Destroy(hit.collider.gameObject);
 
                 previewInstance = Instantiate(
@@ -150,10 +158,39 @@ public class WallPlacer_PC : MonoBehaviour
                     Quaternion.identity
                 );
 
-                MakePreviewTransparent(previewInstance);
+                // ✅ Apply materials BUT keep transparent
+                ApplySavedMaterials(previewInstance, true);
+
                 isPlacing = true;
             }
         }
+    }
+
+    // ✅ UPDATED: handles preview transparency correctly
+    void ApplySavedMaterials(GameObject obj, bool isPreview = false)
+    {
+        if (lastSavedMaterials == null) return;
+
+        Renderer rend = obj.GetComponentInChildren<Renderer>();
+        if (rend == null) return;
+
+        Material[] mats = rend.materials;
+
+        for (int i = 0; i < mats.Length && i < lastSavedMaterials.Length; i++)
+        {
+            mats[i] = new Material(lastSavedMaterials[i]); // copy material
+
+            if (isPreview)
+            {
+                mats[i].shader = Shader.Find("Legacy Shaders/Transparent/Diffuse");
+
+                Color c = mats[i].color;
+                c.a = 0.5f;
+                mats[i].color = c;
+            }
+        }
+
+        rend.materials = mats;
     }
 
     void CancelPlacement()
@@ -173,10 +210,13 @@ public class WallPlacer_PC : MonoBehaviour
             foreach (Material m in r.materials)
             {
                 m.shader = Shader.Find("Legacy Shaders/Transparent/Diffuse");
+
                 Color c = m.color;
                 c.a = 0.5f;
                 m.color = c;
-            }}}
+            }
+        }
+    }
 
     Vector3 SnapToGrid(Vector3 pos, float size)
     {
