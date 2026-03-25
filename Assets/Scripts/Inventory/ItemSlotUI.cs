@@ -1,10 +1,8 @@
 using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 
-public class ItemSlotUI : MonoBehaviour,
-    IPointerEnterHandler,
-    IPointerExitHandler
+public class ItemSlotUI : MonoBehaviour
 {
     public Image iconImage;
 
@@ -13,25 +11,18 @@ public class ItemSlotUI : MonoBehaviour,
 
     public void Setup(InventoryItemData item, InventoryManager manager)
     {
-        itemData         = item;
+        itemData = item;
         inventoryManager = manager;
+
         iconImage.sprite = item.icon;
+
+        // CLICK = show details ONLY
         GetComponent<Button>().onClick.AddListener(OnClick);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        inventoryManager.ShowItemDetails(itemData);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        inventoryManager.HideDescription();
     }
 
     private void OnClick()
     {
-        PurchaseManager.Instance.SelectItem(itemData);
+        // 👉 Show item image + description
         inventoryManager.ShowItemDetails(itemData);
     }
 }
