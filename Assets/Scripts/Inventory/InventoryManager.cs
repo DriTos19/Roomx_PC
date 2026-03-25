@@ -21,7 +21,16 @@ public class InventoryManager : MonoBehaviour
     [Header("Items")]
     public List<InventoryItemData> items = new List<InventoryItemData>();
 
+    [Header("Budget UI")]
+    public TMP_Text balanceLabel;
+
+    [Header("Purchase UI")]
+    public Button purchaseButton;
+    public TMP_Text priceLabel;
+    public GameObject insufficientFundsNotice;
+
     private bool menuOpen = false;
+    private Coroutine _noticeRoutine;
 
     void Start()
     {
@@ -34,6 +43,20 @@ public class InventoryManager : MonoBehaviour
         }
 
         PopulateSlots();
+
+        BudgetManager.Instance.onBalanceChanged.AddListener(RefreshBalanceUI);
+        PurchaseManager.Instance.onItemSelected.AddListener(RefreshPurchaseUI);
+        PurchaseManager.Instance.onPurchaseFailed.AddListener(_ => ShowInsufficientFunds());
+        PurchaseManager.Instance.onPurchaseSuccess.AddListener(OnPurchaseSuccess);
+
+        if (purchaseButton != null)
+            purchaseButton.onClick.AddListener(() => PurchaseManager.Instance.PurchaseSelected());
+
+        RefreshBalanceUI(BudgetManager.Instance.Balance);
+        SetPurchaseButtonInteractable(false);
+
+        if (insufficientFundsNotice != null)
+            insufficientFundsNotice.SetActive(false);
     }
 
     void Update()
@@ -42,6 +65,18 @@ public class InventoryManager : MonoBehaviour
         {
             menuOpen = !menuOpen;
             SetMenu(menuOpen);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (BudgetManager.Instance != null)
+            BudgetManager.Instance.onBalanceChanged.RemoveListener(RefreshBalanceUI);
+
+        if (PurchaseManager.Instance != null)
+        {
+            PurchaseManager.Instance.onItemSelected.RemoveListener(RefreshPurchaseUI);
+            PurchaseManager.Instance.onPurchaseSuccess.RemoveListener(OnPurchaseSuccess);
         }
     }
 
@@ -77,6 +112,8 @@ public class InventoryManager : MonoBehaviour
 
         descriptionCanvasGroup.alpha = 1;
         descriptionCanvasGroup.blocksRaycasts = true;
+
+        PurchaseManager.Instance.SelectItem(item);
     }
 
     public void HideDescription()
@@ -95,5 +132,50 @@ public class InventoryManager : MonoBehaviour
     {
         menuOpen = true;
         SetMenu(true);
+    }
+
+    private void RefreshBalanceUI(float balance)
+    {
+        if (balanceLabel != null)
+            balanceLabel.text = $"Balance: ${balance:F2}";
+
+        if (PurchaseManager.Instance.SelectedItem != null)
+            RefreshPurchaseUI(PurchaseManager.Instance.SelectedItem);
+    }
+
+    private void RefreshPurchaseUI(InventoryItemData item)
+    {
+        if (item == null) { SetPurchaseButtonInteractable(false); return; }
+
+        if (priceLabel != null)
+            priceLabel.text = item.price > 0 ? $"${item.price:F2}" : "Free";
+
+        SetPurchaseButtonInteractable(BudgetManager.Instance.CanAfford(item.price));
+    }
+
+    private void SetPurchaseButtonInteractable(bool state)
+    {
+        if (purchaseButton != null)
+            purchaseButton.interactable = state;
+    }
+
+    private void ShowInsufficientFunds()
+    {
+        if (insufficientFundsNotice == null) return;
+        if (_noticeRoutine != null) StopCoroutine(_noticeRoutine);
+        _noticeRoutine = StartCoroutine(FlashNotice());
+    }
+
+    private IEnumerator FlashNotice()
+    {
+        insufficientFundsNotice.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        insufficientFundsNotice.SetActive(false);
+    }
+
+    private void OnPurchaseSuccess(InventoryItemData item)
+    {
+        HideMenu();
+        PlacementManager.Instance.StartPlacement(item);
     }
 }
