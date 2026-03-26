@@ -27,7 +27,7 @@ public class WallPlacer_PC : MonoBehaviour
 
     private float xRotation = 0f;
 
-    // ✅ Store last materials
+    // Store last materials
     private Material[] lastSavedMaterials;
 
     void Start()
@@ -41,7 +41,9 @@ public class WallPlacer_PC : MonoBehaviour
     void Update()
     {
         if (materialWheelController != null && materialWheelController.IsOpen())
-        { return; }
+        {
+            return;
+        }
 
         HandleMovement();
         HandleMouseLook();
@@ -54,10 +56,14 @@ public class WallPlacer_PC : MonoBehaviour
                 return;
 
             if (Input.GetMouseButtonDown(0))
-            { PlaceObject(); }
+            {
+                PlaceObject();
+            }
 
             if (Input.GetKeyDown(KeyCode.Escape))
-            { CancelPlacement(); }
+            {
+                CancelPlacement();
+            }
         }
         else if (!isPlacing)
         {
@@ -65,7 +71,9 @@ public class WallPlacer_PC : MonoBehaviour
                 return;
 
             if (Input.GetMouseButtonDown(0))
-            { TryEditPlacedObject(); }
+            {
+                TryEditPlacedObject();
+            }
         }
     }
 
@@ -111,8 +119,12 @@ public class WallPlacer_PC : MonoBehaviour
         float distance = 4f;
         Vector3 pos = playerCamera.transform.position + playerCamera.transform.forward * distance;
 
-        float height = previewInstance.GetComponentInChildren<Renderer>().bounds.size.y;
-        pos.y = height / 2f;
+        Renderer rend = previewInstance.GetComponentInChildren<Renderer>();
+        if (rend != null)
+        {
+            float height = rend.bounds.size.y;
+            pos.y = height / 2f;
+        }
 
         pos = SnapToGrid(pos, gridSize);
 
@@ -126,9 +138,7 @@ public class WallPlacer_PC : MonoBehaviour
             return;
 
         placedObject = Instantiate(realPrefab, previewInstance.transform.position, previewInstance.transform.rotation);
-        placedObject.tag = "Placeable";
 
-        // ✅ Apply saved materials (FULL opacity)
         ApplySavedMaterials(placedObject, false);
 
         Destroy(previewInstance);
@@ -139,34 +149,51 @@ public class WallPlacer_PC : MonoBehaviour
     void TryEditPlacedObject()
     {
         Ray ray = new Ray(playerCamera.transform.position, playerCamera.transform.forward);
+
         if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
         {
-            if (hit.collider != null && hit.collider.CompareTag("Placeable"))
-            {
-                // ✅ Save materials
-                Renderer rend = hit.collider.GetComponentInChildren<Renderer>();
-                if (rend != null)
-                {
-                    lastSavedMaterials = rend.materials;
-                }
+            if (hit.collider == null)
+                return;
 
-                Destroy(hit.collider.gameObject);
+            GameObject targetObject = hit.collider.transform.root.gameObject;
 
-                previewInstance = Instantiate(
-                    previewPrefab,
-                    playerCamera.transform.position + playerCamera.transform.forward * 4f,
-                    Quaternion.identity
-                );
+            // ❌ DO NOT allow floor to be edited
+            if (targetObject.CompareTag("Floor"))
+                return;
 
-                // ✅ Apply materials BUT keep transparent
-                ApplySavedMaterials(previewInstance, true);
+            // ❌ Ignore preview
+            if (previewInstance != null && targetObject == previewInstance)
+                return;
 
-                isPlacing = true;
-            }
+            // ❌ Ignore self
+            if (targetObject == gameObject)
+                return;
+
+            // ✅ Only objects with Renderer
+            Renderer rend = targetObject.GetComponentInChildren<Renderer>();
+            if (rend == null)
+                return;
+
+            // ✅ Save materials
+            lastSavedMaterials = rend.materials;
+
+            // ❗ Destroy original object
+            Destroy(targetObject);
+
+            // ✅ Spawn preview
+            previewInstance = Instantiate(
+                previewPrefab,
+                playerCamera.transform.position + playerCamera.transform.forward * 4f,
+                Quaternion.identity
+            );
+
+            // ✅ Apply transparent materials
+            ApplySavedMaterials(previewInstance, true);
+
+            isPlacing = true;
         }
     }
 
-    // ✅ UPDATED: handles preview transparency correctly
     void ApplySavedMaterials(GameObject obj, bool isPreview = false)
     {
         if (lastSavedMaterials == null) return;
@@ -178,7 +205,7 @@ public class WallPlacer_PC : MonoBehaviour
 
         for (int i = 0; i < mats.Length && i < lastSavedMaterials.Length; i++)
         {
-            mats[i] = new Material(lastSavedMaterials[i]); // copy material
+            mats[i] = new Material(lastSavedMaterials[i]);
 
             if (isPreview)
             {
