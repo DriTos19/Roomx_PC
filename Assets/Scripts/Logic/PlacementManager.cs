@@ -36,7 +36,7 @@ public class PlacementManager : MonoBehaviour
         HandleRotation();
 
         if (Input.GetMouseButtonDown(0))
-            PlaceObject(); // ✅ UPDATED
+            TryPlaceObject();
 
         if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
             CancelPlacement();
@@ -52,9 +52,7 @@ public class PlacementManager : MonoBehaviour
         currentRotationY = 0f;
 
         foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
-        {
             col.enabled = false;
-        }
 
         SetGhostMaterial(validMaterial);
     }
@@ -72,10 +70,39 @@ public class PlacementManager : MonoBehaviour
 
             ghostObject.transform.position = pos;
 
-            isValidPlacement = CheckCollisionAtPosition(pos);
+            isValidPlacement = CheckCollision(pos);
 
             SetGhostMaterial(isValidPlacement ? validMaterial : invalidMaterial);
         }
+    }
+
+    bool CheckCollision(Vector3 position)
+    {
+        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
+            col.enabled = true;
+
+        Collider[] hits = Physics.OverlapBox(
+            position,
+            GetBounds() / 2f,
+            ghostObject.transform.rotation,
+            furnitureLayer
+        );
+
+        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
+            col.enabled = false;
+
+        return hits.Length == 0;
+    }
+
+    Vector3 GetBounds()
+    {
+        Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
+        Bounds bounds = renderers[0].bounds;
+
+        foreach (Renderer r in renderers)
+            bounds.Encapsulate(r.bounds);
+
+        return bounds.size;
     }
 
     void HandleRotation()
@@ -89,40 +116,7 @@ public class PlacementManager : MonoBehaviour
         ghostObject.transform.rotation = Quaternion.Euler(0, currentRotationY, 0);
     }
 
-    bool CheckCollisionAtPosition(Vector3 position)
-    {
-        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
-            col.enabled = true;
-
-        Collider[] hits = Physics.OverlapBox(
-            position,
-            GetColliderBounds() / 2f,
-            ghostObject.transform.rotation,
-            furnitureLayer
-        );
-
-        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
-            col.enabled = false;
-
-        return hits.Length == 0;
-    }
-
-    Vector3 GetColliderBounds()
-    {
-        Collider[] cols = ghostObject.GetComponentsInChildren<Collider>();
-
-        if (cols.Length == 0) return Vector3.one;
-
-        Bounds bounds = cols[0].bounds;
-
-        foreach (Collider c in cols)
-            bounds.Encapsulate(c.bounds);
-
-        return bounds.size;
-    }
-
-    // ✅🔥 THIS IS YOUR FIXED METHOD
-    void PlaceObject()
+    void TryPlaceObject()
     {
         if (!isValidPlacement) return;
 
@@ -132,30 +126,28 @@ public class PlacementManager : MonoBehaviour
             ghostObject.transform.rotation
         );
 
-        // Enable colliders
-        foreach (Collider col in newObj.GetComponentsInChildren<Collider>())
-            col.enabled = true;
-
-        // Set layer
         SetLayerRecursively(newObj, "Furniture");
-
-        // ✅ ADD PREFAB REFERENCE (CRUCIAL FOR SAVE/LOAD)
-        FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
-        prefabRef.prefabPath = currentItem.name;
-
-        // ✅ REGISTER IN SAVE SYSTEM (THIS WAS YOUR BUG)
-        FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
-        if (saveManager != null)
-        {
-            saveManager.activeFurniture.Add(newObj);
-            Debug.Log("Added " + newObj.name + " to activeFurniture list");
-        }
-        else
-        {
-            Debug.LogWarning("FurnitureSaveManager not found in scene!");
-        }
+        newObj.AddComponent<FurnitureInteractable>();
 
         CancelPlacement();
+    }
+
+    public void PickUpFurniture(GameObject obj)
+    {
+        FurniturePrefabReference refData = obj.GetComponent<FurniturePrefabReference>();
+        if (refData == null) return;
+
+        InventoryManager inv = FindObjectOfType<InventoryManager>();
+
+        foreach (var item in inv.items)
+        {
+            if (item.name == refData.prefabPath)
+            {
+                Destroy(obj);
+                StartPlacement(item);
+                return;
+            }
+        }
     }
 
     void CancelPlacement()
@@ -176,7 +168,6 @@ public class PlacementManager : MonoBehaviour
     void SetLayerRecursively(GameObject obj, string layerName)
     {
         int layer = LayerMask.NameToLayer(layerName);
-
         obj.layer = layer;
 
         foreach (Transform child in obj.transform)
