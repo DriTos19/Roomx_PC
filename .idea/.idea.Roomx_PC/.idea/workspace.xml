@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/projectSettingsUpdater.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/projectSettingsUpdater.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/InventoryItems/SmallSofaKlea.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/InventoryItems/SmallSofaKlea.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/House1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/BudgetUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/BudgetUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Budgetmanager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Budgetmanager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/InventoryManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemSlotUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemSlotUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Purchasemanager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/Purchasemanager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +147,8 @@
       <workItem from="1772154052411" duration="1308000" />
       <workItem from="1773754881129" duration="2640000" />
       <workItem from="1774390923886" duration="521000" />
-      <workItem from="1774405523376" duration="1754000" />
+      <workItem from="1774405523376" duration="2231000" />
+      <workItem from="1774699744120" duration="319000" />
     </task>
     <servers />
   </component>
