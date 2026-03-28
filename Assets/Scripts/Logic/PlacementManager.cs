@@ -12,6 +12,7 @@ public class PlacementManager : MonoBehaviour
 
     private GameObject ghostObject;
     private InventoryItemData currentItem;
+    private GameObject currentPrefab;
     private float currentRotationY;
 
     void Awake()
@@ -44,6 +45,18 @@ public class PlacementManager : MonoBehaviour
         SetGhostMaterial(ghostObject);
     }
 
+    public void StartPlacement(GameObject prefab)
+    {
+        CancelPlacement();
+
+        currentItem = null; // No item data for custom models
+        currentPrefab = prefab;
+        ghostObject = Instantiate(prefab);
+
+        currentRotationY = 0;
+        SetGhostMaterial(ghostObject);
+    }
+
     void FollowMouse()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -67,13 +80,13 @@ public class PlacementManager : MonoBehaviour
 
     void PlaceObject()
     {
-        GameObject newObj = Instantiate(currentItem.prefab3D,
+        GameObject newObj = Instantiate(currentItem != null ? currentItem.prefab3D : currentPrefab,
             ghostObject.transform.position,
             ghostObject.transform.rotation);
 
         // Add a component to store the prefab name for save/load
         FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
-        prefabRef.prefabPath = currentItem.name; // Use the ScriptableObject name as the identifier
+        prefabRef.prefabPath = currentItem != null ? currentItem.name : currentPrefab.name; // Use the ScriptableObject name or prefab name as the identifier
 
         // Register the placed object with the FurnitureSaveManager
         FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
@@ -94,6 +107,7 @@ public class PlacementManager : MonoBehaviour
 
         ghostObject = null;
         currentItem = null;
+        currentPrefab = null;
     }
 
     void SetGhostMaterial(GameObject obj)

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +19,7 @@ public class InventoryManager : MonoBehaviour
 
     [Header("Items")]
     public List<InventoryItemData> items = new List<InventoryItemData>();
+    public Sprite defaultIcon;
 
     private bool menuOpen = false;
 
@@ -72,7 +72,7 @@ public class InventoryManager : MonoBehaviour
 
     public void ShowItemDetails(InventoryItemData item)
     {
-        descriptionImage.sprite = item.icon;
+        descriptionImage.sprite = item.icon ?? defaultIcon;
         descriptionText.text = $"<b>{item.itemName}</b>\n\n{item.description}";
 
         descriptionCanvasGroup.alpha = 1;
@@ -95,5 +95,77 @@ public class InventoryManager : MonoBehaviour
     {
         menuOpen = true;
         SetMenu(true);
+    }
+
+    public void ImportFBXFromPath(string filePath)
+    {
+        if (string.IsNullOrEmpty(filePath))
+        {
+            Debug.LogError("FBX file path is empty!");
+            return;
+        }
+
+        if (!System.IO.File.Exists(filePath))
+        {
+            Debug.LogError("FBX file does not exist: " + filePath);
+            return;
+        }
+
+        if (!filePath.ToLower().EndsWith(".fbx"))
+        {
+            Debug.LogError("File is not an FBX file: " + filePath);
+            return;
+        }
+
+        GameObject loadedModel = FBXLoader.LoadFBX(filePath);
+
+        if (loadedModel != null)
+        {
+            // Create a new InventoryItemData for the custom model
+            InventoryItemData customItem = ScriptableObject.CreateInstance<InventoryItemData>();
+            customItem.itemName = System.IO.Path.GetFileNameWithoutExtension(filePath);
+            customItem.description = "Custom imported 3D model from: " + System.IO.Path.GetFileName(filePath);
+            customItem.prefab3D = loadedModel;
+            customItem.category = ItemCategory.All;
+            customItem.icon = defaultIcon;
+
+            items.Add(customItem);
+            PopulateSlots();
+
+            Debug.Log("Successfully imported FBX model: " + customItem.itemName);
+        }
+        else
+        {
+            Debug.LogError("Failed to load FBX model from path: " + filePath);
+        }
+    }
+
+    /// <summary>
+    /// Loads all FBX files from a specific directory.
+    /// </summary>
+    public void ImportFBXsFromDirectory(string directoryPath)
+    {
+        if (string.IsNullOrEmpty(directoryPath) || !System.IO.Directory.Exists(directoryPath))
+        {
+            Debug.LogError("Directory does not exist: " + directoryPath);
+            return;
+        }
+
+        string[] fbxFiles = System.IO.Directory.GetFiles(directoryPath, "*.fbx");
+
+        if (fbxFiles.Length == 0)
+        {
+            Debug.LogWarning("No FBX files found in directory: " + directoryPath);
+            return;
+        }
+
+        Debug.Log("Found " + fbxFiles.Length + " FBX files. Starting import...");
+
+        foreach (string fbxFile in fbxFiles)
+        {
+            ImportFBXFromPath(fbxFile);
+        }
+
+        Debug.Log("Finished importing FBX files from directory.");
     }
 }
