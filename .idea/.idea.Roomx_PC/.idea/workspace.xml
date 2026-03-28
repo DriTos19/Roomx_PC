@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Logic/PlacementManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/PlacementManager.cs" afterDir="false" />
-    </list>
+    <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -158,7 +156,7 @@
       <workItem from="1773754881129" duration="2640000" />
       <workItem from="1774390923886" duration="521000" />
       <workItem from="1774405523376" duration="1754000" />
-      <workItem from="1774708755665" duration="4894000" />
+      <workItem from="1774708755665" duration="5514000" />
     </task>
     <servers />
   </component>
