@@ -8,14 +8,14 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("Panels (CanvasGroups)")]
     public CanvasGroup mainMenuPanel;
-    public CanvasGroup secondMenuPanel;   // NEW
+    public CanvasGroup secondMenuPanel;
     public CanvasGroup settingsPanel;
     public CanvasGroup helpPanel;
-    public CanvasGroup houseSelectionPanel; // NEW (your loading/house panel)
+    public CanvasGroup houseSelectionPanel;
 
     [Header("House Selection")]
-    public Button[] houseButtons;     // 5 stacked house buttons
-    public string[] houseSceneNames;  // Scene names for each house
+    public Button[] houseButtons;
+    public string[] houseSceneNames;
     public Button nextButton;
     public Button previousButton;
 
@@ -56,7 +56,6 @@ public class MainMenuUI : MonoBehaviour
     // =========================
     // PANEL SWITCHING
     // =========================
-    
 
     public void OpenSecondMenu()
     {
@@ -83,18 +82,13 @@ public class MainMenuUI : MonoBehaviour
         StartCoroutine(SwitchPanel(mainMenuPanel));
     }
 
-    private IEnumerator SwitchPanel(CanvasGroup newPanel)
+    // =========================
+    // SANDBOX
+    // =========================
+
+    public void LoadSandbox()
     {
-        if (currentPanel == newPanel)
-            yield break;
-
-        yield return StartCoroutine(FadeCanvasGroup(currentPanel, 1f, 0f));
-        SetActivePanel(currentPanel, false);
-
-        SetActivePanel(newPanel, true);
-        yield return StartCoroutine(FadeCanvasGroup(newPanel, 0f, 1f));
-
-        currentPanel = newPanel;
+        SceneManager.LoadScene("Sandbox");
     }
 
     // =========================
@@ -115,7 +109,7 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-     public void NextHouse()
+    public void NextHouse()
     {
         currentHouseIndex++;
         if (currentHouseIndex >= houseButtons.Length)
@@ -141,7 +135,7 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-   public void LoadHouse(int index)
+    public void LoadHouse(int index)
     {
         if (index >= 0 && index < houseSceneNames.Length)
         {
@@ -170,6 +164,20 @@ public class MainMenuUI : MonoBehaviour
     // =========================
     // FADE SYSTEM
     // =========================
+
+    private IEnumerator SwitchPanel(CanvasGroup newPanel)
+    {
+        if (currentPanel == newPanel)
+            yield break;
+
+        yield return StartCoroutine(FadeCanvasGroup(currentPanel, 1f, 0f));
+        SetActivePanel(currentPanel, false);
+
+        SetActivePanel(newPanel, true);
+        yield return StartCoroutine(FadeCanvasGroup(newPanel, 0f, 1f));
+
+        currentPanel = newPanel;
+    }
 
     private IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end)
     {
