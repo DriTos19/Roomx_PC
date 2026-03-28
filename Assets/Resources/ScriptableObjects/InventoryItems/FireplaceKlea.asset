@@ -19,3 +19,4 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: 923e3f912302a9f4e84db4327770f3d7, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 6bf654bc7fc1e0c43ad01d72dd53fad7, type: 3}
   category: 5
+  price: 10

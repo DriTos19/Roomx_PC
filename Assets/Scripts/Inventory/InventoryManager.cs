@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,9 +20,17 @@ public class InventoryManager : MonoBehaviour
 
     [Header("Items")]
     public List<InventoryItemData> items = new List<InventoryItemData>();
-    public Sprite defaultIcon;
+
+    [Header("Budget UI")]
+    public TMP_Text balanceLabel;
+
+    [Header("Purchase UI")]
+    public Button purchaseButton;
+    public TMP_Text priceLabel;
+    public GameObject insufficientFundsNotice;
 
     private bool menuOpen = false;
+    private Coroutine _noticeRoutine;
 
     void Start()
     {
@@ -34,6 +43,20 @@ public class InventoryManager : MonoBehaviour
         }
 
         PopulateSlots();
+
+        BudgetManager.Instance.onBalanceChanged.AddListener(RefreshBalanceUI);
+        PurchaseManager.Instance.onItemSelected.AddListener(RefreshPurchaseUI);
+        PurchaseManager.Instance.onPurchaseFailed.AddListener(_ => ShowInsufficientFunds());
+        PurchaseManager.Instance.onPurchaseSuccess.AddListener(OnPurchaseSuccess);
+
+        if (purchaseButton != null)
+            purchaseButton.onClick.AddListener(() => PurchaseManager.Instance.PurchaseSelected());
+
+        RefreshBalanceUI(BudgetManager.Instance.Balance);
+        SetPurchaseButtonInteractable(false);
+
+        if (insufficientFundsNotice != null)
+            insufficientFundsNotice.SetActive(false);
     }
 
     void Update()
@@ -42,6 +65,18 @@ public class InventoryManager : MonoBehaviour
         {
             menuOpen = !menuOpen;
             SetMenu(menuOpen);
+        }
+    }
+
+    void OnDestroy()
+    {
+        if (BudgetManager.Instance != null)
+            BudgetManager.Instance.onBalanceChanged.RemoveListener(RefreshBalanceUI);
+
+        if (PurchaseManager.Instance != null)
+        {
+            PurchaseManager.Instance.onItemSelected.RemoveListener(RefreshPurchaseUI);
+            PurchaseManager.Instance.onPurchaseSuccess.RemoveListener(OnPurchaseSuccess);
         }
     }
 
@@ -72,11 +107,13 @@ public class InventoryManager : MonoBehaviour
 
     public void ShowItemDetails(InventoryItemData item)
     {
-        descriptionImage.sprite = item.icon ?? defaultIcon;
+        descriptionImage.sprite = item.icon;
         descriptionText.text = $"<b>{item.itemName}</b>\n\n{item.description}";
 
         descriptionCanvasGroup.alpha = 1;
         descriptionCanvasGroup.blocksRaycasts = true;
+
+        PurchaseManager.Instance.SelectItem(item);
     }
 
     public void HideDescription()
@@ -97,75 +134,48 @@ public class InventoryManager : MonoBehaviour
         SetMenu(true);
     }
 
-    public void ImportFBXFromPath(string filePath)
+    private void RefreshBalanceUI(float balance)
     {
-        if (string.IsNullOrEmpty(filePath))
-        {
-            Debug.LogError("FBX file path is empty!");
-            return;
-        }
+        if (balanceLabel != null)
+            balanceLabel.text = $"Balance: ${balance:F2}";
 
-        if (!System.IO.File.Exists(filePath))
-        {
-            Debug.LogError("FBX file does not exist: " + filePath);
-            return;
-        }
-
-        if (!filePath.ToLower().EndsWith(".fbx"))
-        {
-            Debug.LogError("File is not an FBX file: " + filePath);
-            return;
-        }
-
-        GameObject loadedModel = FBXLoader.LoadFBX(filePath);
-
-        if (loadedModel != null)
-        {
-            // Create a new InventoryItemData for the custom model
-            InventoryItemData customItem = ScriptableObject.CreateInstance<InventoryItemData>();
-            customItem.itemName = System.IO.Path.GetFileNameWithoutExtension(filePath);
-            customItem.description = "Custom imported 3D model from: " + System.IO.Path.GetFileName(filePath);
-            customItem.prefab3D = loadedModel;
-            customItem.category = ItemCategory.All;
-            customItem.icon = defaultIcon;
-
-            items.Add(customItem);
-            PopulateSlots();
-
-            Debug.Log("Successfully imported FBX model: " + customItem.itemName);
-        }
-        else
-        {
-            Debug.LogError("Failed to load FBX model from path: " + filePath);
-        }
+        if (PurchaseManager.Instance.SelectedItem != null)
+            RefreshPurchaseUI(PurchaseManager.Instance.SelectedItem);
     }
 
-    /// <summary>
-    /// Loads all FBX files from a specific directory.
-    /// </summary>
-    public void ImportFBXsFromDirectory(string directoryPath)
+    private void RefreshPurchaseUI(InventoryItemData item)
     {
-        if (string.IsNullOrEmpty(directoryPath) || !System.IO.Directory.Exists(directoryPath))
-        {
-            Debug.LogError("Directory does not exist: " + directoryPath);
-            return;
-        }
+        if (item == null) { SetPurchaseButtonInteractable(false); return; }
 
-        string[] fbxFiles = System.IO.Directory.GetFiles(directoryPath, "*.fbx");
+        if (priceLabel != null)
+            priceLabel.text = item.price > 0 ? $"${item.price:F2}" : "Free";
 
-        if (fbxFiles.Length == 0)
-        {
-            Debug.LogWarning("No FBX files found in directory: " + directoryPath);
-            return;
-        }
+        SetPurchaseButtonInteractable(BudgetManager.Instance.CanAfford(item.price));
+    }
 
-        Debug.Log("Found " + fbxFiles.Length + " FBX files. Starting import...");
+    private void SetPurchaseButtonInteractable(bool state)
+    {
+        if (purchaseButton != null)
+            purchaseButton.interactable = state;
+    }
 
-        foreach (string fbxFile in fbxFiles)
-        {
-            ImportFBXFromPath(fbxFile);
-        }
+    private void ShowInsufficientFunds()
+    {
+        if (insufficientFundsNotice == null) return;
+        if (_noticeRoutine != null) StopCoroutine(_noticeRoutine);
+        _noticeRoutine = StartCoroutine(FlashNotice());
+    }
 
-        Debug.Log("Finished importing FBX files from directory.");
+    private IEnumerator FlashNotice()
+    {
+        insufficientFundsNotice.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        insufficientFundsNotice.SetActive(false);
+    }
+
+    private void OnPurchaseSuccess(InventoryItemData item)
+    {
+        HideMenu();
+        PlacementManager.Instance.StartPlacement(item);
     }
 }

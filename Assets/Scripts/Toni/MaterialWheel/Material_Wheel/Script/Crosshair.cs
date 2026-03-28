@@ -11,7 +11,6 @@ public class CrosshairSelector : MonoBehaviour
     {
         if (materialWheelController == null) return;
 
-        // Ignore clicks over UI
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 

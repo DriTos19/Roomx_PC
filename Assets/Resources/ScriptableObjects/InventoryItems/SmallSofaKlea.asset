@@ -18,5 +18,6 @@ MonoBehaviour:
     high-quality materials, it provides comfortable seating without occupying too
     much space.
   icon: {fileID: 21300000, guid: ec7d6d1eeb37823498244b61f99ad020, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: cdcf368ad1e86ec4fb3b86fbdc7d203c, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 82bdd464979e2ad4ea950759592d9486, type: 3}
   category: 4
+  price: 10
