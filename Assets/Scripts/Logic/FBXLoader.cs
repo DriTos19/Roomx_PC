@@ -94,6 +94,9 @@ public class FBXLoader : MonoBehaviour
             }
         }
 
+        // Center the imported model around the origin
+        CenterModelOnOrigin(root);
+
         return root;
     }
 
@@ -210,5 +213,74 @@ public class FBXLoader : MonoBehaviour
 
         return unityMesh;
     }
-}
 
+    private static void CenterModelOnOrigin(GameObject model)
+    {
+        if (model == null || model.transform.childCount == 0)
+            return;
+
+        // Calculate the center of all child local positions
+        Vector3 totalPosition = Vector3.zero;
+        int childCount = 0;
+
+        foreach (Transform child in model.transform)
+        {
+            totalPosition += child.localPosition;
+            childCount++;
+        }
+
+        if (childCount == 0)
+            return;
+
+        Vector3 center = totalPosition / childCount;
+
+        // Offset all child local positions so the center is at origin
+        foreach (Transform child in model.transform)
+        {
+            child.localPosition -= center;
+        }
+
+        // Also scale the model to a reasonable size
+        ScaleModelToReasonableSize(model);
+
+        Debug.Log($"Centered FBX model '{model.name}' by offsetting local positions by {-center}");
+    }
+
+    private static void ScaleModelToReasonableSize(GameObject model)
+    {
+        if (model == null)
+            return;
+
+        // Calculate the bounds of the model
+        Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+        bool hasBounds = false;
+
+        foreach (Renderer renderer in model.GetComponentsInChildren<Renderer>())
+        {
+            if (!hasBounds)
+            {
+                bounds = renderer.bounds;
+                hasBounds = true;
+            }
+            else
+            {
+                bounds.Encapsulate(renderer.bounds);
+            }
+        }
+
+        if (!hasBounds)
+            return;
+
+        // Get the maximum dimension
+        float maxDimension = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
+
+        // Scale so the largest dimension is 1.0 units (good size for furniture)
+        float targetSize = 1.0f;
+        float scaleFactor = targetSize / maxDimension;
+
+        // Apply scale to the root object
+        model.transform.localScale *= scaleFactor;
+
+        Debug.Log($"Scaled FBX model '{model.name}' by factor {scaleFactor} (max dimension was {maxDimension}, now {targetSize})");
+    }
+}

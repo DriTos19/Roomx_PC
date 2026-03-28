@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class InventoryManager : MonoBehaviour
     public Button purchaseButton;
     public TMP_Text priceLabel;
     public GameObject insufficientFundsNotice;
+
+    [Header("Default Assets")]
+    public Sprite defaultIcon;
 
     private bool menuOpen = false;
     private Coroutine _noticeRoutine;
@@ -177,5 +181,133 @@ public class InventoryManager : MonoBehaviour
     {
         HideMenu();
         PlacementManager.Instance.StartPlacement(item);
+    }
+
+    /// <summary>
+    /// Imports a single FBX file and creates a prefab from it.
+    /// </summary>
+    public void ImportFBXFromPath(string filePath)
+    {
+        if (string.IsNullOrEmpty(filePath))
+        {
+            Debug.LogError("File path is empty!");
+            return;
+        }
+
+        if (!File.Exists(filePath))
+        {
+            Debug.LogError($"FBX file does not exist: {filePath}");
+            return;
+        }
+
+        try
+        {
+            // Load the FBX file
+            GameObject loadedObject = FBXLoader.LoadFBX(filePath);
+            if (loadedObject == null)
+            {
+                Debug.LogError($"Failed to load FBX file: {filePath}");
+                return;
+            }
+
+            // Create an InventoryItemData from the loaded FBX
+            InventoryItemData newItem = CreateInventoryItemFromPrefab(loadedObject, Path.GetFileNameWithoutExtension(filePath));
+            if (newItem != null)
+            {
+                items.Add(newItem);
+                PopulateSlots();
+                Debug.Log($"Successfully imported FBX: {filePath}");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Exception while importing FBX: {e.Message}\n{e.StackTrace}");
+        }
+    }
+
+    /// <summary>
+    /// Imports all FBX files from a directory.
+    /// </summary>
+    public void ImportFBXsFromDirectory(string directoryPath)
+    {
+        if (string.IsNullOrEmpty(directoryPath))
+        {
+            Debug.LogError("Directory path is empty!");
+            return;
+        }
+
+        if (!Directory.Exists(directoryPath))
+        {
+            Debug.LogError($"Directory does not exist: {directoryPath}");
+            return;
+        }
+
+        try
+        {
+            string[] fbxFiles = Directory.GetFiles(directoryPath, "*.fbx", SearchOption.AllDirectories);
+            if (fbxFiles.Length == 0)
+            {
+                Debug.LogWarning($"No FBX files found in directory: {directoryPath}");
+                return;
+            }
+
+            int importedCount = 0;
+            foreach (string fbxPath in fbxFiles)
+            {
+                try
+                {
+                    GameObject loadedObject = FBXLoader.LoadFBX(fbxPath);
+                    if (loadedObject != null)
+                    {
+                        InventoryItemData newItem = CreateInventoryItemFromPrefab(loadedObject, Path.GetFileNameWithoutExtension(fbxPath));
+                        if (newItem != null)
+                        {
+                            items.Add(newItem);
+                            importedCount++;
+                        }
+                    }
+                }
+                catch (System.Exception e)
+                {
+                    Debug.LogWarning($"Failed to import FBX {fbxPath}: {e.Message}");
+                }
+            }
+
+            if (importedCount > 0)
+            {
+                PopulateSlots();
+                Debug.Log($"Successfully imported {importedCount} FBX files from: {directoryPath}");
+            }
+            else
+            {
+                Debug.LogWarning($"No FBX files were successfully imported from: {directoryPath}");
+            }
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogError($"Exception while importing FBX directory: {e.Message}\n{e.StackTrace}");
+        }
+    }
+
+    /// <summary>
+    /// Creates an InventoryItemData from a loaded FBX prefab.
+    /// </summary>
+    private InventoryItemData CreateInventoryItemFromPrefab(GameObject prefab, string itemName)
+    {
+        // Create a new InventoryItemData
+        InventoryItemData newItem = ScriptableObject.CreateInstance<InventoryItemData>();
+        newItem.itemName = itemName;
+        newItem.description = $"Imported FBX model: {itemName}";
+        newItem.prefab3D = prefab;
+        newItem.icon = defaultIcon; // Will be null if not assigned, handled by ItemSlotUI
+        newItem.category = ItemCategory.All;
+        newItem.price = 0f; // Free by default
+
+        // Optionally, save the asset to disk if you want persistence
+        // String assetPath = Path.Combine("Assets/Resources", $"{itemName}.asset");
+        // AssetDatabase.CreateAsset(newItem, assetPath);
+        // AssetDatabase.SaveAssets();
+
+        return newItem;
     }
 }
