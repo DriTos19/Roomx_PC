@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes: []
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7010210494c108d4fb030884fa58ea93, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 745d2b355261c1947ab5632e17b0c7f0, type: 2}
 =======
   m_configObjects: {}
+>>>>>>> Stashed changes
+=======
+  m_configObjects:
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7010210494c108d4fb030884fa58ea93, type: 2}
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 745d2b355261c1947ab5632e17b0c7f0, type: 2}
 >>>>>>> Stashed changes
