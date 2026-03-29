@@ -12,6 +12,7 @@ public class MainMenuUI : MonoBehaviour
     public CanvasGroup settingsPanel;
     public CanvasGroup helpPanel;
     public CanvasGroup houseSelectionPanel;
+    public CanvasGroup languagePanel;        // ← NEW
 
     [Header("House Selection")]
     public Button[] houseButtons;
@@ -43,6 +44,7 @@ public class MainMenuUI : MonoBehaviour
         SetActivePanel(settingsPanel, false);
         SetActivePanel(helpPanel, false);
         SetActivePanel(houseSelectionPanel, false);
+        SetActivePanel(languagePanel, false);   // ← NEW
 
         if (volumeSlider != null)
         {
@@ -80,6 +82,11 @@ public class MainMenuUI : MonoBehaviour
     public void BackToMainMenu()
     {
         StartCoroutine(SwitchPanel(mainMenuPanel));
+    }
+
+    public void OpenLanguagePanel()          // ← NEW
+    {
+        StartCoroutine(SwitchPanel(languagePanel));
     }
 
     // =========================
