@@ -15,22 +15,10 @@ public class ObjectSelector : MonoBehaviour
 
     void Update()
     {
-        if (materialWheelController == null)
-        {
-            Debug.LogWarning("MaterialWheelController is not assigned!");
-            return;
-        }
+        if (materialWheelController == null) return;
+        if (mainCam == null) return;
+        if (Mouse.current == null) return;
 
-        if (mainCam == null)
-        {
-            Debug.LogError("No Main Camera found in the scene. Make sure your camera is tagged 'MainCamera'.");
-            return;
-        }
-
-        if (Mouse.current == null)
-            return;
-
-        // Ignore clicks over UI
         if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
             return;
 

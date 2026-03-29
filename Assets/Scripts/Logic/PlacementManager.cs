@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlacementManager : MonoBehaviour
 {
@@ -16,12 +17,16 @@ public class PlacementManager : MonoBehaviour
     public float rotationSpeed = 120f;
     public float gridSize = 1f;
     public bool enableSnapping = true;
+    public float pickupRange = 10f;          // max raycast distance for pickup
+    public float doubleClickDelay = 0.3f;    // time window for double click
 
     private GameObject ghostObject;
     private InventoryItemData currentItem;
 
     private float currentRotationY;
     private bool isValidPlacement = true;
+
+    private float lastClickTime = -1f;
 
     void Awake()
     {
@@ -30,16 +35,60 @@ public class PlacementManager : MonoBehaviour
 
     void Update()
     {
-        if (ghostObject == null) return;
+       
 
-        FollowMouse();
-        HandleRotation();
+        // If holding an object, handle placement
+        if (ghostObject != null)
+        {
+            FollowMouse();
+            HandleRotation();
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!IsPointerOverUI())
+                    TryPlaceObject();
+            }
+
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
+                CancelPlacement();
+
+            return; // skip pickup detection while placing
+        }
+
+        // Double-click detection to pick up furniture
         if (Input.GetMouseButtonDown(0))
-            PlaceObject(); // ✅ UPDATED
+        {
+            if (IsPointerOverUI()) return;
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
-            CancelPlacement();
+            float timeSinceLastClick = Time.time - lastClickTime;
+
+            if (timeSinceLastClick <= doubleClickDelay)
+            {
+                // Double click detected — try to pick up
+                TryPickUpFurniture();
+                lastClickTime = -1f; // reset so triple-click doesn't re-trigger
+            }
+            else
+            {
+                lastClickTime = Time.time;
+            }
+        }
+    }
+
+    void TryPickUpFurniture()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, pickupRange, furnitureLayer))
+        {
+            GameObject target = hit.collider.gameObject;
+
+            // Walk up to root in case collider is on a child
+            FurniturePrefabReference refData = target.GetComponentInParent<FurniturePrefabReference>();
+
+            if (refData != null)
+                PickUpFurniture(refData.gameObject);
+        }
     }
 
     public void StartPlacement(InventoryItemData item)
@@ -48,13 +97,10 @@ public class PlacementManager : MonoBehaviour
 
         currentItem = item;
         ghostObject = Instantiate(item.prefab3D);
-
         currentRotationY = 0f;
 
         foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
-        {
             col.enabled = false;
-        }
 
         SetGhostMaterial(validMaterial);
     }
@@ -71,11 +117,38 @@ public class PlacementManager : MonoBehaviour
                 pos = SnapToGrid(pos);
 
             ghostObject.transform.position = pos;
-
-            isValidPlacement = CheckCollisionAtPosition(pos);
-
+            isValidPlacement = CheckCollision(pos);
             SetGhostMaterial(isValidPlacement ? validMaterial : invalidMaterial);
         }
+    }
+
+    bool CheckCollision(Vector3 position)
+    {
+        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
+            col.enabled = true;
+
+        Collider[] hits = Physics.OverlapBox(
+            position,
+            GetBounds() / 2f,
+            ghostObject.transform.rotation,
+            furnitureLayer
+        );
+
+        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
+            col.enabled = false;
+
+        return hits.Length == 0;
+    }
+
+    Vector3 GetBounds()
+    {
+        Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
+        Bounds bounds = renderers[0].bounds;
+
+        foreach (Renderer r in renderers)
+            bounds.Encapsulate(r.bounds);
+
+        return bounds.size;
     }
 
     void HandleRotation()
@@ -89,40 +162,7 @@ public class PlacementManager : MonoBehaviour
         ghostObject.transform.rotation = Quaternion.Euler(0, currentRotationY, 0);
     }
 
-    bool CheckCollisionAtPosition(Vector3 position)
-    {
-        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
-            col.enabled = true;
-
-        Collider[] hits = Physics.OverlapBox(
-            position,
-            GetColliderBounds() / 2f,
-            ghostObject.transform.rotation,
-            furnitureLayer
-        );
-
-        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
-            col.enabled = false;
-
-        return hits.Length == 0;
-    }
-
-    Vector3 GetColliderBounds()
-    {
-        Collider[] cols = ghostObject.GetComponentsInChildren<Collider>();
-
-        if (cols.Length == 0) return Vector3.one;
-
-        Bounds bounds = cols[0].bounds;
-
-        foreach (Collider c in cols)
-            bounds.Encapsulate(c.bounds);
-
-        return bounds.size;
-    }
-
-    // ✅🔥 THIS IS YOUR FIXED METHOD
-    void PlaceObject()
+    void TryPlaceObject()
     {
         if (!isValidPlacement) return;
 
@@ -132,30 +172,42 @@ public class PlacementManager : MonoBehaviour
             ghostObject.transform.rotation
         );
 
-        // Enable colliders
-        foreach (Collider col in newObj.GetComponentsInChildren<Collider>())
-            col.enabled = true;
-
-        // Set layer
-        SetLayerRecursively(newObj, "Furniture");
-
-        // ✅ ADD PREFAB REFERENCE (CRUCIAL FOR SAVE/LOAD)
+        // Save/load reference
         FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
         prefabRef.prefabPath = currentItem.name;
 
-        // ✅ REGISTER IN SAVE SYSTEM (THIS WAS YOUR BUG)
+        // Register with save manager
         FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
         if (saveManager != null)
-        {
             saveManager.activeFurniture.Add(newObj);
-            Debug.Log("Added " + newObj.name + " to activeFurniture list");
-        }
-        else
-        {
-            Debug.LogWarning("FurnitureSaveManager not found in scene!");
-        }
+
+        SetLayerRecursively(newObj, "Furniture");
 
         CancelPlacement();
+    }
+
+    public void PickUpFurniture(GameObject obj)
+    {
+        FurniturePrefabReference refData = obj.GetComponent<FurniturePrefabReference>();
+        if (refData == null) return;
+
+        // Remove from save manager list
+        FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
+        if (saveManager != null)
+            saveManager.activeFurniture.Remove(obj);
+
+        InventoryManager inv = FindObjectOfType<InventoryManager>();
+        if (inv == null) return;
+
+        foreach (var item in inv.items)
+        {
+            if (item.name == refData.prefabPath)
+            {
+                Destroy(obj);
+                StartPlacement(item);
+                return;
+            }
+        }
     }
 
     void CancelPlacement()
@@ -176,7 +228,6 @@ public class PlacementManager : MonoBehaviour
     void SetLayerRecursively(GameObject obj, string layerName)
     {
         int layer = LayerMask.NameToLayer(layerName);
-
         obj.layer = layer;
 
         foreach (Transform child in obj.transform)
@@ -188,7 +239,11 @@ public class PlacementManager : MonoBehaviour
         float x = Mathf.Round(pos.x / gridSize) * gridSize;
         float y = pos.y;
         float z = Mathf.Round(pos.z / gridSize) * gridSize;
-
         return new Vector3(x, y, z);
+    }
+
+    bool IsPointerOverUI()
+    {
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
     }
 }

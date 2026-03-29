@@ -12,7 +12,6 @@ public class MainMenuUI : MonoBehaviour
     public CanvasGroup settingsPanel;
     public CanvasGroup helpPanel;
     public CanvasGroup houseSelectionPanel;
-    public CanvasGroup languagePanel;          // NEW
 
     [Header("House Selection")]
     public Button[] houseButtons;
@@ -44,7 +43,6 @@ public class MainMenuUI : MonoBehaviour
         SetActivePanel(settingsPanel, false);
         SetActivePanel(helpPanel, false);
         SetActivePanel(houseSelectionPanel, false);
-        SetActivePanel(languagePanel, false);   // NEW
 
         if (volumeSlider != null)
         {
@@ -84,28 +82,13 @@ public class MainMenuUI : MonoBehaviour
         StartCoroutine(SwitchPanel(mainMenuPanel));
     }
 
-    public void OpenLanguagePanel()                              // NEW
+    // =========================
+    // SANDBOX
+    // =========================
+
+    public void LoadSandbox()
     {
-        StartCoroutine(SwitchPanel(languagePanel));
-    }
-
-    public void BackToSettings()                                 // NEW
-    {
-        StartCoroutine(SwitchPanel(settingsPanel));
-    }
-
-    private IEnumerator SwitchPanel(CanvasGroup newPanel)
-    {
-        if (currentPanel == newPanel)
-            yield break;
-
-        yield return StartCoroutine(FadeCanvasGroup(currentPanel, 1f, 0f));
-        SetActivePanel(currentPanel, false);
-
-        SetActivePanel(newPanel, true);
-        yield return StartCoroutine(FadeCanvasGroup(newPanel, 0f, 1f));
-
-        currentPanel = newPanel;
+        SceneManager.LoadScene("Sandbox");
     }
 
     // =========================
@@ -161,31 +144,6 @@ public class MainMenuUI : MonoBehaviour
     }
 
     // =========================
-    // LANGUAGE SELECTION         NEW
-    // =========================
-
-    public void SetEnglish()
-    {
-        PlayerPrefs.SetInt("Language", 0);
-        PlayerPrefs.Save();
-        BackToSettings();
-    }
-
-    public void SetAlbanian()
-    {
-        PlayerPrefs.SetInt("Language", 1);
-        PlayerPrefs.Save();
-        BackToSettings();
-    }
-
-    public void SetGerman()
-    {
-        PlayerPrefs.SetInt("Language", 2);
-        PlayerPrefs.Save();
-        BackToSettings();
-    }
-
-    // =========================
     // AUDIO
     // =========================
 
@@ -206,6 +164,20 @@ public class MainMenuUI : MonoBehaviour
     // =========================
     // FADE SYSTEM
     // =========================
+
+    private IEnumerator SwitchPanel(CanvasGroup newPanel)
+    {
+        if (currentPanel == newPanel)
+            yield break;
+
+        yield return StartCoroutine(FadeCanvasGroup(currentPanel, 1f, 0f));
+        SetActivePanel(currentPanel, false);
+
+        SetActivePanel(newPanel, true);
+        yield return StartCoroutine(FadeCanvasGroup(newPanel, 0f, 1f));
+
+        currentPanel = newPanel;
+    }
 
     private IEnumerator FadeCanvasGroup(CanvasGroup cg, float start, float end)
     {
