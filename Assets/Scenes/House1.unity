@@ -2050,6 +2050,7 @@ GameObject:
   - component: {fileID: 1258600321}
   - component: {fileID: 1258600323}
   - component: {fileID: 1258600322}
+  - component: {fileID: 1258600324}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -2173,6 +2174,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1258600320}
   m_CullTransparentMesh: 1
+--- !u!114 &1258600324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1258600320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1368a85c6b77fc449a710f3381907376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizationData: {fileID: 11400000, guid: 9e85d7306f4c3c4479160a02af24581a, type: 2}
+  key: btn_buy
 --- !u!1 &1291185919
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,6 +2834,53 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!1 &1841032596
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1841032598}
+  - component: {fileID: 1841032597}
+  m_Layer: 0
+  m_Name: LocalizationManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1841032597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841032596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0998e330575cfa148a526389ae9089be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onLanguageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &1841032598
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841032596}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 404.59262, y: 190.57414, z: 124.187935}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1860262525
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,3 +3228,4 @@ SceneRoots:
   - {fileID: 1173920320}
   - {fileID: 1890512550}
   - {fileID: 369388239}
+  - {fileID: 1841032598}

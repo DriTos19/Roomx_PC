@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/InventoryItems/SmallSofaKlea.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/ScriptableObjects/InventoryItems/SmallSofaKlea.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/House1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Folder.DotSettings.user.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenuUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenuUI.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +24,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizationData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizedText.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/MiniMapi/MiniMapFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/MiniMapi/SimpleMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -149,6 +152,7 @@
       <workItem from="1774390923886" duration="521000" />
       <workItem from="1774405523376" duration="2231000" />
       <workItem from="1774699744120" duration="319000" />
+      <workItem from="1774739206208" duration="3277000" />
     </task>
     <servers />
   </component>

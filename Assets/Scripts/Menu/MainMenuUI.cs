@@ -8,14 +8,15 @@ public class MainMenuUI : MonoBehaviour
 {
     [Header("Panels (CanvasGroups)")]
     public CanvasGroup mainMenuPanel;
-    public CanvasGroup secondMenuPanel;   // NEW
+    public CanvasGroup secondMenuPanel;
     public CanvasGroup settingsPanel;
     public CanvasGroup helpPanel;
-    public CanvasGroup houseSelectionPanel; // NEW (your loading/house panel)
+    public CanvasGroup houseSelectionPanel;
+    public CanvasGroup languagePanel;          // NEW
 
     [Header("House Selection")]
-    public Button[] houseButtons;     // 5 stacked house buttons
-    public string[] houseSceneNames;  // Scene names for each house
+    public Button[] houseButtons;
+    public string[] houseSceneNames;
     public Button nextButton;
     public Button previousButton;
 
@@ -43,6 +44,7 @@ public class MainMenuUI : MonoBehaviour
         SetActivePanel(settingsPanel, false);
         SetActivePanel(helpPanel, false);
         SetActivePanel(houseSelectionPanel, false);
+        SetActivePanel(languagePanel, false);   // NEW
 
         if (volumeSlider != null)
         {
@@ -56,7 +58,6 @@ public class MainMenuUI : MonoBehaviour
     // =========================
     // PANEL SWITCHING
     // =========================
-    
 
     public void OpenSecondMenu()
     {
@@ -81,6 +82,16 @@ public class MainMenuUI : MonoBehaviour
     public void BackToMainMenu()
     {
         StartCoroutine(SwitchPanel(mainMenuPanel));
+    }
+
+    public void OpenLanguagePanel()                              // NEW
+    {
+        StartCoroutine(SwitchPanel(languagePanel));
+    }
+
+    public void BackToSettings()                                 // NEW
+    {
+        StartCoroutine(SwitchPanel(settingsPanel));
     }
 
     private IEnumerator SwitchPanel(CanvasGroup newPanel)
@@ -115,7 +126,7 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-     public void NextHouse()
+    public void NextHouse()
     {
         currentHouseIndex++;
         if (currentHouseIndex >= houseButtons.Length)
@@ -141,12 +152,37 @@ public class MainMenuUI : MonoBehaviour
         }
     }
 
-   public void LoadHouse(int index)
+    public void LoadHouse(int index)
     {
         if (index >= 0 && index < houseSceneNames.Length)
         {
             SceneManager.LoadScene(houseSceneNames[index]);
         }
+    }
+
+    // =========================
+    // LANGUAGE SELECTION         NEW
+    // =========================
+
+    public void SetEnglish()
+    {
+        PlayerPrefs.SetInt("Language", 0);
+        PlayerPrefs.Save();
+        BackToSettings();
+    }
+
+    public void SetAlbanian()
+    {
+        PlayerPrefs.SetInt("Language", 1);
+        PlayerPrefs.Save();
+        BackToSettings();
+    }
+
+    public void SetGerman()
+    {
+        PlayerPrefs.SetInt("Language", 2);
+        PlayerPrefs.Save();
+        BackToSettings();
     }
 
     // =========================
