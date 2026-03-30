@@ -4,51 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-<<<<<<< Updated upstream
-    <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="" />
-=======
     <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Music/berlioz - deep in it.mp3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/FurnitureIntertable.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/FurnitureIntertable.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/FurniturePrefabReference.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/FurniturePrefabReference.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Menu.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Art/Foto/Klea.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Art/Foto/Klea.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/il vento d'oro.mp3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Music/il vento d'oro.mp3.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Music/berlioz - deep in it.mp3.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/FancyChairKlea.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/UI/FancyChairKlea.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScene.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House2.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House2.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House2.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House3.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House3.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House3.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House4.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House4.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House4.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House4.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House5.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House5.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/House5.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House5.unity.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sandbox.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sandbox.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemSlotUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Inventory/ItemSlotUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Logic/PlacementManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/PlacementManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenuUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Menu/MainMenuUI.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Save/FurniturePrefabReference.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Save/FurniturePrefabReference.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizationData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizationData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Material_Wheel/MaterialWheel/Slice.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Material_Wheel/MaterialWheel/Slice.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Material_Wheel/Script/Crosshair.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Material_Wheel/Script/Crosshair.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Material_Wheel/Script/MaterialWheelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Material_Wheel/Script/MaterialWheelController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Material_Wheel/Script/ObjectSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/MaterialWheel/Material_Wheel/Script/ObjectSelector.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Toni/SandBox/f.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/SandBox/f.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Toni/WallPlacer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/SandBox/WallPlacer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Toni/WallPlacer.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Toni/SandBox/WallPlacer.cs.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
->>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,11 +25,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Logic/FurnitureIntertable.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/User/OneDrive/Documenti/GitHub/Roomx_PC/Assets/Scripts/Sidrit/Languages.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages.meta" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/User/OneDrive/Documenti/GitHub/Roomx_PC/Assets/Scripts/Sidrit/Languages.meta" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizationData.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizedText.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Logic/LoadSceneButton.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/MiniMapi/MiniMapFollow.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Sidrit/MiniMapi/SimpleMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventSystem.cs" root0="SKIP_HIGHLIGHTING" />
@@ -90,7 +44,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
@@ -110,39 +63,16 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-=======
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "Merging sidrit",
-    "junie.onboarding.icon.badge.shown": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
->>>>>>> Stashed changes
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/../RoomX/My project (2).exe" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../RoomX\My project (2).exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="C:\Users\User\Documents\diplom\RoomX" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
@@ -151,10 +81,8 @@
       <option name="PROGRAM_PARAMETERS" value="-projectPath C:\Users\drini\OneDrive\Documents\GitHub\Roomx_PC -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\drini\OneDrive\Documents\GitHub\Roomx_PC" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
@@ -163,14 +91,12 @@
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath C:\Users\drini\OneDrive\Documents\GitHub\Roomx_PC -testResults Logs/results.xml -logFile Logs/Editor.log -testPlatform EditMode -debugCodeOptimization" />
       <option name="WORKING_DIRECTORY" value="C:\Users\drini\OneDrive\Documents\GitHub\Roomx_PC" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
-      <option name="PTY_MODE" value="Auto" />
       <option name="MIXED_MODE_DEBUG" value="0" />
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -181,14 +107,9 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
-<<<<<<< Updated upstream
     <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" useMixedMode="false">
-=======
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
->>>>>>> Stashed changes
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
       <option name="pid" />
@@ -199,7 +120,6 @@
       <option name="selectedOptions">
         <list />
       </option>
-      <option name="useMixedMode" value="false" />
       <method v="2" />
     </configuration>
     <configuration name="Attach to" type="UnityDevicePlayer" factoryName="UnityAttachToDevicePlayer">
@@ -244,7 +164,8 @@
       <workItem from="1774390923886" duration="521000" />
       <workItem from="1774405523376" duration="1754000" />
       <workItem from="1774708755665" duration="13822000" />
-      <workItem from="1774789074440" duration="600000" />
+      <workItem from="1774789074440" duration="3072000" />
+      <workItem from="1774799022765" duration="67000" />
     </task>
     <servers />
   </component>
