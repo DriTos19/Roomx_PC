@@ -29,3 +29,7 @@ MonoBehaviour:
     english: Not enough money
     albanian: Nuk ka para
     german: Nicht genug Geld
+  - key: Languages
+    english: English
+    albanian: Shqip
+    german: Deutsch
