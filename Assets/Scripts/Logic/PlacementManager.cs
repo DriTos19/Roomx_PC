@@ -97,7 +97,6 @@ public class PlacementManager : MonoBehaviour
 
         currentItem = item;
         ghostObject = Instantiate(item.prefab3D);
-        ghostObject.SetActive(true);
         currentRotationY = 0f;
 
         foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
@@ -116,16 +115,6 @@ public class PlacementManager : MonoBehaviour
 
             if (enableSnapping)
                 pos = SnapToGrid(pos);
-
-            // Offset upward by half the object's height so the bottom sits on the ground
-            Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
-            if (renderers.Length > 0)
-            {
-                Bounds bounds = renderers[0].bounds;
-                foreach (Renderer r in renderers)
-                    bounds.Encapsulate(r.bounds);
-                pos.y = hit.point.y + bounds.extents.y;
-            }
 
             ghostObject.transform.position = pos;
             isValidPlacement = CheckCollision(pos);
@@ -182,8 +171,8 @@ public class PlacementManager : MonoBehaviour
             ghostObject.transform.position,
             ghostObject.transform.rotation
         );
-        newObj.SetActive(true);
 
+        // Save/load reference
         FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
         prefabRef.prefabPath = currentItem.name;
 

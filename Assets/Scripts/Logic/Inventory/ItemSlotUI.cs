@@ -13,7 +13,7 @@ public class ItemSlotUI : MonoBehaviour
         itemData = item;
         inventoryManager = manager;
 
-        iconImage.sprite = item.icon ?? manager.defaultIcon;
+        iconImage.sprite = item.icon;
 
         GetComponent<Button>().onClick.AddListener(OnClick);
     }

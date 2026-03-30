@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -30,20 +29,8 @@ public class InventoryManager : MonoBehaviour
     public TMP_Text priceLabel;
     public GameObject insufficientFundsNotice;
 
-    [Header("Default Assets")]
-    public Sprite defaultIcon;
-
     private bool menuOpen = false;
     private Coroutine _noticeRoutine;
-    private string _glbSavePath;
-
-    [System.Serializable]
-    private class GLBPathList { public List<string> paths = new List<string>(); }
-
-    void Awake()
-    {
-        _glbSavePath = Path.Combine(Application.persistentDataPath, "imported_glbs.json");
-    }
 
     void Start()
     {
@@ -70,8 +57,6 @@ public class InventoryManager : MonoBehaviour
 
         if (insufficientFundsNotice != null)
             insufficientFundsNotice.SetActive(false);
-
-        LoadSavedGLBs();
     }
 
     void Update()
@@ -102,8 +87,7 @@ public class InventoryManager : MonoBehaviour
         inventoryCanvasGroup.blocksRaycasts = state;
 
         // Unlock cursor when menu is open, lock it when closed
-        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = state;
+        Cursor.lockState = state ? CursorLockMode.Confined : CursorLockMode.Locked;
 
         if (!state)
             HideDescription();
@@ -193,126 +177,5 @@ public class InventoryManager : MonoBehaviour
     {
         HideMenu();
         PlacementManager.Instance.StartPlacement(item);
-    }
-
-    public async void ImportGLBFromPath(string filePath, System.Action<bool, string> onComplete = null)
-    {
-        if (string.IsNullOrEmpty(filePath))
-        {
-            onComplete?.Invoke(false, "File path is empty.");
-            return;
-        }
-
-        if (!File.Exists(filePath))
-        {
-            onComplete?.Invoke(false, $"File not found: {filePath}");
-            return;
-        }
-
-        GameObject loaded = await GLBLoader.LoadGLB(filePath);
-        if (loaded == null)
-        {
-            onComplete?.Invoke(false, $"Failed to load: {Path.GetFileName(filePath)}");
-            return;
-        }
-
-        items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(filePath)));
-        SaveGLBPath(filePath);
-        PopulateSlots();
-        onComplete?.Invoke(true, $"Imported: {Path.GetFileNameWithoutExtension(filePath)}");
-    }
-
-    public async void ImportGLBsFromDirectory(string directoryPath, System.Action<bool, string> onComplete = null)
-    {
-        if (string.IsNullOrEmpty(directoryPath))
-        {
-            onComplete?.Invoke(false, "Directory path is empty.");
-            return;
-        }
-
-        if (!Directory.Exists(directoryPath))
-        {
-            onComplete?.Invoke(false, $"Directory not found: {directoryPath}");
-            return;
-        }
-
-        string[] glbFiles = Directory.GetFiles(directoryPath, "*.glb", SearchOption.AllDirectories);
-        if (glbFiles.Length == 0)
-        {
-            onComplete?.Invoke(false, "No .glb files found in directory.");
-            return;
-        }
-
-        int imported = 0;
-        foreach (string path in glbFiles)
-        {
-            GameObject loaded = await GLBLoader.LoadGLB(path);
-            if (loaded != null)
-            {
-                items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path)));
-                SaveGLBPath(path);
-                imported++;
-            }
-        }
-
-        if (imported > 0)
-        {
-            PopulateSlots();
-            onComplete?.Invoke(true, $"Imported {imported} of {glbFiles.Length} file(s).");
-        }
-        else
-        {
-            onComplete?.Invoke(false, "No files could be imported.");
-        }
-    }
-
-    private InventoryItemData CreateItemFromGLB(GameObject prefab, string itemName)
-    {
-        InventoryItemData item = ScriptableObject.CreateInstance<InventoryItemData>();
-        item.itemName = itemName;
-        item.description = $"Imported model: {itemName}";
-        item.prefab3D = prefab;
-        item.icon = defaultIcon;
-        item.category = ItemCategory.All;
-        item.price = 0f;
-        return item;
-    }
-
-    private void SaveGLBPath(string filePath)
-    {
-        GLBPathList list = LoadGLBPathList();
-        if (!list.paths.Contains(filePath))
-        {
-            list.paths.Add(filePath);
-            File.WriteAllText(_glbSavePath, JsonUtility.ToJson(list, true));
-        }
-    }
-
-    private GLBPathList LoadGLBPathList()
-    {
-        if (!File.Exists(_glbSavePath)) return new GLBPathList();
-        try { return JsonUtility.FromJson<GLBPathList>(File.ReadAllText(_glbSavePath)) ?? new GLBPathList(); }
-        catch { return new GLBPathList(); }
-    }
-
-    private async void LoadSavedGLBs()
-    {
-        GLBPathList list = LoadGLBPathList();
-        if (list.paths.Count == 0) return;
-
-        foreach (string path in list.paths)
-        {
-            if (!File.Exists(path))
-            {
-                Debug.LogWarning($"Previously imported GLB no longer found: {path}");
-                continue;
-            }
-            GameObject loaded = await GLBLoader.LoadGLB(path);
-            if (loaded != null)
-                items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path)));
-        }
-
-        if (items.Count > 0)
-            PopulateSlots();
     }
 }
