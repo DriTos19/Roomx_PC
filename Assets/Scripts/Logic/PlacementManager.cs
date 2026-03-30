@@ -1,19 +1,32 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlacementManager : MonoBehaviour
 {
     public static PlacementManager Instance;
 
+    [Header("Layers")]
     public LayerMask groundLayer;
-    public Material ghostMaterial;
-    public InventoryManager inventoryManager;
+    public LayerMask furnitureLayer;
 
+    [Header("Materials")]
+    public Material validMaterial;
+    public Material invalidMaterial;
+
+    [Header("Settings")]
     public float rotationSpeed = 120f;
+    public float gridSize = 1f;
+    public bool enableSnapping = true;
+    public float pickupRange = 10f;          // max raycast distance for pickup
+    public float doubleClickDelay = 0.3f;    // time window for double click
 
     private GameObject ghostObject;
     private InventoryItemData currentItem;
-    private GameObject currentPrefab;
+
     private float currentRotationY;
+    private bool isValidPlacement = true;
+
+    private float lastClickTime = -1f;
 
     void Awake()
     {
@@ -22,16 +35,60 @@ public class PlacementManager : MonoBehaviour
 
     void Update()
     {
-        if (ghostObject == null) return;
+       
 
-        FollowMouse();
-        HandleRotation();
+        // If holding an object, handle placement
+        if (ghostObject != null)
+        {
+            FollowMouse();
+            HandleRotation();
 
+            if (Input.GetMouseButtonDown(0))
+            {
+                if (!IsPointerOverUI())
+                    TryPlaceObject();
+            }
+
+            if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
+                CancelPlacement();
+
+            return; // skip pickup detection while placing
+        }
+
+        // Double-click detection to pick up furniture
         if (Input.GetMouseButtonDown(0))
-            PlaceObject();
+        {
+            if (IsPointerOverUI()) return;
 
-        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
-            CancelPlacement();
+            float timeSinceLastClick = Time.time - lastClickTime;
+
+            if (timeSinceLastClick <= doubleClickDelay)
+            {
+                // Double click detected — try to pick up
+                TryPickUpFurniture();
+                lastClickTime = -1f; // reset so triple-click doesn't re-trigger
+            }
+            else
+            {
+                lastClickTime = Time.time;
+            }
+        }
+    }
+
+    void TryPickUpFurniture()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, pickupRange, furnitureLayer))
+        {
+            GameObject target = hit.collider.gameObject;
+
+            // Walk up to root in case collider is on a child
+            FurniturePrefabReference refData = target.GetComponentInParent<FurniturePrefabReference>();
+
+            if (refData != null)
+                PickUpFurniture(refData.gameObject);
+        }
     }
 
     public void StartPlacement(InventoryItemData item)
@@ -40,35 +97,69 @@ public class PlacementManager : MonoBehaviour
 
         currentItem = item;
         ghostObject = Instantiate(item.prefab3D);
+        ghostObject.SetActive(true);
+        currentRotationY = 0f;
 
-        currentRotationY = 0;
-        SetGhostMaterial(ghostObject);
-    }
+        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
+            col.enabled = false;
 
-    public void StartPlacement(GameObject prefab)
-    {
-        CancelPlacement();
-
-        currentItem = null; // No item data for custom models
-        currentPrefab = prefab;
-        ghostObject = Instantiate(prefab);
-
-        currentRotationY = 0;
-        SetGhostMaterial(ghostObject);
+        SetGhostMaterial(validMaterial);
     }
 
     void FollowMouse()
     {
-        // Place object at a fixed distance in front of the camera
-        float distanceInFront = 3.0f; // Distance in front of camera
-        ghostObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward * distanceInFront;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        // Optional: Still allow ground snapping if needed
-        // Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        // if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
-        // {
-        //     ghostObject.transform.position = hit.point + Vector3.up * 0.0f;
-        // }
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, groundLayer))
+        {
+            Vector3 pos = hit.point;
+
+            if (enableSnapping)
+                pos = SnapToGrid(pos);
+
+            // Offset upward by half the object's height so the bottom sits on the ground
+            Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
+            if (renderers.Length > 0)
+            {
+                Bounds bounds = renderers[0].bounds;
+                foreach (Renderer r in renderers)
+                    bounds.Encapsulate(r.bounds);
+                pos.y = hit.point.y + bounds.extents.y;
+            }
+
+            ghostObject.transform.position = pos;
+            isValidPlacement = CheckCollision(pos);
+            SetGhostMaterial(isValidPlacement ? validMaterial : invalidMaterial);
+        }
+    }
+
+    bool CheckCollision(Vector3 position)
+    {
+        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
+            col.enabled = true;
+
+        Collider[] hits = Physics.OverlapBox(
+            position,
+            GetBounds() / 2f,
+            ghostObject.transform.rotation,
+            furnitureLayer
+        );
+
+        foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
+            col.enabled = false;
+
+        return hits.Length == 0;
+    }
+
+    Vector3 GetBounds()
+    {
+        Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
+        Bounds bounds = renderers[0].bounds;
+
+        foreach (Renderer r in renderers)
+            bounds.Encapsulate(r.bounds);
+
+        return bounds.size;
     }
 
     void HandleRotation()
@@ -82,26 +173,52 @@ public class PlacementManager : MonoBehaviour
         ghostObject.transform.rotation = Quaternion.Euler(0, currentRotationY, 0);
     }
 
-    void PlaceObject()
+    void TryPlaceObject()
     {
-        GameObject newObj = Instantiate(currentItem != null ? currentItem.prefab3D : currentPrefab,
+        if (!isValidPlacement) return;
+
+        GameObject newObj = Instantiate(
+            currentItem.prefab3D,
             ghostObject.transform.position,
-            ghostObject.transform.rotation);
+            ghostObject.transform.rotation
+        );
+        newObj.SetActive(true);
 
-        // Add a component to store the prefab name for save/load
         FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
-        prefabRef.prefabPath = currentItem != null ? currentItem.name : currentPrefab.name; // Use the ScriptableObject name or prefab name as the identifier
+        prefabRef.prefabPath = currentItem.name;
 
-        // Register the placed object with the FurnitureSaveManager
+        // Register with save manager
         FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
-        if (saveManager != null) {
+        if (saveManager != null)
             saveManager.activeFurniture.Add(newObj);
-            Debug.Log("Added " + newObj.name + " to activeFurniture list");
-        } else {
-            Debug.LogWarning("FurnitureSaveManager not found in scene!");
-        }
+
+        SetLayerRecursively(newObj, "Furniture");
 
         CancelPlacement();
+    }
+
+    public void PickUpFurniture(GameObject obj)
+    {
+        FurniturePrefabReference refData = obj.GetComponent<FurniturePrefabReference>();
+        if (refData == null) return;
+
+        // Remove from save manager list
+        FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
+        if (saveManager != null)
+            saveManager.activeFurniture.Remove(obj);
+
+        InventoryManager inv = FindObjectOfType<InventoryManager>();
+        if (inv == null) return;
+
+        foreach (var item in inv.items)
+        {
+            if (item.name == refData.prefabPath)
+            {
+                Destroy(obj);
+                StartPlacement(item);
+                return;
+            }
+        }
     }
 
     void CancelPlacement()
@@ -111,71 +228,33 @@ public class PlacementManager : MonoBehaviour
 
         ghostObject = null;
         currentItem = null;
-        currentPrefab = null;
     }
 
-    void SetGhostMaterial(GameObject obj)
+    void SetGhostMaterial(Material mat)
     {
-        foreach (Renderer r in obj.GetComponentsInChildren<Renderer>())
-            r.material = ghostMaterial;
+        foreach (Renderer r in ghostObject.GetComponentsInChildren<Renderer>())
+            r.material = mat;
     }
 
-    /// <summary>
-    /// Picks up a placed furniture object and prepares it for re-placement.
-    /// </summary>
-    public void PickUpFurniture(GameObject furniture)
+    void SetLayerRecursively(GameObject obj, string layerName)
     {
-        if (furniture == null)
-        {
-            Debug.LogWarning("Attempted to pick up null furniture!");
-            return;
-        }
+        int layer = LayerMask.NameToLayer(layerName);
+        obj.layer = layer;
 
-        // Get the prefab reference from the furniture
-        FurniturePrefabReference prefabRef = furniture.GetComponent<FurniturePrefabReference>();
-        if (prefabRef == null)
-        {
-            Debug.LogWarning("Furniture does not have a FurniturePrefabReference component!");
-            return;
-        }
+        foreach (Transform child in obj.transform)
+            SetLayerRecursively(child.gameObject, layerName);
+    }
 
-        // Try to find the original InventoryItemData or create a temporary placement
-        InventoryManager inventoryManager = FindObjectOfType<InventoryManager>();
-        InventoryItemData itemData = null;
+    Vector3 SnapToGrid(Vector3 pos)
+    {
+        float x = Mathf.Round(pos.x / gridSize) * gridSize;
+        float y = pos.y;
+        float z = Mathf.Round(pos.z / gridSize) * gridSize;
+        return new Vector3(x, y, z);
+    }
 
-        if (inventoryManager != null)
-        {
-            // Search for the item in the inventory
-            foreach (InventoryItemData item in inventoryManager.items)
-            {
-                if (item.name == prefabRef.prefabPath || item.itemName == prefabRef.prefabPath)
-                {
-                    itemData = item;
-                    break;
-                }
-            }
-        }
-
-        if (itemData != null)
-        {
-            // Start placement with the found item
-            StartPlacement(itemData);
-        }
-        else
-        {
-            // If no item data found, start placement with the prefab directly
-            StartPlacement(furniture);
-        }
-
-        // Remove the furniture from the scene
-        FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
-        if (saveManager != null)
-        {
-            saveManager.activeFurniture.Remove(furniture);
-            Debug.Log("Removed " + furniture.name + " from activeFurniture list");
-        }
-
-        Destroy(furniture);
-        Debug.Log("Picked up furniture: " + furniture.name);
+    bool IsPointerOverUI()
+    {
+        return EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
     }
 }

@@ -14,7 +14,7 @@ public class PauseMenuController : MonoBehaviour
 
     private void Start()
     {
-        // Set up button listeners
+        // Set up button listeners!
         if (resumeButton != null)
             resumeButton.onClick.AddListener(Resume);
         if (quitButton != null)

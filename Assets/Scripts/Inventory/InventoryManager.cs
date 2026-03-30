@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.IO;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -35,6 +35,15 @@ public class InventoryManager : MonoBehaviour
 
     private bool menuOpen = false;
     private Coroutine _noticeRoutine;
+    private string _glbSavePath;
+
+    [System.Serializable]
+    private class GLBPathList { public List<string> paths = new List<string>(); }
+
+    void Awake()
+    {
+        _glbSavePath = Path.Combine(Application.persistentDataPath, "imported_glbs.json");
+    }
 
     void Start()
     {
@@ -61,6 +70,8 @@ public class InventoryManager : MonoBehaviour
 
         if (insufficientFundsNotice != null)
             insufficientFundsNotice.SetActive(false);
+
+        LoadSavedGLBs();
     }
 
     void Update()
@@ -91,7 +102,8 @@ public class InventoryManager : MonoBehaviour
         inventoryCanvasGroup.blocksRaycasts = state;
 
         // Unlock cursor when menu is open, lock it when closed
-        Cursor.lockState = state ? CursorLockMode.Confined : CursorLockMode.Locked;
+        Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = state;
 
         if (!state)
             HideDescription();
@@ -183,131 +195,124 @@ public class InventoryManager : MonoBehaviour
         PlacementManager.Instance.StartPlacement(item);
     }
 
-    /// <summary>
-    /// Imports a single FBX file and creates a prefab from it.
-    /// </summary>
-    public void ImportFBXFromPath(string filePath)
+    public async void ImportGLBFromPath(string filePath, System.Action<bool, string> onComplete = null)
     {
         if (string.IsNullOrEmpty(filePath))
         {
-            Debug.LogError("File path is empty!");
+            onComplete?.Invoke(false, "File path is empty.");
             return;
         }
 
         if (!File.Exists(filePath))
         {
-            Debug.LogError($"FBX file does not exist: {filePath}");
+            onComplete?.Invoke(false, $"File not found: {filePath}");
             return;
         }
 
-        try
+        GameObject loaded = await GLBLoader.LoadGLB(filePath);
+        if (loaded == null)
         {
-            // Load the FBX file
-            GameObject loadedObject = FBXLoader.LoadFBX(filePath);
-            if (loadedObject == null)
-            {
-                Debug.LogError($"Failed to load FBX file: {filePath}");
-                return;
-            }
+            onComplete?.Invoke(false, $"Failed to load: {Path.GetFileName(filePath)}");
+            return;
+        }
 
-            // Create an InventoryItemData from the loaded FBX
-            InventoryItemData newItem = CreateInventoryItemFromPrefab(loadedObject, Path.GetFileNameWithoutExtension(filePath));
-            if (newItem != null)
-            {
-                items.Add(newItem);
-                PopulateSlots();
-                Debug.Log($"Successfully imported FBX: {filePath}");
-            }
-        }
-        catch (System.Exception e)
-        {
-            Debug.LogError($"Exception while importing FBX: {e.Message}\n{e.StackTrace}");
-        }
+        items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(filePath)));
+        SaveGLBPath(filePath);
+        PopulateSlots();
+        onComplete?.Invoke(true, $"Imported: {Path.GetFileNameWithoutExtension(filePath)}");
     }
 
-    /// <summary>
-    /// Imports all FBX files from a directory.
-    /// </summary>
-    public void ImportFBXsFromDirectory(string directoryPath)
+    public async void ImportGLBsFromDirectory(string directoryPath, System.Action<bool, string> onComplete = null)
     {
         if (string.IsNullOrEmpty(directoryPath))
         {
-            Debug.LogError("Directory path is empty!");
+            onComplete?.Invoke(false, "Directory path is empty.");
             return;
         }
 
         if (!Directory.Exists(directoryPath))
         {
-            Debug.LogError($"Directory does not exist: {directoryPath}");
+            onComplete?.Invoke(false, $"Directory not found: {directoryPath}");
             return;
         }
 
-        try
+        string[] glbFiles = Directory.GetFiles(directoryPath, "*.glb", SearchOption.AllDirectories);
+        if (glbFiles.Length == 0)
         {
-            string[] fbxFiles = Directory.GetFiles(directoryPath, "*.fbx", SearchOption.AllDirectories);
-            if (fbxFiles.Length == 0)
-            {
-                Debug.LogWarning($"No FBX files found in directory: {directoryPath}");
-                return;
-            }
+            onComplete?.Invoke(false, "No .glb files found in directory.");
+            return;
+        }
 
-            int importedCount = 0;
-            foreach (string fbxPath in fbxFiles)
+        int imported = 0;
+        foreach (string path in glbFiles)
+        {
+            GameObject loaded = await GLBLoader.LoadGLB(path);
+            if (loaded != null)
             {
-                try
-                {
-                    GameObject loadedObject = FBXLoader.LoadFBX(fbxPath);
-                    if (loadedObject != null)
-                    {
-                        InventoryItemData newItem = CreateInventoryItemFromPrefab(loadedObject, Path.GetFileNameWithoutExtension(fbxPath));
-                        if (newItem != null)
-                        {
-                            items.Add(newItem);
-                            importedCount++;
-                        }
-                    }
-                }
-                catch (System.Exception e)
-                {
-                    Debug.LogWarning($"Failed to import FBX {fbxPath}: {e.Message}");
-                }
-            }
-
-            if (importedCount > 0)
-            {
-                PopulateSlots();
-                Debug.Log($"Successfully imported {importedCount} FBX files from: {directoryPath}");
-            }
-            else
-            {
-                Debug.LogWarning($"No FBX files were successfully imported from: {directoryPath}");
+                items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path)));
+                SaveGLBPath(path);
+                imported++;
             }
         }
-        catch (System.Exception e)
+
+        if (imported > 0)
         {
-            Debug.LogError($"Exception while importing FBX directory: {e.Message}\n{e.StackTrace}");
+            PopulateSlots();
+            onComplete?.Invoke(true, $"Imported {imported} of {glbFiles.Length} file(s).");
+        }
+        else
+        {
+            onComplete?.Invoke(false, "No files could be imported.");
         }
     }
 
-    /// <summary>
-    /// Creates an InventoryItemData from a loaded FBX prefab.
-    /// </summary>
-    private InventoryItemData CreateInventoryItemFromPrefab(GameObject prefab, string itemName)
+    private InventoryItemData CreateItemFromGLB(GameObject prefab, string itemName)
     {
-        // Create a new InventoryItemData
-        InventoryItemData newItem = ScriptableObject.CreateInstance<InventoryItemData>();
-        newItem.itemName = itemName;
-        newItem.description = $"Imported FBX model: {itemName}";
-        newItem.prefab3D = prefab;
-        newItem.icon = defaultIcon; // Will be null if not assigned, handled by ItemSlotUI
-        newItem.category = ItemCategory.All;
-        newItem.price = 0f; // Free by default
+        InventoryItemData item = ScriptableObject.CreateInstance<InventoryItemData>();
+        item.itemName = itemName;
+        item.description = $"Imported model: {itemName}";
+        item.prefab3D = prefab;
+        item.icon = defaultIcon;
+        item.category = ItemCategory.All;
+        item.price = 0f;
+        return item;
+    }
 
-        // Optionally, save the asset to disk if you want persistence
-        // String assetPath = Path.Combine("Assets/Resources", $"{itemName}.asset");
-        // AssetDatabase.CreateAsset(newItem, assetPath);
-        // AssetDatabase.SaveAssets();
+    private void SaveGLBPath(string filePath)
+    {
+        GLBPathList list = LoadGLBPathList();
+        if (!list.paths.Contains(filePath))
+        {
+            list.paths.Add(filePath);
+            File.WriteAllText(_glbSavePath, JsonUtility.ToJson(list, true));
+        }
+    }
 
-        return newItem;
+    private GLBPathList LoadGLBPathList()
+    {
+        if (!File.Exists(_glbSavePath)) return new GLBPathList();
+        try { return JsonUtility.FromJson<GLBPathList>(File.ReadAllText(_glbSavePath)) ?? new GLBPathList(); }
+        catch { return new GLBPathList(); }
+    }
+
+    private async void LoadSavedGLBs()
+    {
+        GLBPathList list = LoadGLBPathList();
+        if (list.paths.Count == 0) return;
+
+        foreach (string path in list.paths)
+        {
+            if (!File.Exists(path))
+            {
+                Debug.LogWarning($"Previously imported GLB no longer found: {path}");
+                continue;
+            }
+            GameObject loaded = await GLBLoader.LoadGLB(path);
+            if (loaded != null)
+                items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path)));
+        }
+
+        if (items.Count > 0)
+            PopulateSlots();
     }
 }
