@@ -29,7 +29,47 @@ MonoBehaviour:
     english: Not enough money
     albanian: Nuk ka para
     german: Nicht genug Geld
-  - key: Languages
-    english: English
-    albanian: Shqip
+  - key: languages
+    english: Languages
+    albanian: "Gjuh\xEBt"
+    german: Sprachen
+  - key: explore_designs
+    english: Explore Designs
+    albanian: Eksploro Dizajne
+    german: Designs erkunden
+  - key: sandbox
+    english: Sandbox
+    albanian: Sandbox
+    german: Sandbox
+  - key: settings
+    english: Settings
+    albanian: "Cil\xEBsimet"
+    german: Einstellungen
+  - key: exit
+    english: Exit
+    albanian: Dalje
+    german: Beenden
+  - key: german
+    english: German
+    albanian: Gjermanisht
     german: Deutsch
+  - key: albanian
+    english: Albanian
+    albanian: Shqip
+    german: Albanisch
+  - key: english
+    english: English
+    albanian: Anglisht
+    german: Englisch
+  - key: previous
+    english: Previous
+    albanian: "Paraardh\xEBse"
+    german: "Zur\xFCck"
+  - key: next
+    english: Next
+    albanian: "Tjet\xEBr"
+    german: Weiter
+  - key: back
+    english: Back
+    albanian: Kthehu
+    german: "Zur\xFCck"
