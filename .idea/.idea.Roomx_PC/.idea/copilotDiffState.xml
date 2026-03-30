@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="$PROJECT_DIR$/Assets/Scripts/GameMenu/PauseMenuController.cs">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="$PROJECT_DIR$/Assets/Scripts/GameMenu/PauseMenuController.cs" />
+              <option name="updatedContent" value="using UnityEngine;&#10;using UnityEngine.SceneManagement;&#10;using UnityEngine.UI;&#10;&#10;public class PauseMenuController : MonoBehaviour&#10;{&#10;    [SerializeField] private CanvasGroup pauseMenuPanel;&#10;    [SerializeField] private Button resumeButton;&#10;    [SerializeField] private Button quitButton;&#10;    [SerializeField] private Button mainMenuButton;&#10;    [SerializeField] private KeyCode pauseKey = KeyCode.Escape;&#10;&#10;    private bool isPaused = false;&#10;&#10;    private void Start()&#10;    {&#10;        // Set up button listeners&#10;        if (resumeButton != null)&#10;            resumeButton.onClick.AddListener(Resume);&#10;        if (quitButton != null)&#10;            quitButton.onClick.AddListener(QuitGame);&#10;        if (mainMenuButton != null)&#10;            mainMenuButton.onClick.AddListener(GoToMainMenu);&#10;&#10;        // Hide menu initially&#10;        if (pauseMenuPanel != null)&#10;        {&#10;            pauseMenuPanel.alpha = 0f;&#10;            pauseMenuPanel.interactable = false;&#10;            pauseMenuPanel.blocksRaycasts = false;&#10;        }&#10;    }&#10;&#10;    private void Update()&#10;    {&#10;        if (Input.GetKeyDown(pauseKey))&#10;        {&#10;            if (isPaused)&#10;                Resume();&#10;            else&#10;                Pause();&#10;        }&#10;    }&#10;&#10;    private void Pause()&#10;    {&#10;        isPaused = true;&#10;        Time.timeScale = 0f; // Pause the game&#10;        ShowMenu();&#10;    }&#10;&#10;    private void Resume()&#10;    {&#10;        isPaused = false;&#10;        Time.timeScale = 1f; // Resume the game&#10;        HideMenu();&#10;    }&#10;&#10;    private void ShowMenu()&#10;    {&#10;        if (pauseMenuPanel != null)&#10;        {&#10;            pauseMenuPanel.alpha = 1f;&#10;            pauseMenuPanel.interactable = true;&#10;            pauseMenuPanel.blocksRaycasts = true;&#10;        }&#10;    }&#10;&#10;    private void HideMenu()&#10;    {&#10;        if (pauseMenuPanel != null)&#10;        {&#10;            pauseMenuPanel.alpha = 0f;&#10;            pauseMenuPanel.interactable = false;&#10;            pauseMenuPanel.blocksRaycasts = false;&#10;        }&#10;    }&#10;&#10;    private void QuitGame()&#10;    {&#10;        Time.timeScale = 1f; // Resume time before quitting&#10;        #if UNITY_EDITOR&#10;            UnityEditor.EditorApplication.isPlaying = false;&#10;        #else&#10;            Application.Quit();&#10;        #endif&#10;    }&#10;&#10;    private void GoToMainMenu()&#10;    {&#10;        Time.timeScale = 1f; // Resume time before loading scene&#10;        SceneManager.LoadScene(&quot;Menu&quot;); // Make sure your main menu scene is named &quot;Menu&quot;&#10;    }&#10;}&#10;" />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

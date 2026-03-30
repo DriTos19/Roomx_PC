@@ -4,9 +4,13 @@ using System.Collections;
 public class ToggleMenu : MonoBehaviour
 {
     [Header("Menu References")]
-    public CanvasGroup menuGroup;     // drag Menu_Panel's CanvasGroup here
+    public CanvasGroup menuGroup;
     public KeyCode toggleKey = KeyCode.I;
-    public float fadeDuration = 0.3f; // seconds
+    public float fadeDuration = 0.3f;
+
+    [Header("Cursor")]
+    [Tooltip("Unlock the cursor and make it visible while this menu is open.")]
+    public bool manageCursor = false;
 
     private bool isVisible = false;
     private Coroutine fadeRoutine;
@@ -14,9 +18,7 @@ public class ToggleMenu : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(toggleKey))
-        {
             ToggleMenuVisibility();
-        }
     }
 
     void ToggleMenuVisibility()
@@ -27,6 +29,12 @@ public class ToggleMenu : MonoBehaviour
             StopCoroutine(fadeRoutine);
 
         fadeRoutine = StartCoroutine(FadeMenu(isVisible));
+
+        if (manageCursor)
+        {
+            Cursor.lockState = isVisible ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = isVisible;
+        }
     }
 
     IEnumerator FadeMenu(bool show)
@@ -35,7 +43,6 @@ public class ToggleMenu : MonoBehaviour
         float endAlpha = show ? 1f : 0f;
         float elapsed = 0f;
 
-        // Enable interaction while fading in
         if (show)
         {
             menuGroup.interactable = true;
@@ -52,7 +59,6 @@ public class ToggleMenu : MonoBehaviour
 
         menuGroup.alpha = endAlpha;
 
-        // Disable interaction when faded out
         if (!show)
         {
             menuGroup.interactable = false;
