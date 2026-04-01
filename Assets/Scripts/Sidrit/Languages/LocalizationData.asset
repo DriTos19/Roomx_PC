@@ -29,36 +29,9 @@ MonoBehaviour:
     english: Not enough money
     albanian: Nuk ka para
     german: Nicht genug Geld
-  - key: languages
-    english: Languages
-    albanian: "Gjuh\xEBt"
-    german: Sprachen
-  - key: explore_designs
-    english: Explore Designs
-    albanian: Eksploro Dizajne
-    german: Designs erkunden
-  - key: sandbox
-    english: Sandbox
-    albanian: Sandbox
-    german: Sandbox
-  - key: settings
-    english: Settings
-    albanian: "Cil\xEBsimet"
-    german: Einstellungen
-  - key: exit
-    english: Exit
-    albanian: Dalje
-    german: Beenden
-  - key: german
-    english: German
-    albanian: Gjermanisht
-    german: Deutsch
-  - key: albanian
-    english: Albanian
-    albanian: Shqip
-    german: Albanisch
-  - key: english
+  - key: Languages
     english: English
+<<<<<<< HEAD
     albanian: Anglisht
     german: Englisch
   - key: previous
@@ -77,3 +50,7 @@ MonoBehaviour:
     english: Back To Mainmenu
     albanian: "Kthehu n\xEB menun\xEB kryesore"
     german: "Zur\xFCck zum Hauptmen\xFC"
+=======
+    albanian: Shqip
+    german: Deutsch
+>>>>>>> parent of cd5981b (Translatio)
