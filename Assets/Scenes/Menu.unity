@@ -260,6 +260,7 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &15208133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +415,8 @@ CanvasRenderer:
 >>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of bce750a (cc)
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &160856092
@@ -2012,6 +2015,7 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &546783697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2166,6 +2170,8 @@ CanvasRenderer:
 >>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of bce750a (cc)
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &596043035
@@ -3347,6 +3353,7 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1104345103
 =======
 --- !u!1 &1114819357
@@ -3506,6 +3513,8 @@ MonoBehaviour:
   localizationData: {fileID: 11400000, guid: 9e85d7306f4c3c4479160a02af24581a, type: 2}
   key: back
 >>>>>>> parent of bce750a (cc)
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &1136069059
@@ -4450,6 +4459,7 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &1622658559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4652,6 +4662,8 @@ CanvasRenderer:
 >>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of bce750a (cc)
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &1652555246
@@ -5993,6 +6005,7 @@ RectTransform:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 84990413}
 =======
 >>>>>>> parent of cd5981b (Translatio)
@@ -6001,6 +6014,8 @@ RectTransform:
 =======
   - {fileID: 2029545689}
 >>>>>>> parent of bce750a (cc)
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
   m_Father: {fileID: 899061933}
@@ -6332,6 +6347,7 @@ CanvasRenderer:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &2003127780
 =======
 --- !u!1 &2029545688
@@ -6477,6 +6493,8 @@ CanvasRenderer:
   m_GameObject: {fileID: 2029545688}
   m_CullTransparentMesh: 1
 >>>>>>> parent of bce750a (cc)
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &2073671232
