@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -36,6 +36,8 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Purchasemanager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/Inventory/Purchasemanager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Inventory/Purchasemanager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Logic/Inventory/Purchasemanager.cs.meta" afterDir="false" />
 >>>>>>> parent of bce750a (cc)
+=======
+>>>>>>> parent of cd5981b (Translatio)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,6 +77,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> parent of cd5981b (Translatio)
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
@@ -86,7 +91,11 @@
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     &quot;git-widget-placeholder&quot;: &quot;sidrit&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;roi__saved&quot;,
+>>>>>>> parent of cd5981b (Translatio)
 =======
     &quot;git-widget-placeholder&quot;: &quot;roi__saved&quot;,
 >>>>>>> parent of cd5981b (Translatio)
@@ -102,6 +111,7 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+<<<<<<< HEAD
 =======
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
@@ -123,8 +133,10 @@
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
 >>>>>>> parent of bce750a (cc)
+=======
+>>>>>>> parent of cd5981b (Translatio)
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/../RoomX\My project (2).exe" />
