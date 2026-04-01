@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
 
@@ -8,19 +7,8 @@ public class FurnitureSaveManager : MonoBehaviour
     public List<GameObject> activeFurniture = new List<GameObject>();
     private string savePath;
 
-    [Header("UI Buttons")]
-    [SerializeField] private Button saveButton;
-    [SerializeField] private Button loadButton;
-
     void Awake() {
         savePath = Application.persistentDataPath + "/furniture_data.json";
-    }
-
-    void Start() {
-        if (saveButton != null)
-            saveButton.onClick.AddListener(SaveGame);
-        if (loadButton != null)
-            loadButton.onClick.AddListener(LoadGame);
     }
 
     // This checks for key presses every single frame
@@ -30,7 +18,7 @@ public class FurnitureSaveManager : MonoBehaviour
             SaveGame();
         }
 
-        // Press 'L' to Load
+        // Press 'L' to Load (Duplicates)
         if (Input.GetKeyDown(KeyCode.L)) {
             LoadGame();
         }
@@ -96,12 +84,6 @@ public class FurnitureSaveManager : MonoBehaviour
                 return;
             }
 
-            // Clear existing furniture before loading to prevent duplicates
-            activeFurniture.RemoveAll(item => item == null);
-            foreach (GameObject obj in activeFurniture)
-                Destroy(obj);
-            activeFurniture.Clear();
-
             Debug.Log("Found " + data.allItems.Count + " items to load.");
 
             foreach (FurnitureData item in data.allItems) {
@@ -118,7 +100,7 @@ public class FurnitureSaveManager : MonoBehaviour
                     prefabRef.prefabPath = item.prefabName;
                     
                     activeFurniture.Add(newObj);
-                    Debug.Log("Loaded: " + item.prefabName);
+                    Debug.Log("SPAWNED DUPLICATE: " + item.prefabName);
                 } else {
                     Debug.LogError("FAILED: Cannot find InventoryItemData at Resources/ScriptableObjects/InventoryItems/" + item.prefabName);
                     if (itemData != null && itemData.prefab3D == null) {
