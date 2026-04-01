@@ -47,6 +47,7 @@ MonoBehaviour:
     english: Back
     albanian: Kthehu
     german: "Zur\xFCck"
+<<<<<<< HEAD
   - key: back_to_mainmenu
     english: Back To Mainmenu
     albanian: "Kthehu n\xEB menun\xEB kryesore"
@@ -59,3 +60,5 @@ MonoBehaviour:
     albanian: Shqip
     german: Deutsch
 >>>>>>> parent of cd5981b (Translatio)
+=======
+>>>>>>> parent of bce750a (cc)
