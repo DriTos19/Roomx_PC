@@ -258,6 +258,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 15208129}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &15208133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +406,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84990412}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &160856092
@@ -2002,6 +2005,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 546783693}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &546783697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2149,6 +2153,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 586959039}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &596043035
@@ -3327,6 +3333,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1048214189}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1104345103
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,6 +3468,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104345103}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &1136069059
@@ -4418,6 +4427,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 1622658555}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &1622658559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4613,6 +4623,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1636104208}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &1652555246
@@ -5951,7 +5963,10 @@ RectTransform:
   - {fileID: 518545313}
   - {fileID: 928479305}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 84990413}
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
   m_Father: {fileID: 899061933}
@@ -6281,6 +6296,7 @@ CanvasRenderer:
   m_GameObject: {fileID: 2003127776}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!114 &2003127780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6295,6 +6311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localizationData: {fileID: 11400000, guid: 9e85d7306f4c3c4479160a02af24581a, type: 2}
   key: previous
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
 --- !u!1 &2073671232

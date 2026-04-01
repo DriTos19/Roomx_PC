@@ -7,6 +7,7 @@
     <list default="true" id="629c0231-3670-47cd-a52f-9ecac442be49" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Roomx_PC/.idea/workspace.xml" afterDir="false" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/House1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/House1.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LanguageSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LanguageSelector.cs" afterDir="false" />
@@ -14,6 +15,8 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizationData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizationData.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizationManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizationManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizedText.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Sidrit/Languages/LocalizedText.cs" afterDir="false" />
+=======
+>>>>>>> parent of cd5981b (Translatio)
 =======
 >>>>>>> parent of cd5981b (Translatio)
     </list>
@@ -64,7 +67,11 @@
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
 <<<<<<< HEAD
+<<<<<<< HEAD
     &quot;git-widget-placeholder&quot;: &quot;sidrit&quot;,
+=======
+    &quot;git-widget-placeholder&quot;: &quot;roi__saved&quot;,
+>>>>>>> parent of cd5981b (Translatio)
 =======
     &quot;git-widget-placeholder&quot;: &quot;roi__saved&quot;,
 >>>>>>> parent of cd5981b (Translatio)
