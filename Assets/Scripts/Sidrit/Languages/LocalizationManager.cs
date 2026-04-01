@@ -1,37 +1,40 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum Language { English, Albanian, German }
-
-public class LocalizationManager : MonoBehaviour
+namespace Sidrit.Languages
 {
-    public static LocalizationManager Instance { get; private set; }
+    public enum Language { English, Albanian, German }
 
-    public UnityEvent onLanguageChanged = new UnityEvent();
-
-    private const string SAVE_KEY = "Language";
-
-    public Language CurrentLanguage { get; private set; } = Language.English;
-
-    private void Awake()
+    public class LocalizationManager : MonoBehaviour
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-        Load();
-    }
+        public static LocalizationManager Instance { get; private set; }
 
-    public void SetLanguage(Language language)
-    {
-        CurrentLanguage = language;
-        PlayerPrefs.SetInt(SAVE_KEY, (int)language);
-        PlayerPrefs.Save();
-        onLanguageChanged.Invoke();
-    }
+        public UnityEvent onLanguageChanged = new UnityEvent();
 
-    private void Load()
-    {
-        if (PlayerPrefs.HasKey(SAVE_KEY))
-            CurrentLanguage = (Language)PlayerPrefs.GetInt(SAVE_KEY);
+        private const string SAVE_KEY = "Language";
+
+        public Language CurrentLanguage { get; private set; } = Language.English;
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            Load();
+        }
+
+        public void SetLanguage(Language language)
+        {
+            CurrentLanguage = language;
+            PlayerPrefs.SetInt(SAVE_KEY, (int)language);
+            PlayerPrefs.Save();
+            onLanguageChanged.Invoke();
+        }
+
+        private void Load()
+        {
+            if (PlayerPrefs.HasKey(SAVE_KEY))
+                CurrentLanguage = (Language)PlayerPrefs.GetInt(SAVE_KEY);
+        }
     }
 }

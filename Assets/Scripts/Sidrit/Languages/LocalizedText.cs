@@ -1,32 +1,35 @@
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 
-public class LocalizedText : MonoBehaviour
+namespace Sidrit.Languages
 {
-    public LocalizationData localizationData;
-    public string key;
-
-    private TMP_Text _text;
-
-    private void Awake()
+    public class LocalizedText : MonoBehaviour
     {
-        _text = GetComponent<TMP_Text>();
-    }
+        public LocalizationData localizationData;
+        public string key;
 
-    private void Start()
-    {
-        LocalizationManager.Instance.onLanguageChanged.AddListener(UpdateText);
-        UpdateText();
-    }
+        private TMP_Text _text;
 
-    private void OnDestroy()
-    {
-        if (LocalizationManager.Instance != null)
-            LocalizationManager.Instance.onLanguageChanged.RemoveListener(UpdateText);
-    }
+        private void Awake()
+        {
+            _text = GetComponent<TMP_Text>();
+        }
 
-    private void UpdateText()
-    {
-        _text.text = localizationData.GetText(key, LocalizationManager.Instance.CurrentLanguage);
+        private void Start()
+        {
+            LocalizationManager.Instance.onLanguageChanged.AddListener(UpdateText);
+            UpdateText();
+        }
+
+        private void OnDestroy()
+        {
+            if (LocalizationManager.Instance != null)
+                LocalizationManager.Instance.onLanguageChanged.RemoveListener(UpdateText);
+        }
+
+        private void UpdateText()
+        {
+            _text.text = localizationData.GetText(key, LocalizationManager.Instance.CurrentLanguage);
+        }
     }
 }

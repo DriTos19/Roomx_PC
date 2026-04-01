@@ -1,8 +1,11 @@
 using UnityEngine;
 
-public class LanguageSelector : MonoBehaviour
+namespace Sidrit.Languages
 {
-    public void SetEnglish()  => LocalizationManager.Instance.SetLanguage(Language.English);
-    public void SetAlbanian() => LocalizationManager.Instance.SetLanguage(Language.Albanian);
-    public void SetGerman()   => LocalizationManager.Instance.SetLanguage(Language.German);
+    public class LanguageSelector : MonoBehaviour
+    {
+        public void SetEnglish()  => LocalizationManager.Instance.SetLanguage(Language.English);
+        public void SetAlbanian() => LocalizationManager.Instance.SetLanguage(Language.Albanian);
+        public void SetGerman()   => LocalizationManager.Instance.SetLanguage(Language.German);
+    }
 }
