@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class FurnitureSaveManager : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class FurnitureSaveManager : MonoBehaviour
     [SerializeField] private Button loadButton;
 
     void Awake() {
-        savePath = Application.persistentDataPath + "/furniture_data.json";
+        RefreshSavePath();
     }
 
     void Start() {
@@ -37,7 +38,10 @@ public class FurnitureSaveManager : MonoBehaviour
     }
 
     public void SaveGame() {
+        RefreshSavePath();
+
         SaveData data = new SaveData();
+        data.sceneName = SceneManager.GetActiveScene().name;
         activeFurniture.RemoveAll(item => item == null);
 
         foreach (GameObject obj in activeFurniture) {
@@ -66,6 +70,7 @@ public class FurnitureSaveManager : MonoBehaviour
     }
 
     public void LoadGame() {
+        RefreshSavePath();
         Debug.Log("Save file path: " + savePath);
         
         if (!File.Exists(savePath)) {
@@ -90,17 +95,23 @@ public class FurnitureSaveManager : MonoBehaviour
                 Debug.LogWarning("Failed to deserialize JSON - data is null!");
                 return;
             }
-            
-            if (data.allItems.Count == 0) {
-                Debug.LogWarning("Save file has no furniture items!");
+
+            string activeSceneName = SceneManager.GetActiveScene().name;
+            if (!string.IsNullOrEmpty(data.sceneName) && data.sceneName != activeSceneName) {
+                Debug.LogWarning("Save file belongs to scene '" + data.sceneName + "' and will not load in scene '" + activeSceneName + "'.");
                 return;
             }
-
+            
             // Clear existing furniture before loading to prevent duplicates
             activeFurniture.RemoveAll(item => item == null);
             foreach (GameObject obj in activeFurniture)
                 Destroy(obj);
             activeFurniture.Clear();
+
+            if (data.allItems.Count == 0) {
+                Debug.LogWarning("Save file has no furniture items!");
+                return;
+            }
 
             Debug.Log("Found " + data.allItems.Count + " items to load.");
 
@@ -133,6 +144,19 @@ public class FurnitureSaveManager : MonoBehaviour
         }
     }
 
+    private void RefreshSavePath() {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (string.IsNullOrWhiteSpace(sceneName)) {
+            sceneName = "scene_" + SceneManager.GetActiveScene().buildIndex;
+        }
+
+        foreach (char invalidChar in Path.GetInvalidFileNameChars()) {
+            sceneName = sceneName.Replace(invalidChar, '_');
+        }
+
+        savePath = Path.Combine(Application.persistentDataPath, "furniture_data_" + sceneName + ".json");
+    }
+
     [System.Serializable]
     public class FurnitureData {
         public string prefabName;
@@ -142,6 +166,7 @@ public class FurnitureSaveManager : MonoBehaviour
 
     [System.Serializable]
     public class SaveData {
+        public string sceneName;
         public List<FurnitureData> allItems = new List<FurnitureData>();
     }
 }
