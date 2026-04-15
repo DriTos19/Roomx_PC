@@ -1670,7 +1670,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: b89f53bf9d5136b4b9b68d8045c80ec4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 31fa94848ab59d94a99e2e0109d33f63, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3295,6 +3295,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0722b79d4eda061469c4c77a1865b3b5, type: 2}
   - {fileID: 11400000, guid: 2b5b276a2c412c3488c15f34d286c254, type: 2}
   - {fileID: 11400000, guid: b1e4ae91b5c9ab144a9687822dba56e4, type: 2}
+  - {fileID: 11400000, guid: 760ca5988ac550f4b9eddc0f7e9effc0, type: 2}
+  - {fileID: 11400000, guid: 12f7d0438627362428bfdd50813aa6e1, type: 2}
   balanceLabel: {fileID: 1322417108}
   purchaseButton: {fileID: 442878549}
   priceLabel: {fileID: 0}
@@ -3664,7 +3666,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 36.455, y: -26}
+  m_AnchoredPosition: {x: 36.454956, y: -26}
   m_SizeDelta: {x: -662.6929, y: -303.061}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143460721

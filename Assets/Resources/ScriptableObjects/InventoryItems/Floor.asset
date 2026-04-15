@@ -16,7 +16,7 @@ MonoBehaviour:
   description: This floor element provides a smooth, uniform surface that complements
     various interior styles. Designed for durability, it forms a reliable base for
     any space.
-  icon: {fileID: 21300000, guid: b296dad70a3493948afe0cdd4d594741, type: 3}
+  icon: {fileID: 21300000, guid: d3d9aba25d2ad0e4d97473ba56ad47fe, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: f4851cd8658daec4fa0e7b95d6d9ef5d, type: 3}
   category: 7
   price: 0

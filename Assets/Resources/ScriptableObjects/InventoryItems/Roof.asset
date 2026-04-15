@@ -16,8 +16,8 @@ MonoBehaviour:
   description: This roof features a clean, architectural design that completes the
     structure with a polished appearance. Built from durable materials, it provides
     reliable coverage while enhancing the overall style of the space.
-  icon: {fileID: 21300000, guid: 96c413c47b917fb45b8aae48d6d87b43, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 6d39c392b88729340acd49d3ca65e665, type: 3}
+  icon: {fileID: 21300000, guid: d3d9aba25d2ad0e4d97473ba56ad47fe, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: f4851cd8658daec4fa0e7b95d6d9ef5d, type: 3}
   category: 8
   price: 0
   allowManualHeightAdjust: 1
