@@ -3,7 +3,12 @@ guid: d904f8e476c30774c8648af0c0b1dfe4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ENERYDA.003
+    second: {fileID: 2100000, guid: 0f0dd23a3c61d3c4ba27dcea1d957232, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 88bec5b15cb389f418196f61cef13f2f
+guid: 4897aaebdb7f6ed479232b8da7912ada
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: ENERYDA.002
-    second: {fileID: 2100000, guid: 0f0dd23a3c61d3c4ba27dcea1d957232, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

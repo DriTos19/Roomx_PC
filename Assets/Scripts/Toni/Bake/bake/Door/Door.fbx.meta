@@ -3,7 +3,17 @@ guid: c9b3cd4631d520a4ea5809f60f6a134d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Gold metal (Imperfections)
+    second: {fileID: 2100000, guid: a9ae93a8957810a4cb4256e77cb4223d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal
+    second: {fileID: 2100000, guid: 0f0dd23a3c61d3c4ba27dcea1d957232, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

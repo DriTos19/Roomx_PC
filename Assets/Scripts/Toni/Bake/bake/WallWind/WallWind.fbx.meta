@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 88bec5b15cb389f418196f61cef13f2f
+guid: 9b1d14df49862be4fbd751e8d9286a5f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: ENERYDA.002
-    second: {fileID: 2100000, guid: 0f0dd23a3c61d3c4ba27dcea1d957232, type: 2}
+      name: Glass
+    second: {fileID: 2100000, guid: 88cc8ca5123f13e42b91b4abb6a9c943, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
