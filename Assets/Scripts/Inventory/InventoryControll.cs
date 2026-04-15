@@ -99,6 +99,8 @@ public class InventoryControll : MonoBehaviour
 
     void OnDestroy()
     {
+        Time.timeScale = 1f;
+
         if (BudgetManager.Instance != null)
             BudgetManager.Instance.onBalanceChanged.RemoveListener(RefreshBalanceUI);
 
@@ -160,6 +162,9 @@ public class InventoryControll : MonoBehaviour
         Cursor.lockState = state ? CursorLockMode.Confined : CursorLockMode.Locked;
         Cursor.visible = state;
 
+        // Freeze / unfreeze game
+        Time.timeScale = state ? 0f : 1f;
+
         if (!state)
             HideDescription();
     }
@@ -207,11 +212,13 @@ public class InventoryControll : MonoBehaviour
         if (totalPages <= 0)
             totalPages = 1;
 
+        Debug.Log($"UpdatePaginationUI -> currentPage={currentPage}, totalPages={totalPages}");
+
         if (pageLabel != null)
             pageLabel.text = $"Page {currentPage + 1} / {totalPages}";
 
         if (backButton != null)
-            backButton.interactable = currentPage > 0;
+            backButton.interactable = true;
 
         if (nextButton != null)
             nextButton.interactable = currentPage < totalPages - 1;
@@ -220,6 +227,7 @@ public class InventoryControll : MonoBehaviour
     public void NextPage()
     {
         int totalPages = Mathf.CeilToInt((float)items.Count / itemsPerPage);
+        Debug.Log($"Next clicked -> currentPage={currentPage}, totalPages={totalPages}");
 
         if (currentPage < totalPages - 1)
         {
@@ -231,6 +239,8 @@ public class InventoryControll : MonoBehaviour
 
     public void PreviousPage()
     {
+        Debug.Log($"Back clicked -> currentPage={currentPage}");
+
         if (currentPage > 0)
         {
             currentPage--;

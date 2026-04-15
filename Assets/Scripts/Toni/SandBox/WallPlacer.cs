@@ -45,6 +45,7 @@ public class WallPlacer_PC : MonoBehaviour
 
     private float xRotation = 0f;
     private Material[] lastSavedMaterials;
+    private float currentRotationY = 0f;
 
     // Manual height offset for items that allow it (ex: roof)
     private float manualHeightOffset = 0f;
@@ -69,6 +70,7 @@ public class WallPlacer_PC : MonoBehaviour
         isEditingExisting = false;
         lastSavedMaterials = null;
         manualHeightOffset = 0f;
+        currentRotationY = 0f;
         ClearCanceledEditData();
 
         if (previewInstance != null)
@@ -138,6 +140,18 @@ public class WallPlacer_PC : MonoBehaviour
 
     void HandlePreviewInput()
     {
+        
+        // ⬅️➡️ Arrow keys rotate object
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            currentRotationY -= 100f * Time.deltaTime;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            currentRotationY += 100f * Time.deltaTime;
+        }
+        
         if (currentItem == null)
             return;
 
@@ -213,7 +227,8 @@ public class WallPlacer_PC : MonoBehaviour
         );
 
         previewInstance.transform.position = finalPos;
-        previewInstance.transform.rotation = Quaternion.identity;
+        previewInstance.transform.rotation = Quaternion.Euler(0f, currentRotationY, 0f);
+        
     }
 
     bool TryGetFurnitureSupportTopY(Vector3 snappedPoint, Bounds previewBounds, out float topY)

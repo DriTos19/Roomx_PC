@@ -26,6 +26,14 @@ public class MaterialWheelController : MonoBehaviour
         if (wheelContainer != null)
             wheelContainer.gameObject.SetActive(false);
     }
+    
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && isOpen)
+        {
+            CloseWheel();
+        }
+    }
 
     // =========================
     // SELECT OBJECT
