@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using System.Collections.Generic;
 
 public class InventoryControll : InventoryManager
 {
@@ -15,6 +14,7 @@ public class InventoryControll : InventoryManager
     public int itemsPerPage = 9;
 
     private int currentPage = 0;
+    private float previousTimeScale = 1f;
 
     protected override void Start()
     {
@@ -35,6 +35,22 @@ public class InventoryControll : InventoryManager
         PopulateSlots();
     }
 
+    public override void SetMenu(bool state)
+    {
+        base.SetMenu(state);
+
+        if (state)
+        {
+            previousTimeScale = Time.timeScale;
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            Time.timeScale = previousTimeScale;
+            HideDescription();
+        }
+    }
+
     public override void PopulateSlots()
     {
         if (slotParent == null || slotPrefab == null) return;
@@ -51,15 +67,41 @@ public class InventoryControll : InventoryManager
             var ui = slot.GetComponent<ItemSlotUI>();
 
             if (ui != null)
-                ui.Setup((InventoryItemData)(object)items[i], this);
+                ui.Setup(items[i], this);
         }
 
         UpdatePaginationUI();
     }
 
+    public override void PreviewItemFromInventory(InventoryItemData item)
+    {
+        if (item == null) return;
+
+        CloseInventory();
+
+        if (wallPlacer != null)
+            wallPlacer.StartPlacement(item);
+    }
+
+    public override void ShowItemDetails(InventoryItemData item)
+    {
+        base.ShowItemDetails(item);
+    }
+
+    public void HideHoveredItemDetails()
+    {
+        HideDescription();
+    }
+
     private void UpdatePaginationUI()
     {
         int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)items.Count / itemsPerPage));
+
+        if (currentPage >= totalPages)
+            currentPage = totalPages - 1;
+
+        if (currentPage < 0)
+            currentPage = 0;
 
         if (pageLabel != null)
             pageLabel.text = $"Page {currentPage + 1} / {totalPages}";
@@ -73,26 +115,23 @@ public class InventoryControll : InventoryManager
 
     public void NextPage()
     {
-        currentPage++;
-        PopulateSlots();
-        HideDescription();
+        int totalPages = Mathf.Max(1, Mathf.CeilToInt((float)items.Count / itemsPerPage));
+
+        if (currentPage < totalPages - 1)
+        {
+            currentPage++;
+            PopulateSlots();
+            HideDescription();
+        }
     }
 
     public void PreviousPage()
     {
-        currentPage--;
-        PopulateSlots();
-        HideDescription();
-    }
-
-    public override void ShowItemDetails(InventoryItemData item)
-    {
-        base.ShowItemDetails(item);
-
-        if (wallPlacer != null)
+        if (currentPage > 0)
         {
-            CloseInventory();
-            wallPlacer.StartPlacement((InventoryItemData)(object)item);
+            currentPage--;
+            PopulateSlots();
+            HideDescription();
         }
     }
 
@@ -101,8 +140,16 @@ public class InventoryControll : InventoryManager
         CloseInventory();
 
         if (wallPlacer != null)
-            wallPlacer.StartPlacement((InventoryItemData)(object)item);
+            wallPlacer.StartPlacement(item);
         else
             base.OnPurchaseSuccess(item);
+    }
+
+    protected override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        if (Time.timeScale == 0f)
+            Time.timeScale = 1f;
     }
 }

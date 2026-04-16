@@ -16,8 +16,8 @@ MonoBehaviour:
   description: "This wardrobe features a modern and practical design that fits neatly
     into bedroom interiors. Crafted from sturdy materials, it offers convenient storage
     for clothing and everyday essentials.\t"
-  icon: {fileID: 21300000, guid: 9be7cfa30fbd51345ae270d2a096d40a, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 906af4f02d3520d4a8f7a7e7ca76e2dd, type: 3}
+  icon: {fileID: 21300000, guid: 76ac7fc12b202f5498afeb8b2f191309, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: e6fed9e0f7f945848917f4332cf2bc54, type: 3}
   category: 5
   price: 10
   allowManualHeightAdjust: 0

@@ -105,6 +105,13 @@ public class InventoryManager : MonoBehaviour
             PurchaseManager.Instance.onPurchaseSuccess.RemoveListener(OnPurchaseSuccess);
         }
     }
+    
+    public virtual void PreviewItemFromInventory(InventoryItemData item)
+    {
+        if (item == null) return;
+
+        ShowItemDetails(item);
+    }
 
     public virtual void SetMenu(bool state)
     {
@@ -121,6 +128,46 @@ public class InventoryManager : MonoBehaviour
 
         if (!state)
             HideDescription();
+    }
+    
+    public async void ImportGLBsFromDirectory(string directoryPath, System.Action<bool, string> onComplete = null)
+    {
+        if (!Directory.Exists(directoryPath))
+        {
+            onComplete?.Invoke(false, $"Directory not found: {directoryPath}");
+            return;
+        }
+
+        string[] files = Directory.GetFiles(directoryPath, "*.glb");
+
+        if (files == null || files.Length == 0)
+        {
+            onComplete?.Invoke(false, "No .glb files found in directory.");
+            return;
+        }
+
+        int importedCount = 0;
+
+        foreach (string filePath in files)
+        {
+            if (!File.Exists(filePath))
+                continue;
+
+            GameObject loaded = await GLBLoader.LoadGLB(filePath);
+            if (loaded == null)
+                continue;
+
+            items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(filePath)));
+            SaveGLBPath(filePath);
+            importedCount++;
+        }
+
+        PopulateSlots();
+
+        if (importedCount > 0)
+            onComplete?.Invoke(true, $"Imported {importedCount} .glb file(s).");
+        else
+            onComplete?.Invoke(false, "Failed to import any .glb files.");
     }
 
     // FIX: external close support

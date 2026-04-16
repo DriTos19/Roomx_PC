@@ -16,8 +16,8 @@ MonoBehaviour:
   description: This wardrobe combines a refined appearance with functional storage
     capacity for daily use. Designed with durable materials, it helps keep clothing
     and personal belongings neatly organized.
-  icon: {fileID: 21300000, guid: e27f42f6bb3be8c4aad2b74c7f4e5b9c, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 3cf8cc6e67edd27448544cce0be599f1, type: 3}
+  icon: {fileID: 21300000, guid: dc43293b797844f4592aa614645f35f5, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 7e6abab1d3c23aa409467de5535b6d90, type: 3}
   category: 5
   price: 10
   allowManualHeightAdjust: 0
