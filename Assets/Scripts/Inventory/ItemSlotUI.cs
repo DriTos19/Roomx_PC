@@ -9,9 +9,9 @@ public class ItemSlotUI : MonoBehaviour, IPointerClickHandler
     public TMP_Text nameLabel;
 
     private InventoryItemData item;
-    private InventoryControll inventory;
+    private InventoryManager inventory;
 
-    public void Setup(InventoryItemData newItem, InventoryControll inventoryControll)
+    public void Setup(InventoryItemData newItem, InventoryManager inventoryControll)
     {
         item = newItem;
         inventory = inventoryControll;

@@ -16,8 +16,8 @@ MonoBehaviour:
   description: This dining chair presents a refined, ergonomic design that complements
     modern dining spaces. Built for comfort and durability, it enhances both style
     and usability.
-  icon: {fileID: 21300000, guid: 39abdad4c6c771c438510dd053c98070, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 15ffa27c1c9e7f24fa3f069e671ad13f, type: 3}
+  icon: {fileID: 21300000, guid: 3dbfec0b1a97ce04b8f61dc9b59e1b81, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 6d0cb9dbe6e73914b8bcb62d0f7ad9a5, type: 3}
   category: 3
   price: 10
   allowManualHeightAdjust: 0

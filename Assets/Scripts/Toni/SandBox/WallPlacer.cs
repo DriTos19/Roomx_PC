@@ -275,7 +275,7 @@ public class WallPlacer_PC : MonoBehaviour
                     continue;
 
                 FurnitureInstance instance = hitObj.GetComponent<FurnitureInstance>();
-                if (instance == null || instance.itemData == null)
+                if (instance == null || instance.itemDataSandbox == null)
                     continue;
 
                 topY = Mathf.Max(topY, col.bounds.max.y);
@@ -328,7 +328,7 @@ public class WallPlacer_PC : MonoBehaviour
         if (instance == null)
             instance = placedObject.AddComponent<FurnitureInstance>();
 
-        instance.itemData = currentItem;
+        instance.itemDataSandbox = currentItem;
 
         if (isEditingExisting)
             ApplySavedMaterials(placedObject);
@@ -364,18 +364,18 @@ public class WallPlacer_PC : MonoBehaviour
             return;
 
         FurnitureInstance instance = targetObject.GetComponent<FurnitureInstance>();
-        if (instance == null || instance.itemData == null || instance.itemData.prefab3D == null)
+        if (instance == null || instance.itemDataSandbox == null || instance.itemDataSandbox.prefab3D == null)
             return;
 
         Renderer rend = targetObject.GetComponentInChildren<Renderer>();
         if (rend == null)
             return;
 
-        currentItem = instance.itemData;
+        currentItem = instance.itemDataSandbox;
         currentPrefab = currentItem.prefab3D;
 
         SaveMaterialsFromObject(targetObject);
-        SaveCanceledEditData(instance.itemData, targetObject.transform.position, targetObject.transform.rotation, lastSavedMaterials);
+        SaveCanceledEditData(instance.itemDataSandbox, targetObject.transform.position, targetObject.transform.rotation, lastSavedMaterials);
 
         isEditingExisting = true;
         manualHeightOffset = 0f;
@@ -496,7 +496,7 @@ public class WallPlacer_PC : MonoBehaviour
         if (instance == null)
             instance = restoredObject.AddComponent<FurnitureInstance>();
 
-        instance.itemData = canceledEditItem;
+        instance.itemDataSandbox = canceledEditItem;
 
         if (canceledEditMaterials != null)
             ApplyMaterialsArrayToObject(restoredObject, canceledEditMaterials);

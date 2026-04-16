@@ -16,8 +16,8 @@ MonoBehaviour:
   description: This TV shelf presents a functional and modern design suited for entertainment
     setups. It provides stable support for devices while offering additional storage
     space.
-  icon: {fileID: 21300000, guid: e5d4d622cb317f547b2054caf9a8191e, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 88bec5b15cb389f418196f61cef13f2f, type: 3}
+  icon: {fileID: 21300000, guid: 244e84fdf393ee749bca00795dc81a60, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 945d55518e3400a40864318fca51c432, type: 3}
   category: 5
   price: 0
   allowManualHeightAdjust: 1

@@ -1,14 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class FurnitureSaveManager : MonoBehaviour
 {
     public List<GameObject> activeFurniture = new List<GameObject>();
     private string savePath;
 
+    [Header("UI Buttons")]
+    [SerializeField] private Button saveButton;
+    [SerializeField] private Button loadButton;
+
     void Awake() {
-        savePath = Application.persistentDataPath + "/furniture_data.json";
+        RefreshSavePath();
+    }
+
+    void Start() {
+        if (saveButton != null)
+            saveButton.onClick.AddListener(SaveGame);
+        if (loadButton != null)
+            loadButton.onClick.AddListener(LoadGame);
     }
 
     // This checks for key presses every single frame
@@ -18,14 +31,17 @@ public class FurnitureSaveManager : MonoBehaviour
             SaveGame();
         }
 
-        // Press 'L' to Load (Duplicates)
+        // Press 'L' to Load
         if (Input.GetKeyDown(KeyCode.L)) {
             LoadGame();
         }
     }
 
     public void SaveGame() {
+        RefreshSavePath();
+
         SaveData data = new SaveData();
+        data.sceneName = SceneManager.GetActiveScene().name;
         activeFurniture.RemoveAll(item => item == null);
 
         foreach (GameObject obj in activeFurniture) {
@@ -54,6 +70,7 @@ public class FurnitureSaveManager : MonoBehaviour
     }
 
     public void LoadGame() {
+        RefreshSavePath();
         Debug.Log("Save file path: " + savePath);
         
         if (!File.Exists(savePath)) {
@@ -78,7 +95,19 @@ public class FurnitureSaveManager : MonoBehaviour
                 Debug.LogWarning("Failed to deserialize JSON - data is null!");
                 return;
             }
+
+            string activeSceneName = SceneManager.GetActiveScene().name;
+            if (!string.IsNullOrEmpty(data.sceneName) && data.sceneName != activeSceneName) {
+                Debug.LogWarning("Save file belongs to scene '" + data.sceneName + "' and will not load in scene '" + activeSceneName + "'.");
+                return;
+            }
             
+            // Clear existing furniture before loading to prevent duplicates
+            activeFurniture.RemoveAll(item => item == null);
+            foreach (GameObject obj in activeFurniture)
+                Destroy(obj);
+            activeFurniture.Clear();
+
             if (data.allItems.Count == 0) {
                 Debug.LogWarning("Save file has no furniture items!");
                 return;
@@ -100,7 +129,7 @@ public class FurnitureSaveManager : MonoBehaviour
                     prefabRef.prefabPath = item.prefabName;
                     
                     activeFurniture.Add(newObj);
-                    Debug.Log("SPAWNED DUPLICATE: " + item.prefabName);
+                    Debug.Log("Loaded: " + item.prefabName);
                 } else {
                     Debug.LogError("FAILED: Cannot find InventoryItemData at Resources/ScriptableObjects/InventoryItems/" + item.prefabName);
                     if (itemData != null && itemData.prefab3D == null) {
@@ -115,6 +144,19 @@ public class FurnitureSaveManager : MonoBehaviour
         }
     }
 
+    private void RefreshSavePath() {
+        string sceneName = SceneManager.GetActiveScene().name;
+        if (string.IsNullOrWhiteSpace(sceneName)) {
+            sceneName = "scene_" + SceneManager.GetActiveScene().buildIndex;
+        }
+
+        foreach (char invalidChar in Path.GetInvalidFileNameChars()) {
+            sceneName = sceneName.Replace(invalidChar, '_');
+        }
+
+        savePath = Path.Combine(Application.persistentDataPath, "furniture_data_" + sceneName + ".json");
+    }
+
     [System.Serializable]
     public class FurnitureData {
         public string prefabName;
@@ -124,6 +166,7 @@ public class FurnitureSaveManager : MonoBehaviour
 
     [System.Serializable]
     public class SaveData {
+        public string sceneName;
         public List<FurnitureData> allItems = new List<FurnitureData>();
     }
 }

@@ -16,8 +16,8 @@ MonoBehaviour:
   description: "This coffee table features a compact and stylish design perfect for
     living areas. Crafted from durable materials, it provides a functional surface
     for drinks, d\xE9cor, and daily use."
-  icon: {fileID: 21300000, guid: f9e3c9d7fde3d684cb58e5d730378700, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 368e25d378dadce4f8b6710f000945a0, type: 3}
+  icon: {fileID: 21300000, guid: a1b9a65d35829a6449f967a10e36ba17, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 80861f52b9d55704b8ba4767d086f258, type: 3}
   category: 2
   price: 10
   allowManualHeightAdjust: 0

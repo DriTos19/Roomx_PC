@@ -930,16 +930,16 @@ MonoBehaviour:
   gridSize: 0.5
   previewDistance: 4
   minPreviewDistance: 2
-  maxPreviewDistance: 12
-  scrollSensitivity: 2
+  maxPreviewDistance: 20
+  scrollSensitivity: 4
   moveSpeed: 10
   mouseSensitivity: 4
   placementMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   stackingMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   placedObjectLayerName: Furniture
   supportRayHeight: 100
   supportYOffset: 0.01
@@ -1273,6 +1273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeFurniture: []
+  saveButton: {fileID: 0}
+  loadButton: {fileID: 0}
 --- !u!4 &852454207
 Transform:
   m_ObjectHideFlags: 0
@@ -3284,7 +3286,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2a6e5a56a9fb6f7458a5c7434e432b6d, type: 2}
   - {fileID: 11400000, guid: 830ffd4db11e5c14fa94bb0161b5bb84, type: 2}
   - {fileID: 11400000, guid: 828d8940a7d7de146b5a122805073444, type: 2}
-  - {fileID: 11400000, guid: de44a002dca5d2242acd0f88457d7331, type: 2}
   - {fileID: 11400000, guid: fdc975eff39fe79478f665a91a9d523c, type: 2}
   - {fileID: 11400000, guid: 9f00230345244ed418a83bd42c8b5f27, type: 2}
   - {fileID: 11400000, guid: b746c90638bf99648a98c57b6ec05ab5, type: 2}
@@ -3301,11 +3302,7 @@ MonoBehaviour:
   purchaseButton: {fileID: 442878549}
   priceLabel: {fileID: 0}
   insufficientFundsNotice: {fileID: 1075549754}
-  wallPlacer: {fileID: 545813245}
-  nextButton: {fileID: 2109565076}
-  backButton: {fileID: 1199176908}
-  pageLabel: {fileID: 127629790}
-  itemsPerPage: 9
+  defaultIcon: {fileID: 0}
 --- !u!225 &2032545256
 CanvasGroup:
   m_ObjectHideFlags: 0

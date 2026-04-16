@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FurnitureInstance : MonoBehaviour
 {
-    public InventoryItemData itemData;
+    [FormerlySerializedAs("itemData")] public InventoryItemData itemDataSandbox;
 }
