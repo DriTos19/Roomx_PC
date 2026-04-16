@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 50b67e15aeec206458735abb17af76e6, type: 3}
-  m_Name: KitchenShelf
+  m_Name: Dinning_Chair
   m_EditorClassIdentifier: 
-  itemName: Kitchen Shelf
-  description: "This kitchen shelf combines a practical layout with a modern appearance.
-    Constructed from durable materials, it offers efficient storage for kitchen essentials
-    and d\xE9cor."
-  icon: {fileID: 21300000, guid: 888707f6e65760e4b8fb9c80cb754c1d, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 137dbd3761c9b9f4b8b1756ba9bc08e4, type: 3}
-  category: 5
-  price: 1001
+  itemName: Dinning Chair
+  description: This dining chair presents a refined, ergonomic design that complements
+    modern dining spaces. Built for comfort and durability, it enhances both style
+    and usability.
+  icon: {fileID: 21300000, guid: 39abdad4c6c771c438510dd053c98070, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 15ffa27c1c9e7f24fa3f069e671ad13f, type: 3}
+  category: 3
+  price: 10
   allowManualHeightAdjust: 0
   manualHeightStep: 0.25
   minManualHeightOffset: -2

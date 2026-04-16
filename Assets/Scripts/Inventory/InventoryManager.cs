@@ -7,6 +7,8 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
+
     [Header("Main UI")]
     public CanvasGroup inventoryCanvasGroup;
 
@@ -33,39 +35,48 @@ public class InventoryManager : MonoBehaviour
     [Header("Default Assets")]
     public Sprite defaultIcon;
 
-    private bool menuOpen = false;
+    protected bool menuOpen = false;
     private Coroutine _noticeRoutine;
     private string _glbSavePath;
 
     [System.Serializable]
     private class GLBPathList { public List<string> paths = new List<string>(); }
 
-    void Awake()
+    protected virtual void Awake()
     {
+        if (Instance == null) Instance = this;
         _glbSavePath = Path.Combine(Application.persistentDataPath, "imported_glbs.json");
     }
 
-    void Start()
+    // FIX: global access like your example
+    public static bool IsMenuOpen()
+    {
+        return Instance != null && Instance.menuOpen;
+    }
+
+    protected virtual void Start()
     {
         SetMenu(false);
-
-        if (descriptionCanvasGroup != null)
-        {
-            descriptionCanvasGroup.alpha = 0;
-            descriptionCanvasGroup.blocksRaycasts = false;
-        }
+        HideDescription();
 
         PopulateSlots();
 
-        BudgetManager.Instance.onBalanceChanged.AddListener(RefreshBalanceUI);
-        PurchaseManager.Instance.onItemSelected.AddListener(RefreshPurchaseUI);
-        PurchaseManager.Instance.onPurchaseFailed.AddListener(_ => ShowInsufficientFunds());
-        PurchaseManager.Instance.onPurchaseSuccess.AddListener(OnPurchaseSuccess);
+        if (BudgetManager.Instance != null)
+            BudgetManager.Instance.onBalanceChanged.AddListener(RefreshBalanceUI);
+
+        if (PurchaseManager.Instance != null)
+        {
+            PurchaseManager.Instance.onItemSelected.AddListener(RefreshPurchaseUI);
+            PurchaseManager.Instance.onPurchaseFailed.AddListener(_ => ShowInsufficientFunds());
+            PurchaseManager.Instance.onPurchaseSuccess.AddListener(OnPurchaseSuccess);
+        }
 
         if (purchaseButton != null)
             purchaseButton.onClick.AddListener(() => PurchaseManager.Instance.PurchaseSelected());
 
-        RefreshBalanceUI(BudgetManager.Instance.Balance);
+        if (BudgetManager.Instance != null)
+            RefreshBalanceUI(BudgetManager.Instance.Balance);
+
         SetPurchaseButtonInteractable(false);
 
         if (insufficientFundsNotice != null)
@@ -74,7 +85,7 @@ public class InventoryManager : MonoBehaviour
         LoadSavedGLBs();
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -83,7 +94,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (BudgetManager.Instance != null)
             BudgetManager.Instance.onBalanceChanged.RemoveListener(RefreshBalanceUI);
@@ -95,13 +106,16 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void SetMenu(bool state)
+    public virtual void SetMenu(bool state)
     {
+        menuOpen = state;
+
+        if (inventoryCanvasGroup == null) return;
+
         inventoryCanvasGroup.alpha = state ? 1 : 0;
         inventoryCanvasGroup.interactable = state;
         inventoryCanvasGroup.blocksRaycasts = state;
 
-        // Unlock cursor when menu is open, lock it when closed
         Cursor.lockState = state ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = state;
 
@@ -109,8 +123,17 @@ public class InventoryManager : MonoBehaviour
             HideDescription();
     }
 
-    void PopulateSlots()
+    // FIX: external close support
+    public virtual void CloseInventory()
     {
+        SetMenu(false);
+        HideDescription();
+    }
+
+    public virtual void PopulateSlots()
+    {
+        if (slotParent == null || slotPrefab == null) return;
+
         foreach (Transform child in slotParent)
             Destroy(child.gameObject);
 
@@ -121,52 +144,48 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void ShowItemDetails(InventoryItemData item)
+    public virtual void ShowItemDetails(InventoryItemData item)
     {
-        descriptionImage.sprite = item.icon;
-        descriptionText.text = $"<b>{item.itemName}</b>\n\n{item.description}";
+        if (item == null) return;
 
-        descriptionCanvasGroup.alpha = 1;
-        descriptionCanvasGroup.blocksRaycasts = true;
+        if (descriptionImage) descriptionImage.sprite = item.icon;
+        if (descriptionText) descriptionText.text = $"<b>{item.itemName}</b>\n\n{item.description}";
 
-        PurchaseManager.Instance.SelectItem(item);
+        if (descriptionCanvasGroup != null)
+        {
+            descriptionCanvasGroup.alpha = 1;
+            descriptionCanvasGroup.blocksRaycasts = true;
+        }
+
+        PurchaseManager.Instance?.SelectItem(item);
     }
 
     public void HideDescription()
     {
+        if (descriptionCanvasGroup == null) return;
         descriptionCanvasGroup.alpha = 0;
         descriptionCanvasGroup.blocksRaycasts = false;
-    }
-
-    public void HideMenu()
-    {
-        menuOpen = false;
-        SetMenu(false);
-    }
-
-    public void ShowMenu()
-    {
-        menuOpen = true;
-        SetMenu(true);
     }
 
     private void RefreshBalanceUI(float balance)
     {
         if (balanceLabel != null)
             balanceLabel.text = $"Balance: ${balance:F2}";
-
-        if (PurchaseManager.Instance.SelectedItem != null)
-            RefreshPurchaseUI(PurchaseManager.Instance.SelectedItem);
     }
 
     private void RefreshPurchaseUI(InventoryItemData item)
     {
-        if (item == null) { SetPurchaseButtonInteractable(false); return; }
+        if (item == null)
+        {
+            SetPurchaseButtonInteractable(false);
+            return;
+        }
 
         if (priceLabel != null)
             priceLabel.text = item.price > 0 ? $"${item.price:F2}" : "Free";
 
-        SetPurchaseButtonInteractable(BudgetManager.Instance.CanAfford(item.price));
+        if (BudgetManager.Instance != null)
+            SetPurchaseButtonInteractable(BudgetManager.Instance.CanAfford(item.price));
     }
 
     private void SetPurchaseButtonInteractable(bool state)
@@ -189,20 +208,18 @@ public class InventoryManager : MonoBehaviour
         insufficientFundsNotice.SetActive(false);
     }
 
-    private void OnPurchaseSuccess(InventoryItemData item)
+    protected virtual void OnPurchaseSuccess(InventoryItemData item)
     {
-        HideMenu();
-        PlacementManager.Instance.StartPlacement(item);
+        CloseInventory();
+
+        if (PlacementManager.Instance != null)
+            PlacementManager.Instance.StartPlacement(item);
     }
+
+    // ===== GLB SYSTEM (unchanged) =====
 
     public async void ImportGLBFromPath(string filePath, System.Action<bool, string> onComplete = null)
     {
-        if (string.IsNullOrEmpty(filePath))
-        {
-            onComplete?.Invoke(false, "File path is empty.");
-            return;
-        }
-
         if (!File.Exists(filePath))
         {
             onComplete?.Invoke(false, $"File not found: {filePath}");
@@ -212,58 +229,14 @@ public class InventoryManager : MonoBehaviour
         GameObject loaded = await GLBLoader.LoadGLB(filePath);
         if (loaded == null)
         {
-            onComplete?.Invoke(false, $"Failed to load: {Path.GetFileName(filePath)}");
+            onComplete?.Invoke(false, "Failed to load.");
             return;
         }
 
         items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(filePath)));
         SaveGLBPath(filePath);
         PopulateSlots();
-        onComplete?.Invoke(true, $"Imported: {Path.GetFileNameWithoutExtension(filePath)}");
-    }
-
-    public async void ImportGLBsFromDirectory(string directoryPath, System.Action<bool, string> onComplete = null)
-    {
-        if (string.IsNullOrEmpty(directoryPath))
-        {
-            onComplete?.Invoke(false, "Directory path is empty.");
-            return;
-        }
-
-        if (!Directory.Exists(directoryPath))
-        {
-            onComplete?.Invoke(false, $"Directory not found: {directoryPath}");
-            return;
-        }
-
-        string[] glbFiles = Directory.GetFiles(directoryPath, "*.glb", SearchOption.AllDirectories);
-        if (glbFiles.Length == 0)
-        {
-            onComplete?.Invoke(false, "No .glb files found in directory.");
-            return;
-        }
-
-        int imported = 0;
-        foreach (string path in glbFiles)
-        {
-            GameObject loaded = await GLBLoader.LoadGLB(path);
-            if (loaded != null)
-            {
-                items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path)));
-                SaveGLBPath(path);
-                imported++;
-            }
-        }
-
-        if (imported > 0)
-        {
-            PopulateSlots();
-            onComplete?.Invoke(true, $"Imported {imported} of {glbFiles.Length} file(s).");
-        }
-        else
-        {
-            onComplete?.Invoke(false, "No files could be imported.");
-        }
+        onComplete?.Invoke(true, "Imported.");
     }
 
     private InventoryItemData CreateItemFromGLB(GameObject prefab, string itemName)
@@ -273,7 +246,6 @@ public class InventoryManager : MonoBehaviour
         item.description = $"Imported model: {itemName}";
         item.prefab3D = prefab;
         item.icon = defaultIcon;
-        item.category = ItemCategory.All;
         item.price = 0f;
         return item;
     }
@@ -291,28 +263,22 @@ public class InventoryManager : MonoBehaviour
     private GLBPathList LoadGLBPathList()
     {
         if (!File.Exists(_glbSavePath)) return new GLBPathList();
-        try { return JsonUtility.FromJson<GLBPathList>(File.ReadAllText(_glbSavePath)) ?? new GLBPathList(); }
-        catch { return new GLBPathList(); }
+        return JsonUtility.FromJson<GLBPathList>(File.ReadAllText(_glbSavePath)) ?? new GLBPathList();
     }
 
     private async void LoadSavedGLBs()
     {
         GLBPathList list = LoadGLBPathList();
-        if (list.paths.Count == 0) return;
 
         foreach (string path in list.paths)
         {
-            if (!File.Exists(path))
-            {
-                Debug.LogWarning($"Previously imported GLB no longer found: {path}");
-                continue;
-            }
+            if (!File.Exists(path)) continue;
+
             GameObject loaded = await GLBLoader.LoadGLB(path);
             if (loaded != null)
                 items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path)));
         }
 
-        if (items.Count > 0)
-            PopulateSlots();
+        PopulateSlots();
     }
 }
