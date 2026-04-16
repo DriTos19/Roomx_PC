@@ -29,46 +29,55 @@ MonoBehaviour:
     english: Not enough money
     albanian: Nuk ka para
     german: Nicht genug Geld
-  - key: Languages
+  - key: languages
+    english: Languages
+    albanian: "Gjuh\xEBt"
+    german: Sprachen
+  - key: explore_designs
+    english: Explore Designs
+    albanian: Eksploro Dizajne
+    german: Designs erkunden
+  - key: settings
+    english: Settings
+    albanian: "Cil\xEBsimet"
+    german: Einstellungen
+  - key: sandbox
+    english: Sandbox
+    albanian: Sandbox
+    german: Sandbox
+  - key: sandbox
+    english: Sandbox
+    albanian: Sandbox
+    german: Sandbox
+  - key: exit
+    english: Exit
+    albanian: Dalje
+    german: Beenden
+  - key: german
+    english: German
+    albanian: Gjermanisht
+    german: Deutsch
+  - key: albanian
+    english: Albanian
+    albanian: Shqip
+    german: Albanisch
+  - key: english
     english: English
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
     albanian: Anglisht
     german: Englisch
   - key: previous
     english: Previous
-    albanian: "Paraardh\xEBse"
+    albanian: Mbrapa
     german: "Zur\xFCck"
   - key: next
     english: Next
-    albanian: "Tjet\xEBr"
+    albanian: Tjetra
     german: Weiter
   - key: back
     english: Back
     albanian: Kthehu
     german: "Zur\xFCck"
-<<<<<<< HEAD
   - key: back_to_mainmenu
-    english: Back To Mainmenu
-    albanian: "Kthehu n\xEB menun\xEB kryesore"
-    german: "Zur\xFCck zum Hauptmen\xFC"
-=======
-    albanian: Shqip
-    german: Deutsch
->>>>>>> parent of cd5981b (Translatio)
-=======
-    albanian: Shqip
-    german: Deutsch
->>>>>>> parent of cd5981b (Translatio)
-=======
->>>>>>> parent of bce750a (cc)
-=======
-    albanian: Shqip
-    german: Deutsch
->>>>>>> parent of cd5981b (Translatio)
-=======
-    albanian: Shqip
-    german: Deutsch
->>>>>>> parent of cd5981b (Translatio)
+    english: Menu
+    albanian: Menu
+    german: "Men\xFC"

@@ -101,7 +101,11 @@ public class InventoryManager : MonoBehaviour
         foreach (var item in items)
         {
             GameObject slot = Instantiate(slotPrefab, slotParent);
-            slot.GetComponent<ItemSlotUI>().Setup(item, this);
+            
+            // Get the InventoryControll component to pass to Setup
+            InventoryControll controller = GetComponent<InventoryControll>();
+            if (controller != null)
+                slot.GetComponent<ItemSlotUI>().Setup(item, controller);
         }
     }
 
