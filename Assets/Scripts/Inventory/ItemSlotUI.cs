@@ -1,25 +1,40 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using TMPro;
 
-public class ItemSlotUI : MonoBehaviour
+public class ItemSlotUI : MonoBehaviour, IPointerClickHandler
 {
     public Image iconImage;
+    public TMP_Text nameLabel;
 
-    private InventoryItemData itemData;
-    private InventoryManager inventoryManager;
+    private InventoryItemData item;
+    private InventoryControll inventory;
 
-    public void Setup(InventoryItemData item, InventoryManager manager)
+    public void Setup(InventoryItemData newItem, InventoryControll inventoryControll)
     {
-        itemData = item;
-        inventoryManager = manager;
+        item = newItem;
+        inventory = inventoryControll;
 
-        iconImage.sprite = item.icon;
+        if (iconImage != null)
+            iconImage.sprite = item.icon;
 
-        GetComponent<Button>().onClick.AddListener(OnClick);
+        if (nameLabel != null)
+            nameLabel.text = item.itemName;
     }
 
-    private void OnClick()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        inventoryManager.ShowItemDetails(itemData);
+        if (item == null || inventory == null)
+            return;
+
+        if (eventData.clickCount == 2)
+        {
+            inventory.PreviewItemFromInventory(item);
+        }
+        else if (eventData.clickCount == 1)
+        {
+            inventory.ShowItemDetails(item);
+        }
     }
 }

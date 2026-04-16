@@ -196,7 +196,7 @@ public class PlacementManager : MonoBehaviour
         if (saveManager != null)
             saveManager.activeFurniture.Remove(obj);
 
-        InventoryManager inv = FindObjectOfType<InventoryManager>();
+        InventoryControll inv = FindObjectOfType<InventoryControll>();
         if (inv == null) return;
 
         foreach (var item in inv.items)

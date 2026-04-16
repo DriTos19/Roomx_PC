@@ -7,7 +7,12 @@ public enum ItemCategory
     Table,
     Chair,
     Sofa,
-    Shelf
+    Shelf,
+    Wall,
+    Floor,
+    Roof,
+    Bench,
+    Door
 }
 
 [CreateAssetMenu(fileName = "NewInventoryItem", menuName = "Inventory/Item")]
@@ -30,4 +35,10 @@ public class InventoryItemData : ScriptableObject
     [Header("Economy")]
     [Min(0)]
     public float price = 0f;
+
+    [Header("Manual Height Adjustment")]
+    public bool allowManualHeightAdjust = false;
+    public float manualHeightStep = 0.25f;
+    public float minManualHeightOffset = -2f;
+    public float maxManualHeightOffset = 5f;
 }

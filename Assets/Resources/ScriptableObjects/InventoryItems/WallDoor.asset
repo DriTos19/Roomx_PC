@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50b67e15aeec206458735abb17af76e6, type: 3}
+  m_Name: WallDoor
+  m_EditorClassIdentifier: 
+  itemName: Wall
+  description: This wall element features a simple structural design that defines
+    and organizes spaces. Built for stability, it integrates seamlessly into various
+    layouts.
+  icon: {fileID: 21300000, guid: cbfbfb0818cd3b34398632ff122f2480, type: 3}
+  prefab3D: {fileID: 919132149155446097, guid: 4897aaebdb7f6ed479232b8da7912ada, type: 3}
+  category: 6
+  price: 0
+  allowManualHeightAdjust: 0
+  manualHeightStep: 0.25
+  minManualHeightOffset: -2
+  maxManualHeightOffset: 5

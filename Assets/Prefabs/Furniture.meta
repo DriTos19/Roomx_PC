@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Furniture.meta
 guid: f0430e9632258c449a49905e15af8c4b
+========
+<<<<<<< Updated upstream
+guid: 2b0adce9f7d7023428225967f65df1bb
+=======
+guid: 5fa4131c65c317e408580ca3a8367a6c
+>>>>>>> Stashed changes
+>>>>>>>> origin/enton:Assets/Resources/ScriptableObjects/InventoryItems.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

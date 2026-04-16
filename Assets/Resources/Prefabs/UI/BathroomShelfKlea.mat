@@ -7,7 +7,11 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/Resources/Prefabs/UI/BathroomShelfKlea.mat
   m_Name: BathroomShelfKlea
+========
+  m_Name: KitchenShelf
+>>>>>>>> origin/enton:Assets/Resources/Prefabs/UI/KitchenShelf.mat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -24,7 +28,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
+<<<<<<<< HEAD:Assets/Resources/Prefabs/UI/BathroomShelfKlea.mat
         m_Texture: {fileID: 2800000, guid: 5d0d058b75aebe74791523c7b7e3ef69, type: 3}
+========
+        m_Texture: {fileID: 2800000, guid: 4053a967014127e4f9d63ec052fef5a1, type: 3}
+>>>>>>>> origin/enton:Assets/Resources/Prefabs/UI/KitchenShelf.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -44,11 +52,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
+<<<<<<<< HEAD:Assets/Resources/Prefabs/UI/BathroomShelfKlea.mat
         m_Texture: {fileID: 2800000, guid: 99298efd2164e114988c5a5e169e6f3c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 2800000, guid: e20b89a5959c7b044a14d033b7bf1575, type: 3}
+========
+        m_Texture: {fileID: 2800000, guid: 21d36e9fea96b77428db8d91c9e5f476, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: bbb32a047a1bdbb44911f09d55041bfc, type: 3}
+>>>>>>>> origin/enton:Assets/Resources/Prefabs/UI/KitchenShelf.mat
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -65,7 +81,11 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
+<<<<<<<< HEAD:Assets/Resources/Prefabs/UI/BathroomShelfKlea.mat
     - _GlossMapScale: 0.196
+========
+    - _GlossMapScale: 0.3
+>>>>>>>> origin/enton:Assets/Resources/Prefabs/UI/KitchenShelf.mat
     - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
