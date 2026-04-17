@@ -35,6 +35,9 @@ public class WallPlacer_PC : MonoBehaviour
     [Header("Material Wheel")]
     public MaterialWheelController materialWheelController;
 
+    [Header("Save System")]
+    public FurnitureSaveManager furnitureSaveManager;
+
     private InventoryItemData currentItem;
     private GameObject currentPrefab;
     private GameObject previewInstance;
@@ -140,7 +143,6 @@ public class WallPlacer_PC : MonoBehaviour
 
     void HandlePreviewInput()
     {
-        
         // ⬅️➡️ Arrow keys rotate object
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -151,7 +153,7 @@ public class WallPlacer_PC : MonoBehaviour
         {
             currentRotationY += 100f * Time.deltaTime;
         }
-        
+
         if (currentItem == null)
             return;
 
@@ -228,7 +230,6 @@ public class WallPlacer_PC : MonoBehaviour
 
         previewInstance.transform.position = finalPos;
         previewInstance.transform.rotation = Quaternion.Euler(0f, currentRotationY, 0f);
-        
     }
 
     bool TryGetFurnitureSupportTopY(Vector3 snappedPoint, Bounds previewBounds, out float topY)
@@ -301,6 +302,40 @@ public class WallPlacer_PC : MonoBehaviour
         return bounds;
     }
 
+    void RegisterPlacedObjectForSaving(GameObject obj)
+    {
+        if (obj == null)
+            return;
+
+        if (furnitureSaveManager == null)
+            furnitureSaveManager = FindObjectOfType<FurnitureSaveManager>();
+
+        if (furnitureSaveManager != null)
+        {
+            if (!furnitureSaveManager.activeFurniture.Contains(obj))
+                furnitureSaveManager.activeFurniture.Add(obj);
+        }
+
+        FurniturePrefabReference prefabRef = obj.GetComponent<FurniturePrefabReference>();
+        if (prefabRef == null)
+            prefabRef = obj.AddComponent<FurniturePrefabReference>();
+
+        if (currentItem != null)
+            prefabRef.prefabPath = currentItem.name;
+    }
+
+    void UnregisterPlacedObjectFromSaving(GameObject obj)
+    {
+        if (obj == null)
+            return;
+
+        if (furnitureSaveManager == null)
+            furnitureSaveManager = FindObjectOfType<FurnitureSaveManager>();
+
+        if (furnitureSaveManager != null)
+            furnitureSaveManager.activeFurniture.Remove(obj);
+    }
+
     void PlaceObject()
     {
         if (previewInstance == null || currentPrefab == null || currentItem == null || !previewInstance.activeSelf)
@@ -329,6 +364,8 @@ public class WallPlacer_PC : MonoBehaviour
             instance = placedObject.AddComponent<FurnitureInstance>();
 
         instance.itemDataSandbox = currentItem;
+
+        RegisterPlacedObjectForSaving(placedObject);
 
         if (isEditingExisting)
             ApplySavedMaterials(placedObject);
@@ -382,6 +419,7 @@ public class WallPlacer_PC : MonoBehaviour
 
         Vector3 spawnPos = playerCamera.transform.position + playerCamera.transform.forward * previewDistance;
 
+        UnregisterPlacedObjectFromSaving(targetObject);
         Destroy(targetObject);
 
         previewInstance = Instantiate(currentPrefab, spawnPos, Quaternion.identity);
@@ -497,6 +535,7 @@ public class WallPlacer_PC : MonoBehaviour
             instance = restoredObject.AddComponent<FurnitureInstance>();
 
         instance.itemDataSandbox = canceledEditItem;
+        RegisterPlacedObjectForSaving(restoredObject);
 
         if (canceledEditMaterials != null)
             ApplyMaterialsArrayToObject(restoredObject, canceledEditMaterials);

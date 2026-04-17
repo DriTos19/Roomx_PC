@@ -24,6 +24,13 @@ public class InventoryManager : MonoBehaviour
     [Header("Items")]
     public List<InventoryItemData> items = new List<InventoryItemData>();
 
+    [Header("Pagination")]
+    public Button nextButton;
+    public Button previousButton;
+    public TMP_Text pageLabel;
+    public int itemsPerPage = 12;
+    private int currentPage = 0;
+
     [Header("Budget UI")]
     public TMP_Text balanceLabel;
 
@@ -48,7 +55,6 @@ public class InventoryManager : MonoBehaviour
         _glbSavePath = Path.Combine(Application.persistentDataPath, "imported_glbs.json");
     }
 
-    // FIX: global access like your example
     public static bool IsMenuOpen()
     {
         return Instance != null && Instance.menuOpen;
@@ -58,6 +64,12 @@ public class InventoryManager : MonoBehaviour
     {
         SetMenu(false);
         HideDescription();
+
+        if (nextButton != null)
+            nextButton.onClick.AddListener(NextPage);
+
+        if (previousButton != null)
+            previousButton.onClick.AddListener(PreviousPage);
 
         PopulateSlots();
 
@@ -104,8 +116,14 @@ public class InventoryManager : MonoBehaviour
             PurchaseManager.Instance.onItemSelected.RemoveListener(RefreshPurchaseUI);
             PurchaseManager.Instance.onPurchaseSuccess.RemoveListener(OnPurchaseSuccess);
         }
+
+        if (nextButton != null)
+            nextButton.onClick.RemoveListener(NextPage);
+
+        if (previousButton != null)
+            previousButton.onClick.RemoveListener(PreviousPage);
     }
-    
+
     public virtual void PreviewItemFromInventory(InventoryItemData item)
     {
         if (item == null) return;
@@ -129,7 +147,7 @@ public class InventoryManager : MonoBehaviour
         if (!state)
             HideDescription();
     }
-    
+
     public async void ImportGLBsFromDirectory(string directoryPath, System.Action<bool, string> onComplete = null)
     {
         if (!Directory.Exists(directoryPath))
@@ -170,7 +188,6 @@ public class InventoryManager : MonoBehaviour
             onComplete?.Invoke(false, "Failed to import any .glb files.");
     }
 
-    // FIX: external close support
     public virtual void CloseInventory()
     {
         SetMenu(false);
@@ -184,10 +201,61 @@ public class InventoryManager : MonoBehaviour
         foreach (Transform child in slotParent)
             Destroy(child.gameObject);
 
-        foreach (var item in items)
+        int startIndex = currentPage * itemsPerPage;
+        int endIndex = Mathf.Min(startIndex + itemsPerPage, items.Count);
+
+        for (int i = startIndex; i < endIndex; i++)
         {
             GameObject slot = Instantiate(slotPrefab, slotParent);
-            slot.GetComponent<ItemSlotUI>().Setup(item, this);
+            slot.GetComponent<ItemSlotUI>().Setup(items[i], this);
+        }
+
+        UpdatePaginationUI();
+    }
+
+    private void UpdatePaginationUI()
+    {
+        int totalPages = Mathf.CeilToInt((float)items.Count / itemsPerPage);
+        if (totalPages <= 0)
+            totalPages = 1;
+
+        if (currentPage >= totalPages)
+            currentPage = totalPages - 1;
+
+        if (currentPage < 0)
+            currentPage = 0;
+
+        if (pageLabel != null)
+            pageLabel.text = $"Page {currentPage + 1} / {totalPages}";
+
+        if (previousButton != null)
+            previousButton.interactable = currentPage > 0;
+
+        if (nextButton != null)
+            nextButton.interactable = currentPage < totalPages - 1;
+    }
+
+    public void NextPage()
+    {
+        int totalPages = Mathf.CeilToInt((float)items.Count / itemsPerPage);
+        if (totalPages <= 0)
+            totalPages = 1;
+
+        if (currentPage < totalPages - 1)
+        {
+            currentPage++;
+            PopulateSlots();
+            HideDescription();
+        }
+    }
+
+    public void PreviousPage()
+    {
+        if (currentPage > 0)
+        {
+            currentPage--;
+            PopulateSlots();
+            HideDescription();
         }
     }
 
@@ -262,8 +330,6 @@ public class InventoryManager : MonoBehaviour
         if (PlacementManager.Instance != null)
             PlacementManager.Instance.StartPlacement(item);
     }
-
-    // ===== GLB SYSTEM (unchanged) =====
 
     public async void ImportGLBFromPath(string filePath, System.Action<bool, string> onComplete = null)
     {

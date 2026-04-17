@@ -17,11 +17,9 @@ MonoBehaviour:
     completing the building\u2019s look."
   icon: {fileID: 21300000, guid: 70dc2e09d82c16446b370f0dc541296e, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: b16a0eb164bdb594ab91b844bbe698fb, type: 3}
-  placementRotationOffset: {x: 0, y: 0, z: 0}
   category: 2
   price: 0
-  useManualPlacementHeight: 1
-  manualPlacementHeight: 0.5
-  manualHeightAdjustSpeed: 1.5
-  minManualPlacementHeight: 0.5
-  maxManualPlacementHeight: 6
+  allowManualHeightAdjust: 1
+  manualHeightStep: 0.25
+  minManualHeightOffset: -2
+  maxManualHeightOffset: 5
