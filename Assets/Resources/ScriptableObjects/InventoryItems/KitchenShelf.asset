@@ -16,8 +16,8 @@ MonoBehaviour:
   description: "This kitchen shelf combines a practical layout with a modern appearance.
     Constructed from durable materials, it offers efficient storage for kitchen essentials
     and d\xE9cor."
-  icon: {fileID: 21300000, guid: 888707f6e65760e4b8fb9c80cb754c1d, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 137dbd3761c9b9f4b8b1756ba9bc08e4, type: 3}
+  icon: {fileID: 21300000, guid: 9380e8cb538314b44b3b40d66e483f79, type: 3}
+  prefab3D: {fileID: 0}
   category: 5
   price: 1001
   allowManualHeightAdjust: 0

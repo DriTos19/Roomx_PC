@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/House1.unity
     guid: c16541d35447cd240ac0f24c1bcbdbfb
   - enabled: 1
@@ -17,6 +17,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HouseDrini.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/HouseEnton.unity
+    guid: 99f12ca7fdbf4c14097e0bd98aa74e4e
+  - enabled: 1
+    path: Assets/Scenes/HouseKlea.unity
+    guid: 23289dc44e19d784ca9b11de63ce1b9f
+  - enabled: 1
+    path: Assets/Scenes/HouseKlea2.unity
+    guid: 910b3c828d344954fb69bbed2d21d32a
+  - enabled: 1
+    path: Assets/Scenes/HouseSidrit.unity
+    guid: 94687e90cf0bc71498614b3f51cc8117
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7010210494c108d4fb030884fa58ea93, type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 745d2b355261c1947ab5632e17b0c7f0, type: 2}
