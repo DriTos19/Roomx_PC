@@ -51,9 +51,13 @@ MonoBehaviour:
     german: "Zur\xFCck"
   - key: next
     english: Next
-    albanian: Weiter
-    german: "Zur\xFCck"
+    albanian: "Tjet\xEBr"
+    german: Weiter
   - key: back_to_mainmenu
     english: Menu
     albanian: Menu
-    german: Menu
+    german: "Men\xFC"
+  - key: buy
+    english: Buy
+    albanian: Blej
+    german: Kaufen

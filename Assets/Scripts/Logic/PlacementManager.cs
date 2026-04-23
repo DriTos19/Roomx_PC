@@ -186,6 +186,7 @@ public class PlacementManager : MonoBehaviour
 
         FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
         prefabRef.prefabPath = currentItem.name;
+        prefabRef.itemData = currentItem;  // Store the InventoryItemData reference
         // Store the GLB source path if this is a runtime-imported item
         if (!string.IsNullOrEmpty(currentItem.glbSourceFilePath))
             prefabRef.glbSourceFilePath = currentItem.glbSourceFilePath;

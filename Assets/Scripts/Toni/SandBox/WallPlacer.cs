@@ -320,8 +320,10 @@ public class WallPlacer_PC : MonoBehaviour
         if (prefabRef == null)
             prefabRef = obj.AddComponent<FurniturePrefabReference>();
 
-        if (currentItem != null)
+        if (currentItem != null) {
             prefabRef.prefabPath = currentItem.name;
+            prefabRef.itemData = currentItem;  // Store the InventoryItemData reference
+        }
     }
 
     void UnregisterPlacedObjectFromSaving(GameObject obj)

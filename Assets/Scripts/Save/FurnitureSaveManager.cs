@@ -98,6 +98,10 @@ public class FurnitureSaveManager : MonoBehaviour
             FurniturePrefabReference prefabRef = obj.GetComponent<FurniturePrefabReference>();
             string prefabName = prefabRef != null ? prefabRef.prefabPath : obj.name.Replace("(Clone)", "").Trim();
             
+            // If we have itemData, use its actual name for consistency
+            if (prefabRef != null && prefabRef.itemData != null)
+                prefabName = prefabRef.itemData.name;
+            
             FurnitureData itemData = new FurnitureData {
                 prefabName = prefabName,
                 position = obj.transform.position,
@@ -231,6 +235,19 @@ public class FurnitureSaveManager : MonoBehaviour
         
         // Load the InventoryItemData ScriptableObject from the correct path
         InventoryItemData itemData = Resources.Load<InventoryItemData>("ScriptableObjects/InventoryItems/" + item.prefabName);
+        Debug.Log("  First attempt with '" + item.prefabName + "': " + (itemData != null ? "FOUND" : "NOT FOUND"));
+
+        // If not found, try normalized name (remove spaces, convert to proper case for asset naming)
+        if (itemData == null && !string.IsNullOrEmpty(item.prefabName)) {
+            string normalizedName = item.prefabName.Replace("_", "").Replace(" ", "");
+            itemData = Resources.Load<InventoryItemData>("ScriptableObjects/InventoryItems/" + normalizedName);
+            
+            if (itemData != null) {
+                Debug.Log("  Found asset with normalized name: " + normalizedName);
+            } else {
+                Debug.Log("  Second attempt with normalized '" + normalizedName + "': NOT FOUND");
+            }
+        }
 
         if (itemData != null && itemData.prefab3D != null) {
             GameObject newObj = Instantiate(itemData.prefab3D, item.position, item.rotation);
@@ -241,7 +258,7 @@ public class FurnitureSaveManager : MonoBehaviour
             FurniturePrefabReference prefabRef = newObj.GetComponent<FurniturePrefabReference>();
             if (prefabRef == null)
                 prefabRef = newObj.AddComponent<FurniturePrefabReference>();
-            prefabRef.prefabPath = item.prefabName;
+            prefabRef.prefabPath = itemData.name;  // Use the actual asset name to ensure consistency
             prefabRef.itemData = itemData;
 
             // Ensure FurnitureInstance exists and points back to the InventoryItemData so WallPlacer can edit/pick it
@@ -259,11 +276,12 @@ public class FurnitureSaveManager : MonoBehaviour
             if (!activeFurniture.Contains(newObj))
                 activeFurniture.Add(newObj);
 
-            Debug.Log("Loaded: " + item.prefabName);
+            Debug.Log("✓ Loaded: " + itemData.name + " at " + item.position);
         } else {
-            Debug.LogError("FAILED: Cannot find InventoryItemData at Resources/ScriptableObjects/InventoryItems/" + item.prefabName);
+            // Gracefully skip items that no longer exist in resources (deleted/renamed items)
+            Debug.LogWarning("✗ Skipped loading missing item: '" + item.prefabName + "' — asset no longer exists at Resources/ScriptableObjects/InventoryItems/");
             if (itemData != null && itemData.prefab3D == null) {
-                Debug.LogError("InventoryItemData found but prefab3D is null!");
+                Debug.LogWarning("  Item '" + item.prefabName + "' has null prefab3D");
             }
         }
     }
