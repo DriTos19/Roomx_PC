@@ -36,4 +36,7 @@ public class InventoryItemData : ScriptableObject
     public float manualHeightStep = 0.25f;
     public float minManualHeightOffset = -2f;
     public float maxManualHeightOffset = 5f;
+
+    [Header("Runtime GLB Import")]
+    public string glbSourceFilePath; // File path for runtime-imported GLB models (empty for built-in assets)
 }

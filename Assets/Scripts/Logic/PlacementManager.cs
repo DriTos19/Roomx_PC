@@ -186,6 +186,9 @@ public class PlacementManager : MonoBehaviour
 
         FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
         prefabRef.prefabPath = currentItem.name;
+        // Store the GLB source path if this is a runtime-imported item
+        if (!string.IsNullOrEmpty(currentItem.glbSourceFilePath))
+            prefabRef.glbSourceFilePath = currentItem.glbSourceFilePath;
 
         // Register with save manager
         FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();

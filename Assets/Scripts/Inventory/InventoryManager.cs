@@ -360,6 +360,7 @@ public class InventoryManager : MonoBehaviour
         item.prefab3D = prefab;
         item.icon = defaultIcon;
         item.price = 0f;
+        // Note: glbSourceFilePath is set by the caller (SaveGLBPath is called right after)
         return item;
     }
 
@@ -370,6 +371,16 @@ public class InventoryManager : MonoBehaviour
         {
             list.paths.Add(filePath);
             File.WriteAllText(_glbSavePath, JsonUtility.ToJson(list, true));
+        }
+
+        // Find the item we just created and store the file path
+        foreach (InventoryItemData item in items)
+        {
+            if (item.itemName == Path.GetFileNameWithoutExtension(filePath) && string.IsNullOrEmpty(item.glbSourceFilePath))
+            {
+                item.glbSourceFilePath = filePath;
+                break;
+            }
         }
     }
 
@@ -389,7 +400,11 @@ public class InventoryManager : MonoBehaviour
 
             GameObject loaded = await GLBLoader.LoadGLB(path);
             if (loaded != null)
-                items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path)));
+            {
+                InventoryItemData item = CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path));
+                item.glbSourceFilePath = path;
+                items.Add(item);
+            }
         }
 
         PopulateSlots();

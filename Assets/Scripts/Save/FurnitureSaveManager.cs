@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Threading.Tasks;
 
 public class FurnitureSaveManager : MonoBehaviour
 {
@@ -94,17 +95,19 @@ public class FurnitureSaveManager : MonoBehaviour
         activeFurniture.RemoveAll(item => item == null);
 
         foreach (GameObject obj in activeFurniture) {
-            // Get the prefab reference from the component
             FurniturePrefabReference prefabRef = obj.GetComponent<FurniturePrefabReference>();
             string prefabName = prefabRef != null ? prefabRef.prefabPath : obj.name.Replace("(Clone)", "").Trim();
             
             FurnitureData itemData = new FurnitureData {
                 prefabName = prefabName,
                 position = obj.transform.position,
-                rotation = obj.transform.rotation
+                rotation = obj.transform.rotation,
+                isRuntimeGLB = prefabRef != null && !string.IsNullOrEmpty(prefabRef.glbSourceFilePath),
+                glbSourceFilePath = prefabRef != null ? prefabRef.glbSourceFilePath : ""
             };
             data.allItems.Add(itemData);
-            Debug.Log("Saved: " + prefabName + " at " + obj.transform.position);
+            Debug.Log("Saved: " + prefabName + " at " + obj.transform.position + 
+                     (itemData.isRuntimeGLB ? " (GLB from: " + itemData.glbSourceFilePath + ")" : ""));
         }
 
         string json = JsonUtility.ToJson(data, true);
@@ -165,50 +168,103 @@ public class FurnitureSaveManager : MonoBehaviour
             Debug.Log("Found " + data.allItems.Count + " items to load.");
 
             foreach (FurnitureData item in data.allItems) {
-                Debug.Log("Attempting to load InventoryItemData: " + item.prefabName);
-                
-                // Load the InventoryItemData ScriptableObject from the correct path
-                InventoryItemData itemData = Resources.Load<InventoryItemData>("ScriptableObjects/InventoryItems/" + item.prefabName);
-
-                if (itemData != null && itemData.prefab3D != null) {
-                    GameObject newObj = Instantiate(itemData.prefab3D, item.position, item.rotation);
-                    newObj.SetActive(true);
-
-                    // Ensure FurniturePrefabReference exists and is populated. This partial class exists in two files
-                    // so it contains both 'prefabPath' (save) and 'itemData' (logic).
-                    FurniturePrefabReference prefabRef = newObj.GetComponent<FurniturePrefabReference>();
-                    if (prefabRef == null)
-                        prefabRef = newObj.AddComponent<FurniturePrefabReference>();
-                    prefabRef.prefabPath = item.prefabName;
-                    prefabRef.itemData = itemData;
-
-                    // Ensure FurnitureInstance exists and points back to the InventoryItemData so WallPlacer can edit/pick it
-                    FurnitureInstance instance = newObj.GetComponent<FurnitureInstance>();
-                    if (instance == null)
-                        instance = newObj.AddComponent<FurnitureInstance>();
-                    instance.itemDataSandbox = itemData;
-
-                    // Put object on the Furniture layer so placement/wall placer pickup raycasts will find it
-                    int furnitureLayer = LayerMask.NameToLayer("Furniture");
-                    if (furnitureLayer != -1)
-                        SetLayerRecursively(newObj, furnitureLayer);
-
-                    // Register with save manager list
-                    if (!activeFurniture.Contains(newObj))
-                        activeFurniture.Add(newObj);
-
-                    Debug.Log("Loaded: " + item.prefabName);
-                } else {
-                    Debug.LogError("FAILED: Cannot find InventoryItemData at Resources/ScriptableObjects/InventoryItems/" + item.prefabName);
-                    if (itemData != null && itemData.prefab3D == null) {
-                        Debug.LogError("InventoryItemData found but prefab3D is null!");
-                    }
+                // Handle runtime GLB items differently
+                if (item.isRuntimeGLB && !string.IsNullOrEmpty(item.glbSourceFilePath))
+                {
+                    LoadRuntimeGLBItem(item);
+                }
+                else
+                {
+                    LoadStandardItem(item);
                 }
             }
             
             Debug.Log("Load complete! Total furniture loaded: " + activeFurniture.Count);
         } catch (System.Exception e) {
             Debug.LogError("Error during load: " + e.Message + "\n" + e.StackTrace);
+        }
+    }
+
+    private async void LoadRuntimeGLBItem(FurnitureData item)
+    {
+        // Check if the file still exists
+        if (!File.Exists(item.glbSourceFilePath))
+        {
+            Debug.LogWarning($"GLB file no longer exists: {item.glbSourceFilePath}");
+            return;
+        }
+
+        // Reload the GLB from disk
+        GameObject loaded = await GLBLoader.LoadGLB(item.glbSourceFilePath);
+        if (loaded == null)
+        {
+            Debug.LogError($"Failed to reload GLB: {item.glbSourceFilePath}");
+            return;
+        }
+
+        // Instantiate at the saved position and rotation
+        GameObject newObj = Instantiate(loaded, item.position, item.rotation);
+        newObj.SetActive(true);
+
+        // Add the reference component
+        FurniturePrefabReference prefabRef = newObj.GetComponent<FurniturePrefabReference>();
+        if (prefabRef == null)
+            prefabRef = newObj.AddComponent<FurniturePrefabReference>();
+        prefabRef.prefabPath = item.prefabName;
+        prefabRef.glbSourceFilePath = item.glbSourceFilePath;
+
+        // Put object on the Furniture layer
+        int furnitureLayer = LayerMask.NameToLayer("Furniture");
+        if (furnitureLayer != -1)
+            SetLayerRecursively(newObj, furnitureLayer);
+
+        // Register with save manager list
+        if (!activeFurniture.Contains(newObj))
+            activeFurniture.Add(newObj);
+
+        Debug.Log("Loaded GLB: " + item.prefabName + " from " + item.glbSourceFilePath);
+    }
+
+    private void LoadStandardItem(FurnitureData item)
+    {
+        Debug.Log("Attempting to load InventoryItemData: " + item.prefabName);
+        
+        // Load the InventoryItemData ScriptableObject from the correct path
+        InventoryItemData itemData = Resources.Load<InventoryItemData>("ScriptableObjects/InventoryItems/" + item.prefabName);
+
+        if (itemData != null && itemData.prefab3D != null) {
+            GameObject newObj = Instantiate(itemData.prefab3D, item.position, item.rotation);
+            newObj.SetActive(true);
+
+            // Ensure FurniturePrefabReference exists and is populated. This partial class exists in two files
+            // so it contains both 'prefabPath' (save) and 'itemData' (logic).
+            FurniturePrefabReference prefabRef = newObj.GetComponent<FurniturePrefabReference>();
+            if (prefabRef == null)
+                prefabRef = newObj.AddComponent<FurniturePrefabReference>();
+            prefabRef.prefabPath = item.prefabName;
+            prefabRef.itemData = itemData;
+
+            // Ensure FurnitureInstance exists and points back to the InventoryItemData so WallPlacer can edit/pick it
+            FurnitureInstance instance = newObj.GetComponent<FurnitureInstance>();
+            if (instance == null)
+                instance = newObj.AddComponent<FurnitureInstance>();
+            instance.itemDataSandbox = itemData;
+
+            // Put object on the Furniture layer so placement/wall placer pickup raycasts will find it
+            int furnitureLayer = LayerMask.NameToLayer("Furniture");
+            if (furnitureLayer != -1)
+                SetLayerRecursively(newObj, furnitureLayer);
+
+            // Register with save manager list
+            if (!activeFurniture.Contains(newObj))
+                activeFurniture.Add(newObj);
+
+            Debug.Log("Loaded: " + item.prefabName);
+        } else {
+            Debug.LogError("FAILED: Cannot find InventoryItemData at Resources/ScriptableObjects/InventoryItems/" + item.prefabName);
+            if (itemData != null && itemData.prefab3D == null) {
+                Debug.LogError("InventoryItemData found but prefab3D is null!");
+            }
         }
     }
 
@@ -360,6 +416,8 @@ public class FurnitureSaveManager : MonoBehaviour
         public string prefabName;
         public Vector3 position;
         public Quaternion rotation;
+        public bool isRuntimeGLB;           // True if this is an imported GLB model
+        public string glbSourceFilePath;    // Original file path for runtime GLBs
     }
 
     [System.Serializable]
