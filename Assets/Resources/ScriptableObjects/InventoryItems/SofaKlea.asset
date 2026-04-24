@@ -16,7 +16,23 @@ MonoBehaviour:
   description: This sofa features a sleek, modern design that blends effortlessly
     into contemporary living spaces while adding a subtle cozy touch. Crafted from
     high-quality, durable materials, it offers comfortable seating for everyday use.
+  descriptionAlbanian: "Kjo divan ka nj\xEB dizajn elegant dhe modern q\xEB p\xEBrshtatet
+    pa mundim n\xEB hap\xEBsirat bashk\xEBkohore t\xEB banimit, duke shtuar nj\xEB
+    prekje delikate komoditeti. I punuar nga materiale t\xEB cil\xEBsis\xEB s\xEB
+    lart\xEB dhe t\xEB q\xEBndrueshme, ai ofron ndenjje t\xEB rehatshme p\xEBr p\xEBrdorim
+    t\xEB p\xEBrditsh\xEBm."
+  descriptionGerman: "Dieses Sofa besticht durch ein elegantes, modernes Design,
+    das sich m\xFChelos in zeitgen\xF6ssische Wohnr\xE4ume einf\xFCgt und gleichzeitig
+    eine dezente gem\xFCtliche Note verleiht. Gefertigt aus hochwertigen, langlebigen
+    Materialien, bietet es eine komfortable Sitzgelegenheit f\xFCr den t\xE4glichen
+    Gebrauch."
   icon: {fileID: 21300000, guid: 1a88b1d3f03c21547b0b8e7602c6ec36, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: ce038687a9894b84fac933600289a591, type: 3}
+  placementRotationOffset: {x: 0, y: 0, z: 0}
+  allowManualHeightAdjust: 0
+  manualHeightStep: 0.1
+  minManualHeightOffset: 0
+  maxManualHeightOffset: 0
   category: 4
-  price: 10
+  price: 1550
+  glbSourceFilePath: 

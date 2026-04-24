@@ -3,7 +3,12 @@ guid: 2198a4632a3f28149b800e351907b5be
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Coffee Table_Baked
+    second: {fileID: 2100000, guid: 40edb91fee18b5d4db1f0bacc28791b4, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

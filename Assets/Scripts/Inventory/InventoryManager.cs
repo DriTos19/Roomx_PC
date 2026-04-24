@@ -264,7 +264,7 @@ public class InventoryManager : MonoBehaviour
         if (item == null) return;
 
         if (descriptionImage) descriptionImage.sprite = item.icon;
-        if (descriptionText) descriptionText.text = $"<b>{item.itemName}</b>\n\n{item.description}";
+        if (descriptionText) descriptionText.text = $"<b>{item.itemName}</b>\n\n{item.GetLocalizedDescription()}\n\n<b>Price:</b> {(item.price > 0 ? $"{item.price:F0}$" : "Free")}";
 
         if (descriptionCanvasGroup != null)
         {
@@ -360,7 +360,6 @@ public class InventoryManager : MonoBehaviour
         item.prefab3D = prefab;
         item.icon = defaultIcon;
         item.price = 0f;
-        // Note: glbSourceFilePath is set by the caller (SaveGLBPath is called right after)
         return item;
     }
 
@@ -371,16 +370,6 @@ public class InventoryManager : MonoBehaviour
         {
             list.paths.Add(filePath);
             File.WriteAllText(_glbSavePath, JsonUtility.ToJson(list, true));
-        }
-
-        // Find the item we just created and store the file path
-        foreach (InventoryItemData item in items)
-        {
-            if (item.itemName == Path.GetFileNameWithoutExtension(filePath) && string.IsNullOrEmpty(item.glbSourceFilePath))
-            {
-                item.glbSourceFilePath = filePath;
-                break;
-            }
         }
     }
 
@@ -400,11 +389,7 @@ public class InventoryManager : MonoBehaviour
 
             GameObject loaded = await GLBLoader.LoadGLB(path);
             if (loaded != null)
-            {
-                InventoryItemData item = CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path));
-                item.glbSourceFilePath = path;
-                items.Add(item);
-            }
+                items.Add(CreateItemFromGLB(loaded, Path.GetFileNameWithoutExtension(path)));
         }
 
         PopulateSlots();

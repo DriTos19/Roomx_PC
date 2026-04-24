@@ -3,7 +3,12 @@ guid: 059f6157824c076409638728d798aee0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sphere.003_Baked.001
+    second: {fileID: 2100000, guid: de2bb909a9ac0ea448706ced44a90e10, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

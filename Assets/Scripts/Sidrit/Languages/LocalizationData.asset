@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45fcdf5e5a0d41e8aa4f2b5bd4206fa7, type: 3}
+  m_Name: LocalizationData
+  m_EditorClassIdentifier: 
+  entries:
+  - key: explore_designs
+    english: Explore Designs
+    albanian: Eksploro Dizajne
+    german: Designs erkunden
+  - key: settings
+    english: Settings
+    albanian: "Cil\xEBsimet"
+    german: Einstellungen
+  - key: exit
+    english: Exit
+    albanian: Dalje
+    german: Beenden
+  - key: languages
+    english: Languages
+    albanian: "Gjuh\xEBt"
+    german: Sprachen
+  - key: back
+    english: Back
+    albanian: Kthehu
+    german: "Zur\xFCck"
+  - key: english
+    english: English
+    albanian: Anglisht
+    german: Englisch
+  - key: albanian
+    english: Albanian
+    albanian: Shqip
+    german: Albanisch
+  - key: german
+    english: German
+    albanian: Gjermanisht
+    german: Deutsch
+  - key: previous
+    english: Previous
+    albanian: "Paraardh\xEBse"
+    german: "Zur\xFCck"
+  - key: next
+    english: Next
+    albanian: "Tjet\xEBr"
+    german: Weiter
+  - key: mainmenu
+    english: Menu
+    albanian: Menu
+    german: "Men\xFC"
+  - key: buy
+    english: Buy
+    albanian: Blej
+    german: Kaufen
+  - key: save
+    english: Save
+    albanian: Ruaj
+    german: Speichern
+  - key: load
+    english: Load
+    albanian: Ngarko
+    german: Laden
+  - key: import
+    english: Import
+    albanian: Importo
+    german: Importieren

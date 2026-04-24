@@ -3,7 +3,27 @@ guid: f4d48bbb1752b194e8e582587ceefce5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorHandle.001_Baked
+    second: {fileID: 2100000, guid: 057f0937cda5df6478ecf62ecfe25381, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorHandle.002_Baked
+    second: {fileID: 2100000, guid: 713df7f001e371a439c6fb509c2f32ba, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorHandle.003_Baked
+    second: {fileID: 2100000, guid: 5510b130776a6c34abf9ac7b80e28e29, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorHandle.004_Baked
+    second: {fileID: 2100000, guid: 4eed5aa2df030a047987984877c992d2, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

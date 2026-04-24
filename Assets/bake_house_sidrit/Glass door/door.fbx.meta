@@ -3,7 +3,12 @@ guid: c556af6a13662c04c95ffffb049bb9b0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass door_Baked
+    second: {fileID: 2100000, guid: 2e33460429e8fcb43a54c0dfd1860b0c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -185,7 +185,7 @@ public class MainMenuUI : MonoBehaviour
         yield return StartCoroutine(FadeCanvasGroup(currentPanel, 1f, 0f));
         SetActivePanel(currentPanel, false);
 
-        SetActivePanel(newPanel, true);
+        SetActivePanel(newPanel, false);
         yield return StartCoroutine(FadeCanvasGroup(newPanel, 0f, 1f));
 
         currentPanel = newPanel;

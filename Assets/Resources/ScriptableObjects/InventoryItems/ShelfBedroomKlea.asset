@@ -17,7 +17,24 @@ MonoBehaviour:
     effortlessly into modern interiors while maintaining a warm, cozy presence. Constructed
     from durable, high-quality materials, it provides practical storage for books,
     decorative pieces, and personal essentials.
+  descriptionAlbanian: "Ky raft dhome gjumi ka nj\xEB dizajn elegant dhe minimalist
+    q\xEB p\xEBrshtatet pa mundim me ambientet e brendshme moderne, duke ruajtur
+    nj\xEBkoh\xEBsisht nj\xEB prani t\xEB ngroht\xEB dhe komode. I nd\xEBrtuar nga
+    materiale t\xEB q\xEBndrueshme dhe t\xEB cil\xEBsis\xEB s\xEB lart\xEB, ai ofron
+    hap\xEBsir\xEB praktike ruajtjeje p\xEBr libra, objekte dekorative dhe sende
+    personale t\xEB nevojshme."
+  descriptionGerman: "Dieses Schlafzimmerregal besticht durch ein elegantes, minimalistisches
+    Design, das sich m\xFChelos in moderne Innenr\xE4ume einf\xFCgt und gleichzeitig
+    eine warme, gem\xFCtliche Ausstrahlung bewahrt. Gefertigt aus langlebigen, hochwertigen
+    Materialien, bietet es praktischen Stauraum f\xFCr B\xFCcher, Dekorationsst\xFCcke
+    und pers\xF6nliche Essentials."
   icon: {fileID: 21300000, guid: 4115d19d8e767c341899b3c01ee68626, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: c4fefbb362e9b754d9e90eaa7c4d8f42, type: 3}
+  placementRotationOffset: {x: 0, y: 0, z: 0}
+  allowManualHeightAdjust: 0
+  manualHeightStep: 0.1
+  minManualHeightOffset: 0
+  maxManualHeightOffset: 0
   category: 5
-  price: 10
+  price: 75
+  glbSourceFilePath: 

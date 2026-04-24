@@ -7,5 +7,4 @@
 public partial class FurniturePrefabReference : MonoBehaviour
 {
     public string prefabPath; // The name of the InventoryItemData ScriptableObject
-    public string glbSourceFilePath; // Original file path for runtime-imported GLBs
 }

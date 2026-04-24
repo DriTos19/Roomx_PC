@@ -3,7 +3,12 @@ guid: 748833781bcd0144997c78dfcae46700
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LED Light 28cm 3000K.001_Baked
+    second: {fileID: 2100000, guid: f2b94f3b976ddc1459c42d9914e7fc57, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

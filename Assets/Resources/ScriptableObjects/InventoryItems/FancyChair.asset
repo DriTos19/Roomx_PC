@@ -17,7 +17,23 @@ MonoBehaviour:
     contemporary interiors while preserving a natural, inviting character. Crafted
     from solid wood with a smooth, refined finish, it offers durability and stable
     support for everyday use.
+  descriptionAlbanian: "Kjo karrige druri ka nj\xEB dizajn elegant dhe minimalist
+    q\xEB plot\xEBson ambientet e brendshme bashk\xEBkohore, duke ruajtur nj\xEBkoh\xEBsisht
+    nj\xEB karakter natyral dhe ftues. E punuar nga dru masiv me nj\xEB p\xEBrfundim
+    t\xEB l\xEBmuar dhe t\xEB rafinuar, ajo ofron q\xEBndrueshm\xEBri dhe mb\xEBshtetje
+    t\xEB q\xEBndrueshme p\xEBr p\xEBrdorim t\xEB p\xEBrditsh\xEBm."
+  descriptionGerman: "Dieser Holzstuhl besticht durch ein elegantes, minimalistisches
+    Design, das moderne Innenr\xE4ume erg\xE4nzt und gleichzeitig einen nat\xFCrlichen,
+    einladenden Charakter bewahrt. Gefertigt aus Massivholz mit einer glatten, raffinierten
+    Oberfl\xE4che, bietet er Langlebigkeit und stabilen Halt f\xFCr den t\xE4glichen
+    Gebrauch."
   icon: {fileID: 21300000, guid: 0ed5cba8ec5807b4c892e8f68c7cd55b, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: efbf3abdacd974348be1192f1caf45c1, type: 3}
+  placementRotationOffset: {x: 0, y: 0, z: 0}
+  allowManualHeightAdjust: 0
+  manualHeightStep: 0.1
+  minManualHeightOffset: 0
+  maxManualHeightOffset: 0
   category: 3
-  price: 10
+  price: 75
+  glbSourceFilePath: 

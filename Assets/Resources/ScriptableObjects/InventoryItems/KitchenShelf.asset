@@ -16,11 +16,19 @@ MonoBehaviour:
   description: "This kitchen shelf combines a practical layout with a modern appearance.
     Constructed from durable materials, it offers efficient storage for kitchen essentials
     and d\xE9cor."
+  descriptionAlbanian: "Ky raft kuzhine nd\xEBrthur nj\xEB rregullim praktik me nj\xEB
+    pamje moderne. I nd\xEBrtuar nga materiale t\xEB q\xEBndrueshme, ai ofron hap\xEBsir\xEB
+    efikase ruajtjeje p\xEBr mjetet e nevojshme t\xEB kuzhin\xEBs dhe dekorimet."
+  descriptionGerman: "Dieses K\xFCchenregal kombiniert ein praktisches Layout mit
+    einem modernen Erscheinungsbild. Gefertigt aus langlebigen Materialien, bietet
+    es effizienten Stauraum f\xFCr K\xFCchenutensilien und Dekoration."
   icon: {fileID: 21300000, guid: 9380e8cb538314b44b3b40d66e483f79, type: 3}
   prefab3D: {fileID: 0}
-  category: 5
-  price: 1001
+  placementRotationOffset: {x: 0, y: 0, z: 0}
   allowManualHeightAdjust: 0
   manualHeightStep: 0.25
   minManualHeightOffset: -2
   maxManualHeightOffset: 5
+  category: 5
+  price: 1500
+  glbSourceFilePath: 

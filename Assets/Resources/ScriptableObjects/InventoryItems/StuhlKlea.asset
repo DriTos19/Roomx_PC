@@ -16,11 +16,22 @@ MonoBehaviour:
   description: This fancy chair showcases a sleek, modern silhouette enhanced by
     refined detailing and elegant proportions. Crafted from premium materials with
     a smooth, polished finish, it offers both durability and elevated comfort.
+  descriptionAlbanian: "Kjo karrige luksoze shfaq nj\xEB siluet\xEB elegante dhe
+    moderne, t\xEB pasuruar me detaje t\xEB rafinuara dhe proporcione elegante. E
+    punuar nga materiale premium me nj\xEB p\xEBrfundim t\xEB l\xEBmuar dhe t\xEB
+    shndritsh\xEBm, ajo ofron q\xEBndrueshm\xEBri dhe nj\xEB nivel t\xEB lart\xEB
+    komoditeti."
+  descriptionGerman: "Dieser exklusive Stuhl pr\xE4sentiert eine elegante, moderne
+    Silhouette, die durch raffinierte Details und elegante Proportionen unterstrichen
+    wird. Gefertigt aus erstklassigen Materialien mit einer glatten, polierten Oberfl\xE4che,
+    bietet er sowohl Langlebigkeit als auch gehobenen Komfort."
   icon: {fileID: 21300000, guid: e959882bdad676940be6e8cca74b7530, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 533e989f17aacd740a59bbba9cc3f911, type: 3}
-  category: 3
-  price: 10
+  placementRotationOffset: {x: 0, y: 0, z: 0}
   allowManualHeightAdjust: 1
   manualHeightStep: 0.25
   minManualHeightOffset: -2
   maxManualHeightOffset: 5
+  category: 3
+  price: 115
+  glbSourceFilePath: 

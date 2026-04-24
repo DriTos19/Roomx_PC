@@ -3,7 +3,97 @@ guid: 206acae9141a5b84c968229d2fdb07fc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BackCorpus_Baked
+    second: {fileID: 2100000, guid: f2cb6c8420349f34aa02b803518c5a26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bolt_Baked
+    second: {fileID: 2100000, guid: c6e22bbabe879c64daf9169e2ff66ee6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BottomPlastic_Baked
+    second: {fileID: 2100000, guid: d1cb1eef23312e7469e59d920f03e1c0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ControlRollerDisplay_Baked
+    second: {fileID: 2100000, guid: 92ba4f6dd79189b43adc157b7224dccf, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: ControlRoller_Baked
+    second: {fileID: 2100000, guid: 82b24f25449d6fd43aa882dacb124aa2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorRubber_Baked
+    second: {fileID: 2100000, guid: 67933b25b37d5f041ad91a00847ae880, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DoorWindow_Baked
+    second: {fileID: 2100000, guid: 1b850b81b8b691646970397b45bce3c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Door_Baked
+    second: {fileID: 2100000, guid: 1fccb965f5d92114aab101d5162a81e8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DrumRib_Baked
+    second: {fileID: 2100000, guid: 67b9574a8c08f934791db0d22526f853, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Drum_Baked
+    second: {fileID: 2100000, guid: 32ff27d3477eacf4d98a4e674afe2730, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Feet_Baked
+    second: {fileID: 2100000, guid: fb697c71cfd16d047bd5da5c482803af, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrontTop.002_Baked
+    second: {fileID: 2100000, guid: 8e1031a76953aaf408805928d8acc35d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: FrontTop.004_Baked
+    second: {fileID: 2100000, guid: a2a1d71f54b32e646a76f842b3764c90, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Front_Baked
+    second: {fileID: 2100000, guid: 30e450b694110d8408af2903cbed90c8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: LEDDisplay_Baked
+    second: {fileID: 2100000, guid: 2d915b34af643644fb7a5a326d1ce99a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Midea_Baked
+    second: {fileID: 2100000, guid: 8451d100bbed02d458b77e4647a01699, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Sides_Baked
+    second: {fileID: 2100000, guid: 0c32dfc68b6a14a4abdb8ad4eaf033d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Top_Baked
+    second: {fileID: 2100000, guid: 660d26bbda2e52b499cb3e7e41afdc7c, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

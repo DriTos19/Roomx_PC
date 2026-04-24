@@ -3,7 +3,17 @@ guid: 247c8a48449a0e743a00bc66e65d3ca7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tilet.001_Baked
+    second: {fileID: 2100000, guid: 83fabd2c2348f0b41ad334ddea49cf58, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tilet_Baked
+    second: {fileID: 2100000, guid: 441deec1a87627c4cb076375dfd4b0d8, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

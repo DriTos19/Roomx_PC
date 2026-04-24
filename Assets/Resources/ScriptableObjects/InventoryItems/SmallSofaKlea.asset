@@ -17,7 +17,22 @@ MonoBehaviour:
     into modern living spaces while adding a gentle cozy touch. Crafted from durable,
     high-quality materials, it provides comfortable seating without occupying too
     much space.
+  descriptionAlbanian: "Ky divan i vog\xEBl ka nj\xEB dizajn elegant dhe minimalist
+    q\xEB p\xEBrshtatet n\xEB m\xEBnyr\xEB perfekte n\xEB hap\xEBsirat moderne t\xEB
+    banimit, duke shtuar nj\xEB prekje t\xEB but\xEB komoditeti. I punuar nga materiale
+    t\xEB q\xEBndrueshme dhe t\xEB cil\xEBsis\xEB s\xEB lart\xEB, ai ofron ndenjje
+    t\xEB rehatshme pa z\xEBn\xEB shum\xEB hap\xEBsir\xEB."
+  descriptionGerman: "Dieses kleine Sofa besticht durch ein elegantes, minimalistisches
+    Design, das perfekt in moderne Wohnr\xE4ume passt und gleichzeitig eine sanfte,
+    gem\xFCtliche Note verleiht. Gefertigt aus langlebigen, hochwertigen Materialien,
+    bietet es eine komfortable Sitzgelegenheit, ohne zu viel Platz einzunehmen."
   icon: {fileID: 21300000, guid: ec7d6d1eeb37823498244b61f99ad020, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 82bdd464979e2ad4ea950759592d9486, type: 3}
+  placementRotationOffset: {x: 0, y: 0, z: 0}
+  allowManualHeightAdjust: 0
+  manualHeightStep: 0.1
+  minManualHeightOffset: 0
+  maxManualHeightOffset: 0
   category: 4
-  price: 10
+  price: 440
+  glbSourceFilePath: 

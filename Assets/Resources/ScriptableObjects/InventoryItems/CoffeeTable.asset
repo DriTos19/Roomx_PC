@@ -16,11 +16,21 @@ MonoBehaviour:
   description: "This coffee table features a compact and stylish design perfect for
     living areas. Crafted from durable materials, it provides a functional surface
     for drinks, d\xE9cor, and daily use."
+  descriptionAlbanian: "Kjo tavolin\xEB kafeje ka nj\xEB dizajn kompakt dhe stilsh\xEBm,
+    ideal p\xEBr dhomat e ndenjes. E punuar nga materiale t\xEB q\xEBndrueshme, ajo
+    ofron nj\xEB sip\xEBrfaqe funksionale p\xEBr pije, dekorime dhe p\xEBrdorim t\xEB
+    p\xEBrditsh\xEBm."
+  descriptionGerman: "Dieser Couchtisch besticht durch sein kompaktes und stilvolles
+    Design, das perfekt p\xEBr Wohnbereiche geeignet ist. Gefertigt aus langlebigen
+    Materialien, bietet er eine funktionale Oberfl\xE4che f\xFCr Getr\xE4nke, Dekoration
+    und den t\xE4glichen Gebrauch."
   icon: {fileID: 21300000, guid: a1b9a65d35829a6449f967a10e36ba17, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 80861f52b9d55704b8ba4767d086f258, type: 3}
-  category: 2
-  price: 10
+  placementRotationOffset: {x: 0, y: 0, z: 0}
   allowManualHeightAdjust: 0
   manualHeightStep: 0.25
   minManualHeightOffset: -2
   maxManualHeightOffset: 5
+  category: 2
+  price: 275
+  glbSourceFilePath: 

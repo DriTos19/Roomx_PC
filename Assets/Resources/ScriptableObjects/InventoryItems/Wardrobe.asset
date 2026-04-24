@@ -16,11 +16,21 @@ MonoBehaviour:
   description: This wardrobe combines a refined appearance with functional storage
     capacity for daily use. Designed with durable materials, it helps keep clothing
     and personal belongings neatly organized.
+  descriptionAlbanian: "Kjo dollap rrobash nd\xEBrthur nj\xEB pamje t\xEB rafinuar
+    me nj\xEB kapacitet funksional ruajtjeje p\xEBr p\xEBrdorim t\xEB p\xEBrditsh\xEBm.
+    I projektuar me materiale t\xEB q\xEBndrueshme, ai ndihmon n\xEB mbajtjen e rrobave
+    dhe sendeve personale t\xEB organizuara mir\xEB."
+  descriptionGerman: "Dieser Kleiderschrank kombiniert ein raffiniertes Erscheinungsbild
+    mit funktionaler Speicherkapazit\xE4t f\xFCr den t\xE4glichen Gebrauch. Entworfen
+    aus langlebigen Materialien, hilft er dabei, Kleidung und pers\xF6nliche Gegenst\xE4nde
+    ordentlich zu organisieren."
   icon: {fileID: 21300000, guid: dc43293b797844f4592aa614645f35f5, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 7e6abab1d3c23aa409467de5535b6d90, type: 3}
-  category: 5
-  price: 10
+  placementRotationOffset: {x: 0, y: 0, z: 0}
   allowManualHeightAdjust: 0
   manualHeightStep: 0.25
   minManualHeightOffset: -2
   maxManualHeightOffset: 5
+  category: 5
+  price: 3500
+  glbSourceFilePath: 

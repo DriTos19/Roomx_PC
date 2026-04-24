@@ -16,7 +16,21 @@ MonoBehaviour:
   description: 'This fireplace showcases a sleek, minimalist design that integrates
     effortlessly into modern interiors. Crafted from high-quality, heat-resistant
     materials, it delivers both durability and refined elegance. '
+  descriptionAlbanian: "Ky oxhak shfaq nj\xEB dizajn elegant dhe minimalist q\xEB
+    integrohet pa mundim n\xEB ambientet e brendshme moderne. I punuar nga materiale
+    t\xEB cil\xEBsis\xEB s\xEB lart\xEB dhe rezistente ndaj nxeht\xEBsis\xEB, ai
+    ofron q\xEBndrueshm\xEBri dhe nj\xEB eleganc\xEB t\xEB rafinuar."
+  descriptionGerman: "Dieser Kamin besticht durch ein elegantes, minimalistisches
+    Design, das sich m\xFChelos in moderne Innenr\xE4ume integriert. Gefertigt aus
+    hochwertigen, hitzebest\xE4ndigen Materialien, bietet er sowohl Langlebigkeit
+    als auch raffinierte Eleganz."
   icon: {fileID: 21300000, guid: 923e3f912302a9f4e84db4327770f3d7, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 6bf654bc7fc1e0c43ad01d72dd53fad7, type: 3}
+  placementRotationOffset: {x: 0, y: 0, z: 0}
+  allowManualHeightAdjust: 0
+  manualHeightStep: 0.1
+  minManualHeightOffset: 0
+  maxManualHeightOffset: 0
   category: 5
-  price: 10
+  price: 2350
+  glbSourceFilePath: 

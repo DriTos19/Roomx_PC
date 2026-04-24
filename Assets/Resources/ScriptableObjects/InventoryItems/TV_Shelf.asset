@@ -16,11 +16,20 @@ MonoBehaviour:
   description: This TV shelf presents a functional and modern design suited for entertainment
     setups. It provides stable support for devices while offering additional storage
     space.
-  icon: {fileID: 21300000, guid: 244e84fdf393ee749bca00795dc81a60, type: 3}
-  prefab3D: {fileID: 919132149155446097, guid: 945d55518e3400a40864318fca51c432, type: 3}
-  category: 5
-  price: 0
+  descriptionAlbanian: "Ky raft televizori paraqet nj\xEB dizajn funksional dhe modern,
+    i p\xEBrshtatsh\xEBm p\xEBr sistemet e arg\xEBtimit. Ai ofron mb\xEBshtetje t\xEB
+    q\xEBndrueshme p\xEBr pajisjet, duke ofruar gjithashtu hap\xEBsir\xEB shtes\xEB
+    p\xEBr ruajtje."
+  descriptionGerman: "Dieses TV-Regal pr\xE4sentiert ein funktionales und modernes
+    Design, das ideal f\xFCr Entertainment-Systeme geeignet ist. Es bietet stabilen
+    Halt f\xFCr Ger\xE4te und gleichzeitig zus\xE4tzlichen Stauraum."
+  icon: {fileID: 21300000, guid: 7063499d371d9c24d862272edb8ac02d, type: 3}
+  prefab3D: {fileID: 4066114929092363888, guid: e5709b214b3b9eb47807366310d5849a, type: 3}
+  placementRotationOffset: {x: 0, y: 0, z: 0}
   allowManualHeightAdjust: 1
   manualHeightStep: 0.25
   minManualHeightOffset: -2
   maxManualHeightOffset: 5
+  category: 5
+  price: 850
+  glbSourceFilePath: 

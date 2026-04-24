@@ -3,7 +3,12 @@ guid: 21fbe16f1e4a25f4f8039eb80a12445d
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: BathroomMirror_Baked
+    second: {fileID: 2100000, guid: 30156efbfb36b994b9347f94486bb803, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

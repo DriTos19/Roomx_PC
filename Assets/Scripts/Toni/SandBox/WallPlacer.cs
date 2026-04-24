@@ -91,19 +91,6 @@ public class WallPlacer_PC : MonoBehaviour
 
     void Update()
     {
-        // Re-lock cursor for FPS navigation when player presses a movement key after placement.
-        // This allows the cursor to stay unlocked (for UI button access) right after placing an item,
-        // but seamlessly re-enters FPS mode the moment the player starts moving.
-        if (Cursor.lockState != CursorLockMode.Locked && !isPlacing)
-        {
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) ||
-                Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            }
-        }
-
         if (materialWheelController != null && materialWheelController.IsOpen())
             return;
 
@@ -136,8 +123,6 @@ public class WallPlacer_PC : MonoBehaviour
 
     void HandleMovement()
     {
-        if (Cursor.lockState != CursorLockMode.Locked) return;
-
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
@@ -147,8 +132,6 @@ public class WallPlacer_PC : MonoBehaviour
 
     void HandleMouseLook()
     {
-        if (Cursor.lockState != CursorLockMode.Locked) return;
-
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * 100f * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * 100f * Time.deltaTime;
 
@@ -330,14 +313,7 @@ public class WallPlacer_PC : MonoBehaviour
         if (furnitureSaveManager != null)
         {
             if (!furnitureSaveManager.activeFurniture.Contains(obj))
-            {
                 furnitureSaveManager.activeFurniture.Add(obj);
-                Debug.Log($"WallPlacer_PC: Registered '{obj.name}' for saving. Total items in save list: {furnitureSaveManager.activeFurniture.Count}");
-            }
-        }
-        else
-        {
-            Debug.LogWarning("WallPlacer_PC: FurnitureSaveManager not found! Cannot register object for saving.");
         }
 
         FurniturePrefabReference prefabRef = obj.GetComponent<FurniturePrefabReference>();
@@ -346,9 +322,7 @@ public class WallPlacer_PC : MonoBehaviour
 
         if (currentItem != null) {
             prefabRef.prefabPath = currentItem.name;
-            prefabRef.itemData = currentItem;
-            if (!string.IsNullOrEmpty(currentItem.glbSourceFilePath))
-                prefabRef.glbSourceFilePath = currentItem.glbSourceFilePath;
+            prefabRef.itemData = currentItem;  // Store the InventoryItemData reference
         }
     }
 
@@ -405,10 +379,6 @@ public class WallPlacer_PC : MonoBehaviour
         isEditingExisting = false;
         manualHeightOffset = 0f;
         ClearCanceledEditData();
-
-        // Unlock cursor after placement so the save/load UI buttons are clickable
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     void TryEditPlacedObject()
@@ -461,10 +431,6 @@ public class WallPlacer_PC : MonoBehaviour
         MakePreviewTransparent(previewInstance);
 
         isPlacing = true;
-
-        // Lock cursor when entering edit/placement mode (same as StartPlacement)
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
     }
 
     void SaveMaterialsFromObject(GameObject obj)
@@ -547,10 +513,6 @@ public class WallPlacer_PC : MonoBehaviour
 
         currentItem = null;
         currentPrefab = null;
-
-        // Unlock cursor after canceling so the save/load UI buttons are clickable
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
     void RestoreCanceledEditObject()

@@ -16,7 +16,22 @@ MonoBehaviour:
   description: This bathroom shelf presents a refined, minimalist aesthetic that
     integrates effortlessly into modern living spaces. Constructed from high-quality,
     moisture-resistant materials, it ensures long-lasting durability in humid environments.
+  descriptionAlbanian: "Ky raft tualeti paraqet nj\xEB estetik\xEB t\xEB rafinuar
+    dhe minimaliste q\xEB integrohet pa mundim n\xEB hap\xEBsirat moderne t\xEB banimit.
+    I nd\xEBrtuar nga materiale t\xEB cil\xEBsis\xEB s\xEB lart\xEB dhe rezistente
+    ndaj lag\xEBshtis\xEB, ai siguron q\xEBndrueshm\xEBri afatgjat\xEB n\xEB ambiente
+    me lag\xEBshti."
+  descriptionGerman: "Dieses Badezimmerregal pr\xE4sentiert eine raffinierte, minimalistische
+    \xC4sthetik, die sich m\xFChelos in moderne Wohnr\xE4ume integriert. Gefertigt
+    aus hochwertigen, feuchtigkeitsbest\xE4ndigen Materialien, garantiert es eine
+    lange Lebensdauer in feuchten Umgebungen."
   icon: {fileID: 21300000, guid: d5329a31f241620488b1f8c220a444a8, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: 4af6a510625e121418793eb926d79d20, type: 3}
+  placementRotationOffset: {x: 0, y: 0, z: 0}
+  allowManualHeightAdjust: 0
+  manualHeightStep: 0.1
+  minManualHeightOffset: 0
+  maxManualHeightOffset: 0
   category: 1
-  price: 10
+  price: 750
+  glbSourceFilePath: 

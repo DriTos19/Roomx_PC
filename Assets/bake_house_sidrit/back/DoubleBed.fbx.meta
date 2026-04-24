@@ -3,7 +3,37 @@ guid: 220340e965eea954d9756ad6e160c25f
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: back_Baked
+    second: {fileID: 2100000, guid: 4e5cc0447c5ecfe42b1dea4f4029809c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: big blanket_Baked
+    second: {fileID: 2100000, guid: db65d50c93ff46b44bfd685be1760dd2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: big pillow02_Baked
+    second: {fileID: 2100000, guid: 40c9172e43347f44a910d946acb20da3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: big pillow_Baked
+    second: {fileID: 2100000, guid: e4c7cd78567e2a34e99417906dca37f4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: frame_Baked
+    second: {fileID: 2100000, guid: 20e07e3a50f5c2a43a7d45fb3c733d0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: legs.001_Baked
+    second: {fileID: 2100000, guid: ac54ce6d4b01c1843981108d2c35ac53, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

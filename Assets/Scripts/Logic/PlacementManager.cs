@@ -17,16 +17,16 @@ public class PlacementManager : MonoBehaviour
     public float rotationSpeed = 120f;
     public float gridSize = 1f;
     public bool enableSnapping = true;
-    public float pickupRange = 10f;          // max raycast distance for pickup
-    public float doubleClickDelay = 0.3f;    // time window for double click
+    public float pickupRange = 10f;
+    public float doubleClickDelay = 0.3f;
 
     private GameObject ghostObject;
     private InventoryItemData currentItem;
 
     private float currentRotationY;
     private bool isValidPlacement = true;
-
     private float lastClickTime = -1f;
+    private float cachedHalfHeight = 0f;
 
     void Awake()
     {
@@ -35,9 +35,6 @@ public class PlacementManager : MonoBehaviour
 
     void Update()
     {
-       
-
-        // If holding an object, handle placement
         if (ghostObject != null)
         {
             FollowMouse();
@@ -52,10 +49,9 @@ public class PlacementManager : MonoBehaviour
             if (Input.GetMouseButtonDown(1) || Input.GetKeyDown(KeyCode.Escape))
                 CancelPlacement();
 
-            return; // skip pickup detection while placing
+            return;
         }
 
-        // Double-click detection to pick up furniture
         if (Input.GetMouseButtonDown(0))
         {
             if (IsPointerOverUI()) return;
@@ -64,9 +60,8 @@ public class PlacementManager : MonoBehaviour
 
             if (timeSinceLastClick <= doubleClickDelay)
             {
-                // Double click detected — try to pick up
                 TryPickUpFurniture();
-                lastClickTime = -1f; // reset so triple-click doesn't re-trigger
+                lastClickTime = -1f;
             }
             else
             {
@@ -82,8 +77,6 @@ public class PlacementManager : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit, pickupRange, furnitureLayer))
         {
             GameObject target = hit.collider.gameObject;
-
-            // Walk up to root in case collider is on a child
             FurniturePrefabReference refData = target.GetComponentInParent<FurniturePrefabReference>();
 
             if (refData != null)
@@ -96,14 +89,39 @@ public class PlacementManager : MonoBehaviour
         CancelPlacement();
 
         currentItem = item;
-        ghostObject = Instantiate(item.prefab3D);
+
+        // Spawn at origin first to calculate bounds correctly
+        ghostObject = Instantiate(item.prefab3D, Vector3.zero, Quaternion.identity);
         ghostObject.SetActive(true);
         currentRotationY = 0f;
 
         foreach (Collider col in ghostObject.GetComponentsInChildren<Collider>())
             col.enabled = false;
 
+        // Cache the half height at spawn so it never drifts
+        cachedHalfHeight = CalculateHalfHeight();
+
         SetGhostMaterial(validMaterial);
+    }
+
+    float CalculateHalfHeight()
+    {
+        Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
+        if (renderers.Length == 0) return 0f;
+
+        // Use local bounds to avoid world-space errors
+        float minY = float.MaxValue;
+        float maxY = float.MinValue;
+
+        foreach (Renderer r in renderers)
+        {
+            Bounds b = r.bounds;
+            minY = Mathf.Min(minY, b.min.y - ghostObject.transform.position.y);
+            maxY = Mathf.Max(maxY, b.max.y - ghostObject.transform.position.y);
+        }
+
+        // Half height is how much we need to lift the object so its bottom touches the ground
+        return Mathf.Abs(minY);
     }
 
     void FollowMouse()
@@ -117,15 +135,8 @@ public class PlacementManager : MonoBehaviour
             if (enableSnapping)
                 pos = SnapToGrid(pos);
 
-            // Offset upward by half the object's height so the bottom sits on the ground
-            Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
-            if (renderers.Length > 0)
-            {
-                Bounds bounds = renderers[0].bounds;
-                foreach (Renderer r in renderers)
-                    bounds.Encapsulate(r.bounds);
-                pos.y = hit.point.y + bounds.extents.y;
-            }
+            // Use cached half height so the bottom of the object sits exactly on the floor
+            pos.y = hit.point.y + cachedHalfHeight;
 
             ghostObject.transform.position = pos;
             isValidPlacement = CheckCollision(pos);
@@ -154,8 +165,9 @@ public class PlacementManager : MonoBehaviour
     Vector3 GetBounds()
     {
         Renderer[] renderers = ghostObject.GetComponentsInChildren<Renderer>();
-        Bounds bounds = renderers[0].bounds;
+        if (renderers.Length == 0) return Vector3.one;
 
+        Bounds bounds = renderers[0].bounds;
         foreach (Renderer r in renderers)
             bounds.Encapsulate(r.bounds);
 
@@ -186,18 +198,12 @@ public class PlacementManager : MonoBehaviour
 
         FurniturePrefabReference prefabRef = newObj.AddComponent<FurniturePrefabReference>();
         prefabRef.prefabPath = currentItem.name;
-        prefabRef.itemData = currentItem;  // Store the InventoryItemData reference
-        // Store the GLB source path if this is a runtime-imported item
-        if (!string.IsNullOrEmpty(currentItem.glbSourceFilePath))
-            prefabRef.glbSourceFilePath = currentItem.glbSourceFilePath;
 
-        // Register with save manager
         FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
         if (saveManager != null)
             saveManager.activeFurniture.Add(newObj);
 
         SetLayerRecursively(newObj, "Furniture");
-
         CancelPlacement();
     }
 
@@ -206,7 +212,6 @@ public class PlacementManager : MonoBehaviour
         FurniturePrefabReference refData = obj.GetComponent<FurniturePrefabReference>();
         if (refData == null) return;
 
-        // Remove from save manager list
         FurnitureSaveManager saveManager = FindObjectOfType<FurnitureSaveManager>();
         if (saveManager != null)
             saveManager.activeFurniture.Remove(obj);
@@ -232,10 +237,12 @@ public class PlacementManager : MonoBehaviour
 
         ghostObject = null;
         currentItem = null;
+        cachedHalfHeight = 0f;
     }
 
     void SetGhostMaterial(Material mat)
     {
+        if (ghostObject == null) return;
         foreach (Renderer r in ghostObject.GetComponentsInChildren<Renderer>())
             r.material = mat;
     }

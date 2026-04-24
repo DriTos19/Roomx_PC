@@ -16,11 +16,21 @@ MonoBehaviour:
   description: "This wardrobe features a modern and practical design that fits neatly
     into bedroom interiors. Crafted from sturdy materials, it offers convenient storage
     for clothing and everyday essentials.\t"
+  descriptionAlbanian: "Ky dollap rrobash ka nj\xEB dizajn modern dhe praktik q\xEB
+    p\xEBrshtatet bukur n\xEB ambientet e brendshme t\xEB dhom\xEBs s\xEB gjumit.
+    I punuar nga materiale t\xEB fort\xEB, ai ofron hap\xEBsir\xEB t\xEB p\xEBrshtatshme
+    ruajtjeje p\xEBr rrobat dhe gj\xEBrat e nevojshme t\xEB p\xEBrditshm\xEBris\xEB."
+  descriptionGerman: "Dieser Kleiderschrank besticht durch ein modernes und praktisches
+    Design, das sich nahtlos in Schlafzimmerinterieurs einf\xFCgt. Gefertigt aus
+    robusten Materialien, bietet er praktischen Stauraum f\xFCr Kleidung und die
+    t\xE4glichen Essentials."
   icon: {fileID: 21300000, guid: 76ac7fc12b202f5498afeb8b2f191309, type: 3}
   prefab3D: {fileID: 919132149155446097, guid: e6fed9e0f7f945848917f4332cf2bc54, type: 3}
-  category: 5
-  price: 10
+  placementRotationOffset: {x: 0, y: 0, z: 0}
   allowManualHeightAdjust: 0
   manualHeightStep: 0.25
   minManualHeightOffset: -2
   maxManualHeightOffset: 5
+  category: 5
+  price: 4000
+  glbSourceFilePath: 
