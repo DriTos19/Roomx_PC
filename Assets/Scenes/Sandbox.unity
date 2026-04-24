@@ -942,7 +942,7 @@ MonoBehaviour:
   supportYOffset: 0.01
   supportInset: 0.05
   materialWheelController: {fileID: 1246495718}
-  furnitureSaveManager: {fileID: 0}
+  furnitureSaveManager: {fileID: 852454206}
 --- !u!1 &573937569
 GameObject:
   m_ObjectHideFlags: 0

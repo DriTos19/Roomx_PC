@@ -33,14 +33,6 @@ public class FurnitureSaveManager : MonoBehaviour
         Debug.Log("FurnitureSaveManager: EventSystem present? " + (EventSystem.current != null));
         Debug.Log($"FurnitureSaveManager: Cursor.lockState={Cursor.lockState}, Cursor.visible={Cursor.visible}");
 
-        // Debug helper: if pointer debug is enabled, ensure cursor is unlocked & visible so UI can be clicked
-        if (enablePointerDebug)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-            Debug.Log("FurnitureSaveManager: Pointer debug enabled — unlocking cursor and making it visible.");
-        }
-
         if (saveButton != null) {
             Debug.Log("FurnitureSaveManager: Save button assigned");
             saveButton.onClick.RemoveAllListeners();
@@ -76,13 +68,13 @@ public class FurnitureSaveManager : MonoBehaviour
             DebugUIUnderPointer();
         }
 
-        // Press 'S' to Save
-        if (Input.GetKeyDown(KeyCode.S)) {
+        // Press F5 to Save (avoids conflict with WASD movement in sandbox)
+        if (Input.GetKeyDown(KeyCode.F5)) {
             SaveGame();
         }
 
-        // Press 'L' to Load
-        if (Input.GetKeyDown(KeyCode.L)) {
+        // Press F9 to Load (avoids conflict with WASD movement in sandbox)
+        if (Input.GetKeyDown(KeyCode.F9)) {
             LoadGame();
         }
     }
@@ -93,6 +85,10 @@ public class FurnitureSaveManager : MonoBehaviour
         SaveData data = new SaveData();
         data.sceneName = SceneManager.GetActiveScene().name;
         activeFurniture.RemoveAll(item => item == null);
+
+        Debug.Log($"=== SAVE GAME STARTED ===");
+        Debug.Log($"activeFurniture list has {activeFurniture.Count} items before saving");
+        Debug.Log($"Save path: {savePath}");
 
         foreach (GameObject obj in activeFurniture) {
             FurniturePrefabReference prefabRef = obj.GetComponent<FurniturePrefabReference>();
@@ -115,32 +111,38 @@ public class FurnitureSaveManager : MonoBehaviour
         }
 
         string json = JsonUtility.ToJson(data, true);
+        Debug.Log($"Preparing to save {data.allItems.Count} items");
         Debug.Log("JSON to save: " + json);
         
         try {
             File.WriteAllText(savePath, json);
-            Debug.Log("FILE SAVED! Look here: " + savePath);
+            Debug.Log($"✓ FILE SAVED SUCCESSFULLY! {data.allItems.Count} items written to: {savePath}");
         } catch (System.Exception e) {
             Debug.LogError("Failed to save file: " + e.Message);
         }
+        Debug.Log("=== SAVE GAME COMPLETE ===");
     }
 
     public void LoadGame() {
         RefreshSavePath();
+        Debug.Log("=== LOAD GAME STARTED ===");
         Debug.Log("Save file path: " + savePath);
         
         if (!File.Exists(savePath)) {
             Debug.LogWarning("No save file found at: " + savePath);
-            Debug.LogWarning("Press 'S' first to save furniture!");
+            Debug.LogWarning("Press F5 first to save furniture!");
+            Debug.LogWarning("=== LOAD GAME ABORTED ===");
             return;
         }
 
+        Debug.Log("✓ Save file exists!");
         string json = File.ReadAllText(savePath);
         Debug.Log("Raw JSON content: " + json);
         Debug.Log("JSON length: " + json.Length);
         
         if (string.IsNullOrEmpty(json)) {
             Debug.LogWarning("Save file is empty!");
+            Debug.LogWarning("=== LOAD GAME ABORTED ===");
             return;
         }
 
@@ -166,10 +168,12 @@ public class FurnitureSaveManager : MonoBehaviour
 
             if (data.allItems.Count == 0) {
                 Debug.LogWarning("Save file has no furniture items!");
+                Debug.LogWarning("=== LOAD GAME ABORTED ===");
                 return;
             }
 
-            Debug.Log("Found " + data.allItems.Count + " items to load.");
+            Debug.Log($"✓ Found {data.allItems.Count} items in save file to load.");
+
 
             foreach (FurnitureData item in data.allItems) {
                 // Handle runtime GLB items differently
@@ -183,7 +187,8 @@ public class FurnitureSaveManager : MonoBehaviour
                 }
             }
             
-            Debug.Log("Load complete! Total furniture loaded: " + activeFurniture.Count);
+            Debug.Log($"✓ Load complete! Total furniture loaded: {activeFurniture.Count} / {data.allItems.Count}");
+            Debug.Log("=== LOAD GAME COMPLETE ===");
         } catch (System.Exception e) {
             Debug.LogError("Error during load: " + e.Message + "\n" + e.StackTrace);
         }
@@ -217,6 +222,20 @@ public class FurnitureSaveManager : MonoBehaviour
         prefabRef.prefabPath = item.prefabName;
         prefabRef.glbSourceFilePath = item.glbSourceFilePath;
 
+        // Restore FurnitureInstance so WallPlacer_PC can edit and re-place this object.
+        // We create a minimal runtime InventoryItemData using the already-loaded GLB model as the prefab.
+        FurnitureInstance instance = newObj.GetComponent<FurnitureInstance>();
+        if (instance == null)
+            instance = newObj.AddComponent<FurnitureInstance>();
+
+        InventoryItemData glbItemData = ScriptableObject.CreateInstance<InventoryItemData>();
+        glbItemData.name = item.prefabName;
+        glbItemData.itemName = item.prefabName;
+        glbItemData.prefab3D = loaded;
+        glbItemData.glbSourceFilePath = item.glbSourceFilePath;
+        instance.itemDataSandbox = glbItemData;
+        prefabRef.itemData = glbItemData;
+
         // Put object on the Furniture layer
         int furnitureLayer = LayerMask.NameToLayer("Furniture");
         if (furnitureLayer != -1)
@@ -233,19 +252,45 @@ public class FurnitureSaveManager : MonoBehaviour
     {
         Debug.Log("Attempting to load InventoryItemData: " + item.prefabName);
         
-        // Load the InventoryItemData ScriptableObject from the correct path
-        InventoryItemData itemData = Resources.Load<InventoryItemData>("ScriptableObjects/InventoryItems/" + item.prefabName);
-        Debug.Log("  First attempt with '" + item.prefabName + "': " + (itemData != null ? "FOUND" : "NOT FOUND"));
+        // Try multiple possible Resources paths where InventoryItemData assets might be stored
+        string[] possiblePaths = new string[]
+        {
+            "ScriptableObjects/InventoryItems/" + item.prefabName,
+            "Items/" + item.prefabName,  // Alternative location
+            item.prefabName  // Root of Resources folder
+        };
 
-        // If not found, try normalized name (remove spaces, convert to proper case for asset naming)
+        InventoryItemData itemData = null;
+        string foundPath = "";
+
+        foreach (string path in possiblePaths)
+        {
+            itemData = Resources.Load<InventoryItemData>(path);
+            if (itemData != null)
+            {
+                foundPath = path;
+                Debug.Log($"  ✓ Found at: Resources/{path}");
+                break;
+            }
+        }
+
+        // If still not found, try normalized name (remove spaces, underscores)
         if (itemData == null && !string.IsNullOrEmpty(item.prefabName)) {
             string normalizedName = item.prefabName.Replace("_", "").Replace(" ", "");
-            itemData = Resources.Load<InventoryItemData>("ScriptableObjects/InventoryItems/" + normalizedName);
             
-            if (itemData != null) {
-                Debug.Log("  Found asset with normalized name: " + normalizedName);
-            } else {
-                Debug.Log("  Second attempt with normalized '" + normalizedName + "': NOT FOUND");
+            foreach (string basePath in new string[] { "ScriptableObjects/InventoryItems/", "Items/", "" })
+            {
+                itemData = Resources.Load<InventoryItemData>(basePath + normalizedName);
+                if (itemData != null)
+                {
+                    foundPath = basePath + normalizedName;
+                    Debug.Log($"  ✓ Found with normalized name at: Resources/{foundPath}");
+                    break;
+                }
+            }
+            
+            if (itemData == null) {
+                Debug.LogWarning($"  ✗ NOT FOUND: Searched in Resources/ScriptableObjects/InventoryItems/, Resources/Items/, and root");
             }
         }
 
